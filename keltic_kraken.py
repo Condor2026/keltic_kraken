@@ -40,6 +40,7 @@ from collections import defaultdict
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from threading import Lock
+from concurrent.futures import ThreadPoolExecutor, TimeoutError as FuturesTimeoutError
 
 # ============================================================================
 # ============================================================================
@@ -267,9 +268,11 @@ ARCHIVO_DATOS = 'keltic_kraken_ireland.json'
 ARCHIVO_CACHE = 'url_cache_ireland.json'
 ARCHIVO_ESTADO = 'estado_fuentes_ireland.json'
 ARCHIVO_BACKUP = 'keltic_kraken_backup.json'
-PAGINAS_BUSQUEDA = 4
-TIMEOUT = 12
-MAX_INTENTOS = 1
+PAGINAS_BUSQUEDA = 2
+TIMEOUT = 15
+SOURCE_TIMEOUT = 30
+REQUEST_TIMEOUT = 12
+MAX_INTENTOS = 2
 DELAY_MIN = 0.8
 DELAY_MAX = 2.0
 ITEMS_POR_PAGINA = 10
