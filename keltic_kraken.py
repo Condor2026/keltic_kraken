@@ -269,7 +269,7 @@ ARCHIVO_CACHE = 'url_cache_ireland.json'
 ARCHIVO_ESTADO = 'estado_fuentes_ireland.json'
 ARCHIVO_BACKUP = 'keltic_kraken_backup.json'
 PAGINAS_BUSQUEDA = 2
-TIMEOUT = 15
+TIMEOUT = 12
 SOURCE_TIMEOUT = 30
 REQUEST_TIMEOUT = 12
 MAX_INTENTOS = 2
@@ -1595,6 +1595,9 @@ class ExtractorNoticias:
                     elementos.extend(soup.find_all('a', href=True))
                     
                     encontrados_pagina = 0
+└──╼ $grep -n "extraer_de_fuente" keltic_kraken.py
+1537:    def extraer_de_fuente(self, fuente, paginas=PAGINAS_BUSQUEDA):
+1694:            incidentes_fuente = self.extraer_de_fuente(fuente, paginas)
                     gestor_temp = GestorDatos()
                     
                     for elem in elementos[:40]:  # Limitar por página
@@ -1694,7 +1697,16 @@ class ExtractorNoticias:
             cprint(f"\n\n📰 {fuente['nombre']}", 'yellow', bold=True)
             cprint(f"   📍 Condado: {fuente['condado']} | 🌐 URL: {fuente['url'][:50]}...", 'gray', dim=True)
             
-            incidentes_fuente = self.extraer_de_fuente(fuente, paginas)
+            try:
+                with ThreadPoolExecutor(max_workers=1) as executor:
+                    future = executor.submit(self.extraer_de_fuente, fuente, paginas)
+                    incidentes_fuente = future.result(timeout=SOURCE_TIMEOUT)
+            except FuturesTimeoutError:
+                cprint(f"   ⏰ TIMEOUT - Fuente lenta, saltando...", 'yellow')
+                incidentes_fuente = []
+            except Exception:
+                cprint(f"   ⚠️ Error en fuente, saltando...", 'yellow')
+                incidentes_fuente = []
             
             # ================================================================
             # GUARDADO FORZADO DESPUÉS DE CADA FUENTE (CRÍTICO)
