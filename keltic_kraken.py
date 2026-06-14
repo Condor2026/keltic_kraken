@@ -1699,7 +1699,7 @@ class ExtractorNoticias:
             
             try:
                 with ThreadPoolExecutor(max_workers=1) as executor:
-                    future = executor.submit(self.extraer_de_fuente, fuente, paginas)
+                    future = executor.submit(self.extraer_de_fuente, fuente, PAGINAS_BUSQUEDA)
                     incidentes_fuente = future.result(timeout=SOURCE_TIMEOUT)
             except FuturesTimeoutError:
                 cprint(f"   ⏰ TIMEOUT - Fuente lenta, saltando...", 'yellow')
