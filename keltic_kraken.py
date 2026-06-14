@@ -732,7 +732,7 @@ FUENTES_BASE = [
     # ========================================================================
     # === GALWAY REGION - REGIÓN DE GALWAY ===
     # ========================================================================
-    {'nombre': 'Galway Beo', 'url': 'https://www.galwaybeo.ie/news/galway-crime/', 'base': 'https://www.galwaybeo.ie', 'condado': 'Galway', 'categoria': 'local'},
+    #{'nombre': 'Galway Beo', 'url': 'https://www.galwaybeo.ie/news/galway-crime/', 'base': 'https://www.galwaybeo.ie', 'condado': 'Galway', 'categoria': 'local'},
     #{'nombre': 'Galway Advertiser', 'url': 'https://www.galwayadvertiser.ie/crime/', 'base': 'https://www.galwayadvertiser.ie', 'condado': 'Galway', 'categoria': 'local'},
     {'nombre': 'Connacht Tribune', 'url': 'https://www.connachttribune.ie/category/crime/', 'base': 'https://www.connachttribune.ie', 'condado': 'Galway', 'categoria': 'local'},
     #{'nombre': 'Galway Bay FM', 'url': 'https://galwaybayfm.ie/news/crime/', 'base': 'https://galwaybayfm.ie', 'condado': 'Galway', 'categoria': 'local'},
