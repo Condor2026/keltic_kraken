@@ -95,18 +95,18 @@ TEXTOS = {
         'welcome_title': 'PLATAFORMA DE INTELIGENCIA CRIMINAL DE IRLANDA',
         'elegir_idioma': 'Seleccione idioma: 1. Español  2. English',
         'menu_title': 'MENÚ PRINCIPAL',
-        'cmd_buscar': '🔍 Buscar crímenes (auto-detección URLs)',
-        'cmd_analisis': '📊 Análisis completo con gráficos',
-        'cmd_conexiones': '🔗 Patrones y conexiones entre incidentes',
-        'cmd_evolucion': '📈 Evolución mensual detallada',
-        'cmd_web': '🌐 Iniciar servidor web (dashboard con gráficos)',
-        'cmd_ultimos': '📰 Últimos 20 incidentes registrados',
-        'cmd_exportar': '📥 Exportar datos (JSON/CSV/HTML)',
-        'cmd_verificar': '🔍 Verificar/actualizar fuentes (auto-discovery)',
-        'cmd_tipos': '📊 Distribución por tipo de crimen',
-        'cmd_estadisticas': '📈 Estadísticas avanzadas',
-        'cmd_limpiar': '🧹 Limpiar base de datos duplicados',
-        'cmd_salir': '🗑️ Salir de la aplicación',
+        'cmd_buscar': 'Buscar crímenes (auto-detección URLs)',
+        'cmd_analisis': 'Análisis completo con gráficos',
+        'cmd_conexiones': 'Patrones y conexiones entre incidentes',
+        'cmd_evolucion': 'Evolución mensual detallada',
+        'cmd_web': 'Iniciar servidor web (dashboard con gráficos)',
+        'cmd_ultimos': 'Últimos 20 incidentes registrados',
+        'cmd_exportar': 'Exportar datos (JSON/CSV/HTML)',
+        'cmd_verificar': 'Verificar/actualizar fuentes (auto-discovery)',
+        'cmd_tipos': 'Distribución por tipo de crimen',
+        'cmd_estadisticas': 'Estadísticas avanzadas',
+        'cmd_limpiar': 'Limpiar base de datos duplicados',
+        'cmd_salir': 'Salir de la aplicación',
         'stats_total': 'Total incidentes',
         'incidentes': 'incidentes',
         'fuentes': 'fuentes activas',
@@ -132,18 +132,18 @@ TEXTOS = {
         'welcome_title': 'IRELAND CRIMINAL INTELLIGENCE PLATFORM',
         'elegir_idioma': 'Select language: 1. Spanish  2. English',
         'menu_title': 'MAIN MENU',
-        'cmd_buscar': '🔍 Search crimes (auto-discover URLs)',
-        'cmd_analisis': '📊 Full analysis with charts',
-        'cmd_conexiones': '🔗 Patterns and connections between incidents',
-        'cmd_evolucion': '📈 Detailed monthly evolution',
-        'cmd_web': '🌐 Start web server (dashboard with charts)',
-        'cmd_ultimos': '📰 Last 20 registered incidents',
-        'cmd_exportar': '📥 Export data (JSON/CSV/HTML)',
-        'cmd_verificar': '🔍 Verify/update sources (auto-discovery)',
-        'cmd_tipos': '📊 Distribution by crime type',
-        'cmd_estadisticas': '📈 Advanced statistics',
-        'cmd_limpiar': '🧹 Clean duplicate database entries',
-        'cmd_salir': '🗑️ Exit application',
+        'cmd_buscar': 'Search crimes (auto-discover URLs)',
+        'cmd_analisis': 'Full analysis with charts',
+        'cmd_conexiones': 'Patterns and connections between incidents',
+        'cmd_evolucion': 'Detailed monthly evolution',
+        'cmd_web': 'Start web server (dashboard with charts)',
+        'cmd_ultimos': 'Last 20 registered incidents',
+        'cmd_exportar': 'Export data (JSON/CSV/HTML)',
+        'cmd_verificar': 'Verify/update sources (auto-discovery)',
+        'cmd_tipos': 'Distribution by crime type',
+        'cmd_estadisticas': 'Advanced statistics',
+        'cmd_limpiar': 'Clean duplicate database entries',
+        'cmd_salir': 'Exit application',
         'stats_total': 'Total incidents',
         'incidentes': 'incidents',
         'fuentes': 'active sources',
@@ -728,15 +728,14 @@ FUENTES_BASE = [
     {'nombre': 'Cork Beo', 'url': 'https://www.corkbeo.ie/news/cork-crime/', 'base': 'https://www.corkbeo.ie', 'condado': 'Cork', 'categoria': 'local'},
     {'nombre': 'Cork Independent', 'url': 'https://corkindependent.com/category/crime/', 'base': 'https://corkindependent.com', 'condado': 'Cork', 'categoria': 'local'},
     # The Corkman - Fuente local de noticias de Cork
-    {'nombre': 'The Corkman', 'url': 'https://www.thecorkman.ie/news/crime/', 'base': 'https://www.thecorkman.ie', 'condado': 'Cork', 'categoria': 'local'},
     
     # ========================================================================
     # === GALWAY REGION - REGIÓN DE GALWAY ===
     # ========================================================================
     {'nombre': 'Galway Beo', 'url': 'https://www.galwaybeo.ie/news/galway-crime/', 'base': 'https://www.galwaybeo.ie', 'condado': 'Galway', 'categoria': 'local'},
-    {'nombre': 'Galway Advertiser', 'url': 'https://www.galwayadvertiser.ie/crime/', 'base': 'https://www.galwayadvertiser.ie', 'condado': 'Galway', 'categoria': 'local'},
+    #{'nombre': 'Galway Advertiser', 'url': 'https://www.galwayadvertiser.ie/crime/', 'base': 'https://www.galwayadvertiser.ie', 'condado': 'Galway', 'categoria': 'local'},
     {'nombre': 'Connacht Tribune', 'url': 'https://www.connachttribune.ie/category/crime/', 'base': 'https://www.connachttribune.ie', 'condado': 'Galway', 'categoria': 'local'},
-    {'nombre': 'Galway Bay FM', 'url': 'https://galwaybayfm.ie/news/crime/', 'base': 'https://galwaybayfm.ie', 'condado': 'Galway', 'categoria': 'local'},
+    #{'nombre': 'Galway Bay FM', 'url': 'https://galwaybayfm.ie/news/crime/', 'base': 'https://galwaybayfm.ie', 'condado': 'Galway', 'categoria': 'local'},
     
     # ========================================================================
     # === LIMERICK REGION - REGIÓN DE LIMERICK ===
@@ -782,7 +781,7 @@ FUENTES_BASE = [
     # === WEXFORD REGION - REGIÓN DE WEXFORD ===
     # ========================================================================
     # {'nombre': 'Wexford People', 'url': 'https://www.wexfordpeople.ie/news/crime/', 'base': 'https://www.wexfordpeople.ie', 'condado': 'Wexford', 'categoria': 'local'},  # Fuente rota - pendiente revisión
-    {'nombre': 'Wexford Echo', 'url': 'https://wexfordecho.ie/category/crime/', 'base': 'https://wexfordecho.ie', 'condado': 'Wexford', 'categoria': 'local'},
+    #{'nombre': 'Wexford Echo', 'url': 'https://wexfordecho.ie/category/crime/', 'base': 'https://wexfordecho.ie', 'condado': 'Wexford', 'categoria': 'local'},
     {'nombre': 'South East Radio', 'url': 'https://southeastradio.ie/news/crime/', 'base': 'https://southeastradio.ie', 'condado': 'Wexford', 'categoria': 'local'},
     
     # ========================================================================
@@ -790,7 +789,7 @@ FUENTES_BASE = [
     # ========================================================================
     {'nombre': 'Kildare Now', 'url': 'https://kildarenow.com/crime', 'base': 'https://kildarenow.com', 'condado': 'Kildare', 'categoria': 'local'},
     {'nombre': 'Kildare Post', 'url': 'https://kildarepost.ie/category/crime/', 'base': 'https://kildarepost.ie', 'condado': 'Kildare', 'categoria': 'local'},
-    {'nombre': 'KFM Radio', 'url': 'https://kfmradio.com/news/crime/', 'base': 'https://kfmradio.com', 'condado': 'Kildare', 'categoria': 'local'},
+    #{'nombre': 'KFM Radio', 'url': 'https://kfmradio.com/news/crime/', 'base': 'https://kfmradio.com', 'condado': 'Kildare', 'categoria': 'local'},
     
     # ========================================================================
     # === TIPPERARY REGION - REGIÓN DE TIPPERARY ===
@@ -804,7 +803,7 @@ FUENTES_BASE = [
     # ========================================================================
     {'nombre': 'Louth Live', 'url': 'https://www.louthlive.ie/news/crime/', 'base': 'https://www.louthlive.ie', 'condado': 'Louth', 'categoria': 'local'},
     # {'nombre': 'Drogheda Independent', 'url': 'https://www.droghedaindependent.ie/news/crime/', 'base': 'https://www.droghedaindependent.ie', 'condado': 'Louth', 'categoria': 'local'},  # Fuente rota - pendiente revisión
-    {'nombre': 'LMFM', 'url': 'https://www.lmfm.ie/news/crime/', 'base': 'https://www.lmfm.ie', 'condado': 'Louth', 'categoria': 'local'},
+    #{'nombre': 'LMFM', 'url': 'https://www.lmfm.ie/news/crime/', 'base': 'https://www.lmfm.ie', 'condado': 'Louth', 'categoria': 'local'},
     
     # ========================================================================
     # === SLIGO REGION - REGIÓN DE SLIGO ===
@@ -912,7 +911,7 @@ FUENTES_BASE = [
     # ========================================================================
     # === FERMANAGH - REGIÓN DE FERMANAGH ===
     # ========================================================================
-    {'nombre': 'Fermanagh Herald', 'url': 'https://www.fermanaghherald.com/category/crime/', 'base': 'https://www.fermanaghherald.com', 'condado': 'Fermanagh', 'categoria': 'ni'},
+    #{'nombre': 'Fermanagh Herald', 'url': 'https://www.fermanaghherald.com/category/crime/', 'base': 'https://www.fermanaghherald.com', 'condado': 'Fermanagh', 'categoria': 'ni'},
     {'nombre': 'Impartial Reporter', 'url': 'https://www.impartialreporter.com/news/crime/', 'base': 'https://www.impartialreporter.com', 'condado': 'Fermanagh', 'categoria': 'ni'},
 ]
 
