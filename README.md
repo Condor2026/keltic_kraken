@@ -74,10 +74,7 @@
 <h3 align="center">IRELAND CRIMINAL INTELLIGENCE PLATFORM</h3>
 
 <p align="center">
-  <strong style="font-size: 2em; color: #FF0000;">🔪 KELTIC KRAKEN v3.0</strong>
-</p>
-<p align="center">
-  <em>IRELAND CRIMINAL INTELLIGENCE PLATFORM</em>
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=800&size=34&duration=9999&pause=9999&color=FF0000&center=true&vCenter=true&width=600&lines=%F0%9F%94%AA+KELTIC+KRAKEN+v3.0;IRELAND+CRIMINAL+INTELLIGENCE" alt="KELTIC KRAKEN" />
 </p>
 
 
