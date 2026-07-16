@@ -73,10 +73,10 @@
 <h1 align="center">🔪 KELTIC KRAKEN v3.0</h1>
 <h3 align="center">IRELAND CRIMINAL INTELLIGENCE PLATFORM</h3>
 
-<h1 align="center" style="color: #FF0000; font-family: 'Fira Code', monospace; text-shadow: 0 0 20px rgba(255,0,0,0.3);">
+<h1 align="center" style="color: #FF0000; font-family: 'Fira Code', monospace; text-shadow: 0 0 10px #FF0000, 0 0 20px #FF0000, 0 0 40px #FF0000; font-size: 3em;">
   🔪 KELTIC KRAKEN v3.0
 </h1>
-<h3 align="center" style="color: #FF6666; font-family: 'Fira Code', monospace; letter-spacing: 3px;">
+<h3 align="center" style="color: #FF9999; font-family: 'Fira Code', monospace; letter-spacing: 5px; text-shadow: 0 0 10px rgba(255,0,0,0.3);">
   IRELAND CRIMINAL INTELLIGENCE PLATFORM
 </h3>
 
