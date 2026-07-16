@@ -2,7 +2,7 @@
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=500&color=FF0000&center=true&vCenter=true&width=700&lines=%F0%9F%94%AA+KELTIC+KRAKEN+v3.0;IRELAND+CRIMINAL+INTELLIGENCE+PLATFORM;32+Counties+%7C+Real-Time+Monitoring;Drug+Trafficking+%7C+Gang+Violence;%22Un+gran+poder+conlleva+una+gran+responsabilidad%22" alt="KELTIC KRAKEN" />
 </p>
 
-![KELTIC KRAKEN Logo](kraken.jpg)
+![KELTIC KRAKEN ](kraken_imagen.jpg)
 
 <p align="center">
   <!-- Version Badges -->
