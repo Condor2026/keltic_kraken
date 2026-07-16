@@ -73,6 +73,14 @@
 <h1 align="center">🔪 KELTIC KRAKEN v3.0</h1>
 <h3 align="center">IRELAND CRIMINAL INTELLIGENCE PLATFORM</h3>
 
+<h1 align="center" style="color: #FF0000; font-family: 'Fira Code', monospace; text-shadow: 0 0 20px rgba(255,0,0,0.3);">
+  🔪 KELTIC KRAKEN v3.0
+</h1>
+<h3 align="center" style="color: #FF6666; font-family: 'Fira Code', monospace; letter-spacing: 3px;">
+  IRELAND CRIMINAL INTELLIGENCE PLATFORM
+</h3>
+
+
 <p align="center">
   <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&duration=3000&pause=500&color=F70000&center=true&vCenter=true&width=600&lines=Monitorizing+Irish+Crime;Tracking+the+Kinahan+Hutch+Feud;Cocaine+Seizures+%26+Gang+Violence;32+Counties+%7C+85%2B+Sources">
 </p>
