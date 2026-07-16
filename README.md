@@ -70,9 +70,6 @@
   <img src="https://img.shields.io/badge/status-active_craic-success?style=for-the-badge">
 </p>
 
-<h1 align="center">🔪 KELTIC KRAKEN v3.0</h1>
-<h3 align="center">IRELAND CRIMINAL INTELLIGENCE PLATFORM</h3>
-
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=800&size=34&duration=9999&pause=9999&color=FF0000&center=true&vCenter=true&width=600&lines=%F0%9F%94%AA+KELTIC+KRAKEN+v3.0;IRELAND+CRIMINAL+INTELLIGENCE" alt="KELTIC KRAKEN" />
 </p>
