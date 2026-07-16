@@ -652,6 +652,39 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 ---
 
+┌─────────────────────────────────────────────────────────────┐
+│                    INTERFAZ DE USUARIO                      │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
+│  │  Terminal   │  │  Web Flask  │  │  Reportes HTML      │  │
+│  │  (Menú)     │  │  (Dashboard)│  │  (Exportación)      │  │
+│  └─────────────┘  └─────────────┘  └─────────────────────┘  │
+├─────────────────────────────────────────────────────────────┤
+│                    CAPA DE PROCESAMIENTO                    │
+│  ┌─────────────────────────────────────────────────────────┐│
+│  │  ExtractorNoticias   │  VerificadorFuentes              ││
+│  │  • Web Scraping      │  • Health Check                  ││
+│  │  • Parsing HTML      │  • Auto-Discovery URLs           ││
+│  │  • Paginación        │  • Caché de URLs                 ││
+│  └─────────────────────────────────────────────────────────┘│
+├─────────────────────────────────────────────────────────────┤
+│                    CAPA DE DATOS                            │
+│  ┌─────────────────────────────────────────────────────────┐│
+│  │  GestorDatos                                            ││
+│  │  • JSON Storage       • Backup automático               ││
+│  │  • Deduplicación      • Estadísticas                    ││
+│  │  • Exportación        • Limpieza de datos               ││
+│  └─────────────────────────────────────────────────────────┘│
+├─────────────────────────────────────────────────────────────┤
+│                    CAPA DE INFRAESTRUCTURA                  │
+│  ┌─────────────────────────────────────────────────────────┐│
+│  │  • 180+ User-Agents rotativos   • Session persistente   ││
+│  │  • Anti-bloqueo (retry)         • Timeout configurables ││
+│  │  • Proxy-ready                  • Multi-threading       ││
+│  └─────────────────────────────────────────────────────────┘│
+└─────────────────────────────────────────────────────────────┘
+
+---
+
 ## ⭐ DAME UNA ESTRELLA
 
 Si este proyecto te ha sido útil, considera darle una ⭐ en GitHub. Me ayuda a saber que voy por buen camino.
