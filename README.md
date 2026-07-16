@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&duration=3000&pause=500&color=FF0000&center=true&vCenter=true&width=750&lines=%F0%9F%94%AA+KELTIC+KRAKEN+v3.0;IRELAND+CRIMINAL+INTELLIGENCE+PLATFORM;32+Counties+%7C+Real-Time+Monitoring;Drug+Trafficking+%7C+Gang+Violence;%22Un+gran+poder+conlleva;una+gran+responsabilidad%22" alt="KELTIC KRAKEN" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&duration=3000&pause=500&color=FF0000&center=true&vCenter=true&width=750&lines=%F0%9F%94%AA+KELTIC+KRAKEN+v3.0;IRELAND+CRIMINAL+INTELLIGENCE+PLATFORM;32+Counties+%7C+Real-Time+Monitoring;Drug+Trafficking+%7C+Gang+Violence;%22With+great+power+comes;great+responsibility%22" alt="KELTIC KRAKEN" />
 </p>
 
 ![KELTIC KRAKEN ](kraken_imagen.jpg)
@@ -77,9 +77,8 @@
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=800&size=34&duration=9999&pause=9999&color=FF0000&center=true&vCenter=true&width=600&lines=%F0%9F%94%AA+KELTIC+KRAKEN+v3.0;IRELAND+CRIMINAL+INTELLIGENCE" alt="KELTIC KRAKEN" />
 </p>
 
-
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&duration=3000&pause=500&color=F70000&center=true&vCenter=true&width=600&lines=Monitorizing+Irish+Crime;Tracking+the+Kinahan+Hutch+Feud;Cocaine+Seizures+%26+Gang+Violence;32+Counties+%7C+85%2B+Sources">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&duration=3000&pause=500&color=F70000&center=true&vCenter=true&width=600&lines=Monitoring+Irish+Crime;Tracking+the+Kinahan+Hutch+Feud;Cocaine+Seizures+%26+Gang+Violence;32+Counties+%7C+85%2B+Sources">
 </p>
 
 <p align="center">
@@ -89,113 +88,113 @@
 
 <br>
 
-## 📋 TABLA DE CONTENIDOS
+## 📋 TABLE OF CONTENTS
 
-- [¿Qué es KELTIC KRAKEN?](#qué-es-keltic_kraken)
-- [Características Principales](#características-principales)
-- [Requisitos del Sistema](#requisitos-del-sistema)
-- [Instalación Paso a Paso](#instalación-paso-a-paso)
-- [Primer Uso - Guía Rápida](#primer-uso---guía-rápida)
-- [Comandos del Menú Terminal](#comandos-del-menú-terminal)
-- [Dashboard Web](#dashboard-web)
-- [Cobertura Geográfica](#cobertura-geográfica)
-- [Estructura del Proyecto](#estructura-del-proyecto)
-- [Solución de Problemas](#solución-de-problemas)
-- [Preguntas Frecuentes](#preguntas-frecuentes)
-- [Licencia](#licencia)
-- [Autor](#autor)
+- [What is KELTIC KRAKEN?](#what-is-keltic-kraken)
+- [Key Features](#key-features)
+- [System Requirements](#system-requirements)
+- [Step-by-Step Installation](#step-by-step-installation)
+- [First Use - Quick Guide](#first-use---quick-guide)
+- [Terminal Menu Commands](#terminal-menu-commands)
+- [Web Dashboard](#web-dashboard)
+- [Geographic Coverage](#geographic-coverage)
+- [Project Structure](#project-structure)
+- [Troubleshooting](#troubleshooting)
+- [Frequently Asked Questions](#frequently-asked-questions)
+- [License](#license)
+- [Author](#author)
 
 ---
 
-## ¿QUÉ ES KELTIC KRAKEN?
+## WHAT IS KELTIC KRAKEN?
 
-KELTIC KRAKEN es una plataforma de inteligencia criminal **open source** diseñada específicamente para **Irlanda**. El sistema:
+KELTIC KRAKEN is an **open source** criminal intelligence platform specifically designed for **Ireland**. The system:
 
-| # | Acción | Descripción |
+| # | Action | Description |
 |---|--------|-------------|
-| 1 | **Escanea** | 85+ periódicos irlandeses (nacionales, regionales y locales) |
-| 2 | **Detecta** | Noticias relacionadas con crimen organizado, narcotráfico y violencia |
-| 3 | **Clasifica** | Cada incidente por tipo (drogas, asesinato, violencia de bandas, etc.) |
-| 4 | **Geolocaliza** | Por condado (Dublin, Cork, Galway, Belfast, etc.) |
-| 5 | **Analiza** | Genera estadísticas y gráficos interactivos en tiempo real |
-| 6 | **Exporta** | Datos en JSON, CSV o HTML para análisis externos |
+| 1 | **Scans** | 85+ Irish newspapers (national, regional and local) |
+| 2 | **Detects** | News related to organized crime, drug trafficking and violence |
+| 3 | **Classifies** | Each incident by type (drugs, murder, gang violence, etc.) |
+| 4 | **Geolocates** | By county (Dublin, Cork, Galway, Belfast, etc.) |
+| 5 | **Analyzes** | Generates statistics and interactive charts in real-time |
+| 6 | **Exports** | Data in JSON, CSV or HTML for external analysis |
 
-### 🎯 ¿Para quién es?
+### 🎯 Who is it for?
 
-| Usuario | Beneficio | Emoji |
-|---------|-----------|-------|
-| **Periodistas** | Fuente consolidada de información criminal | 📰 |
-| **Investigadores** | Datos históricos para análisis de tendencias | 🔬 |
-| **Criminólogos** | Material para estudios académicos | 🎓 |
-| **Fuerzas de seguridad** | Visión general de actividad criminal (uso ético) | 👮 |
-| **Ciudadanos** | Conciencia situacional de su comunidad | 🏡 |
-| **Desarrolladores** | API y datos para integraciones | 💻 |
+| User | Benefit |
+|---------|-----------|
+| **Journalists** | Consolidated source of criminal information |
+| **Researchers** | Historical data for trend analysis |
+| **Criminologists** | Material for academic studies |
+| **Security forces** | Overview of criminal activity (ethical use) |
+| **Citizens** | Situational awareness of their community |
+| **Developers** | API and data for integrations |
 
 ---
 
-## CARACTERÍSTICAS PRINCIPALES
+## KEY FEATURES
 
-### 🔒 Anti-bloqueo
+### 🔒 Anti-blocking
 
-| Característica | Valor | Descripción |
+| Feature | Value | Description |
 |----------------|-------|-------------|
-| **User-Agents** | 150+ | Rotación continua de navegadores |
-| **Intentos** | 3 | Reintentos por fuente antes de marcar inactiva |
-| **Delays** | 0.8-2.0s | Esperas aleatorias entre peticiones |
-| **Timeout** | 25s | Límite por petición |
-| **Session** | Persistente | Cookies y cabeceras entre peticiones |
-| **Retry** | Automático | Backoff exponencial en fallos |
+| **User-Agents** | 150+ | Continuous rotation of browsers |
+| **Attempts** | 3 | Retries per source before marking inactive |
+| **Delays** | 0.8-2.0s | Random waits between requests |
+| **Timeout** | 25s | Limit per request |
+| **Session** | Persistent | Cookies and headers between requests |
+| **Retry** | Automatic | Exponential backoff on failures |
 
-### 🔧 Auto-reparación
+### 🔧 Self-repair
 
-| Característica | Descripción |
+| Feature | Description |
 |----------------|-------------|
-| **Auto-discovery URLs** | Si una URL falla, busca automáticamente la correcta |
-| **URL cache** | Guarda URLs encontradas para futuras ejecuciones |
-| **Smart pagination** | Detecta automáticamente patrones de paginación |
-| **Fallback paths** | 50+ paths alternativos para probar |
+| **Auto-discovery URLs** | If a URL fails, automatically searches for the correct one |
+| **URL cache** | Saves discovered URLs for future runs |
+| **Smart pagination** | Automatically detects pagination patterns |
+| **Fallback paths** | 50+ alternative paths to try |
 
-### 🖥️ Interfaz
+### 🖥️ Interface
 
-| Característica | Descripción |
+| Feature | Description |
 |----------------|-------------|
-| **Terminal** | Menú con 12 comandos, colores y barras de progreso |
-| **Web dashboard** | 4 gráficos interactivos (Chart.js) |
-| **Bilingüe** | Español e Inglés completamente soportados |
-| **Responsive** | Funciona en móvil, tablet y desktop |
+| **Terminal** | Menu with 12 commands, colors and progress bars |
+| **Web dashboard** | 4 interactive charts (Chart.js) |
+| **Bilingual** | Spanish and English fully supported |
+| **Responsive** | Works on mobile, tablet and desktop |
 
-### 📊 Datos
+### 📊 Data
 
-| Característica | Valor |
+| Feature | Value |
 |----------------|-------|
-| **Fuentes** | 85+ periódicos |
-| **Condados** | 32 (toda Irlanda) |
-| **Tipos de crimen** | 9 categorías |
-| **Palabras clave** | 100+ términos de búsqueda |
+| **Sources** | 85+ newspapers |
+| **Counties** | 32 (all Ireland) |
+| **Crime types** | 9 categories |
+| **Keywords** | 100+ search terms |
 
-### 📥 Exportación
+### 📥 Export
 
-| Formato | Uso | Compatibilidad |
+| Format | Use | Compatibility |
 |---------|-----|----------------|
-| **JSON** | Datos completos | Todas las aplicaciones |
-| **CSV** | Hojas de cálculo | Excel, Google Sheets, LibreOffice |
-| **HTML** | Reporte profesional | Cualquier navegador |
+| **JSON** | Complete data | All applications |
+| **CSV** | Spreadsheets | Excel, Google Sheets, LibreOffice |
+| **HTML** | Professional report | Any browser |
 
 ---
 
-## REQUISITOS DEL SISTEMA
+## SYSTEM REQUIREMENTS
 
-### Mínimos vs Recomendados
+### Minimum vs Recommended
 
-| Componente | Mínimo | Recomendado |
+| Component | Minimum | Recommended |
 |------------|--------|-------------|
-| **SO** | Windows 10 / macOS 11 / Linux | Windows 11 / macOS 14 / Ubuntu 22.04 |
+| **OS** | Windows 10 / macOS 11 / Linux | Windows 11 / macOS 14 / Ubuntu 22.04 |
 | **Python** | 3.8 | 3.11+ |
 | **RAM** | 512 MB | 1 GB |
-| **Almacenamiento** | 100 MB | 500 MB |
+| **Storage** | 100 MB | 500 MB |
 | **Internet** | 1 Mbps | 10 Mbps |
 
-### Verificar Python
+### Verify Python
 
 ```bash
 # Linux / Mac
@@ -205,152 +204,152 @@ python3 --version
 python --version
 ```
 
-**Si no tienes Python:** [Descargar Python 3.11+](https://www.python.org/downloads/)
+**If you don't have Python:** [Download Python 3.11+](https://www.python.org/downloads/)
 
 ---
 
-## INSTALACIÓN PASO A PASO
+## STEP-BY-STEP INSTALLATION
 
 ### 🐧 Linux / 🍎 Mac
 
 ```bash
-# PASO 1: Clonar el repositorio
+# STEP 1: Clone the repository
 git clone https://github.com/Condor2026/keltic_kraken
 cd keltic_kraken
 
-# PASO 2: Crear entorno virtual
+# STEP 2: Create virtual environment
 python3 -m venv venv
 source venv/bin/activate
 
-# PASO 3: Instalar dependencias
+# STEP 3: Install dependencies
 pip install --upgrade pip
 pip install -r requirements.txt
 
-# PASO 4: Verificar instalación
-python3 -c "import requests, bs4, flask; print('✅ Todo correcto')"
+# STEP 4: Verify installation
+python3 -c "import requests, bs4, flask; print('✅ Everything correct')"
 
-# PASO 5: Ejecutar
+# STEP 5: Run
 python3 keltic_kraken.py
 ```
 
 ### 🪟 Windows
 
 ```powershell
-# PASO 1: Clonar el repositorio
+# STEP 1: Clone the repository
 git clone https://github.com/Condor2026/keltic_kraken
 cd keltic_kraken
 
-# PASO 2: Crear entorno virtual
+# STEP 2: Create virtual environment
 python -m venv venv
 venv\Scripts\activate
 
-# PASO 3: Instalar dependencias
+# STEP 3: Install dependencies
 pip install --upgrade pip
 pip install -r requirements.txt
 
-# PASO 4: Verificar instalación
-python -c "import requests, bs4, flask; print('✅ Todo correcto')"
+# STEP 4: Verify installation
+python -c "import requests, bs4, flask; print('✅ Everything correct')"
 
-# PASO 5: Ejecutar
+# STEP 5: Run
 python keltic_kraken.py
 ```
 
 ### 🐳 Docker
 
 ```bash
-# Construir imagen
+# Build image
 docker build -t keltic_kraken .
 
-# Ejecutar contenedor
+# Run container
 docker run -p 5014:5014 keltic_kraken
 
-# O con docker-compose
+# Or with docker-compose
 docker-compose up -d
 ```
 
 ---
 
-## PRIMER USO - GUÍA RÁPIDA
+## FIRST USE - QUICK GUIDE
 
-Cuando ejecutes por **PRIMERA VEZ**, sigue estos pasos:
+When running for the **FIRST TIME**, follow these steps:
 
-### 1️⃣ Seleccionar idioma
+### 1️⃣ Select language
 
 ```
-🌍 SELECCIONE IDIOMA / SELECT LANGUAGE
+🌍 SELECT LANGUAGE
 ┌──────────────────────────────────────────────────┐
-│  [1] Español                                     │
+│  [1] Spanish                                     │
 │  [2] English                                     │
 └──────────────────────────────────────────────────┘
-➤ Opción: 1
+➤ Option: 2
 ```
 
-### 2️⃣ Elegir modo de ejecución
+### 2️⃣ Choose execution mode
 
 ```
 ┌────────────────────────────────────────────────────┐
-│  ¿Cómo deseas ejecutar?                            │
+│  How do you want to run?                          │
 ├────────────────────────────────────────────────────┤
-│  [1] Modo Terminal (recomendado para análisis)     │
-│  [2] Modo Web (dashboard con gráficos)             │
+│  [1] Terminal Mode (recommended for analysis)     │
+│  [2] Web Mode (dashboard with charts)             │
 └────────────────────────────────────────────────────┘
-➤ Elige: 1
+➤ Choose: 1
 ```
 
-### 3️⃣ VERIFICAR FUENTES (OBLIGATORIO)
+### 3️⃣ VERIFY SOURCES (MANDATORY)
 
 ```bash
-➤ Opción: 8
+➤ Option: 8
 ```
 
-**Qué hace:**
-- ✅ Verifica las 85+ fuentes una por una
-- ✅ Marca activas las que funcionan
-- ❌ Marca inactivas las que fallan
-- 🔍 Aplica auto-discovery a URLs caídas
-- 💾 Guarda URLs encontradas en caché
+**What it does:**
+- ✅ Verifies all 85+ sources one by one
+- ✅ Marks active those that work
+- ❌ Marks inactive those that fail
+- 🔍 Applies auto-discovery to dead URLs
+- 💾 Saves discovered URLs in cache
 
-**Resultado esperado:**
+**Expected result:**
 ```
-📊 RESULTADOS:
-   Fuentes activas: 68 de 85
-   Auto-discovery aplicado: 12 URLs encontradas
-   Caché guardada para futuras ejecuciones
+📊 RESULTS:
+   Active sources: 68 out of 85
+   Auto-discovery applied: 12 URLs found
+   Cache saved for future runs
 ```
 
-### 4️⃣ BUSCAR CRÍMENES
+### 4️⃣ SEARCH FOR CRIMES
 
 ```bash
-➤ Opción: 1
+➤ Option: 1
 ```
 
-**Qué hace:**
-- Escanea todas las fuentes activas
-- Busca palabras clave relacionadas con crimen
-- Extrae títulos, fechas y ubicaciones
-- Clasifica por tipo de crimen
-- Guarda en base de datos local
+**What it does:**
+- Scans all active sources
+- Searches for crime-related keywords
+- Extracts titles, dates and locations
+- Classifies by crime type
+- Saves to local database
 
-**Verás:**
+**You will see:**
 ```
-🔪 KELTIC KRAKEN - ESCANEANDO IRLANDA
+🔪 KELTIC KRAKEN - SCANNING IRELAND
 ================================================================================
 📰 Irish Times (1/68)
-   📍 Condado: Dublin
-   📄 Página 1... ✓ 24 encontrados
-   📄 Página 2... ✓ 18 encontrados
-   📄 Página 3... ✓ 12 encontrados
-   📊 Total en esta fuente: 54 incidentes
+   📍 County: Dublin
+   📄 Page 1... ✓ 24 found
+   📄 Page 2... ✓ 18 found
+   📄 Page 3... ✓ 12 found
+   📊 Total in this source: 54 incidents
 ```
 
-### 5️⃣ VER RESULTADOS
+### 5️⃣ VIEW RESULTS
 
 ```bash
-➤ Opción: 6
+➤ Option: 6
 ```
 
 ```
-📰 ÚLTIMOS 20 INCIDENTES
+📰 LATEST 20 INCIDENTS
 ================================================================================
  1. Man arrested after €500k cocaine seizure in Dublin
       📅 2026-06-12 | 📍 Dublin | 📰 Irish Times | 🔪 DRUGS
@@ -362,130 +361,130 @@ Cuando ejecutes por **PRIMERA VEZ**, sigue estos pasos:
       📅 2026-06-11 | 📍 Galway | 📰 RTÉ | 🔪 MURDER
 ```
 
-### 6️⃣ (OPCIONAL) DASHBOARD WEB
+### 6️⃣ (OPTIONAL) WEB DASHBOARD
 
 ```bash
-➤ Opción: 5
+➤ Option: 5
 ```
 
-Abrir navegador: **http://localhost:5014**
+Open browser: **http://localhost:5014**
 
 ---
 
-## COMANDOS DEL MENÚ TERMINAL
+## TERMINAL MENU COMMANDS
 
-| Opción | Comando | Qué hace | Cuándo |
+| Option | Command | What it does | When |
 |--------|---------|----------|--------|
-| **1** | 🔍 Buscar crímenes | Escanea todas las fuentes activas | Diario |
-| **2** | 📊 Análisis completo | Muestra estadísticas detalladas | Post-búsqueda |
-| **3** | 🔗 Patrones | Detecta concentraciones criminales | Semanal |
-| **4** | 📈 Evolución | Gráfico de tendencia temporal | Mensual |
-| **5** | 🌐 Servidor web | Inicia dashboard en localhost | Bajo demanda |
-| **6** | 📰 Últimos 20 | Lista incidentes recientes | Rápido |
-| **7** | 📥 Exportar | Guarda en JSON/CSV/HTML | Para compartir |
-| **8** | 🔍 Verificar | Actualiza estado de fuentes | Semanal |
-| **9** | 📊 Distribución | Porcentajes por tipo | Post-búsqueda |
-| **10** | 📈 Avanzadas | Métricas como densidad, tendencia | Análisis profundo |
-| **11** | 🧹 Limpiar | Elimina duplicados | Si notas repeticiones |
-| **12** | 🗑️ Salir | Cierra la aplicación | Al terminar |
+| **1** | 🔍 Search crimes | Scans all active sources | Daily |
+| **2** | 📊 Complete analysis | Shows detailed statistics | Post-search |
+| **3** | 🔗 Patterns | Detects criminal concentrations | Weekly |
+| **4** | 📈 Evolution | Temporal trend chart | Monthly |
+| **5** | 🌐 Web server | Starts dashboard on localhost | On demand |
+| **6** | 📰 Latest 20 | Lists recent incidents | Quick |
+| **7** | 📥 Export | Saves to JSON/CSV/HTML | To share |
+| **8** | 🔍 Verify | Updates source status | Weekly |
+| **9** | 📊 Distribution | Percentages by type | Post-search |
+| **10** | 📈 Advanced | Metrics like density, trend | Deep analysis |
+| **11** | 🧹 Clean | Removes duplicates | If you notice repetitions |
+| **12** | 🗑️ Exit | Closes the application | When finished |
 
-### 📋 Ejemplo de flujo diario
+### 📋 Daily flow example
 
 ```bash
-# Lunes 9:00 AM
-➤ 8    # Verificar fuentes
-➤ 1    # Buscar crímenes nuevos
-➤ 6    # Ver últimos incidentes
-➤ 2    # Ver estadísticas
-➤ 5    # (opcional) Abrir dashboard web
+# Monday 9:00 AM
+➤ 8    # Verify sources
+➤ 1    # Search for new crimes
+➤ 6    # View latest incidents
+➤ 2    # View statistics
+➤ 5    # (optional) Open web dashboard
 ```
 
 ---
 
-## DASHBOARD WEB
+## WEB DASHBOARD
 
-Cuando ejecutas la **Opción 5**, se inicia un servidor web en `http://localhost:5014`
+When you run **Option 5**, a web server starts at `http://localhost:5014`
 
-### 📊 Gráfico 1: Incidentes por Condado (Barras)
+### 📊 Chart 1: Incidents by County (Bars)
 
-| Elemento | Descripción |
+| Element | Description |
 |----------|-------------|
-| **Tipo** | Gráfico de barras verticales |
-| **Datos** | Incidentes por cada condado |
-| **Interacción** | Hover para ver números exactos |
-| **Utilidad** | Identificar zonas calientes (hotspots) |
+| **Type** | Vertical bar chart |
+| **Data** | Incidents per county |
+| **Interaction** | Hover to see exact numbers |
+| **Utility** | Identify hotspots |
 
-**Lo que revela:**
-- Dublin suele liderar (más población = más crímenes)
-- Cork en segundo lugar
-- Patrones geográficos de criminalidad
+**What it reveals:**
+- Dublin usually leads (more population = more crimes)
+- Cork in second place
+- Geographic patterns of criminality
 
-### 🥧 Gráfico 2: Tipos de Crimen (Dona)
+### 🥧 Chart 2: Crime Types (Donut)
 
-| Tipo | Color | Descripción |
+| Type | Color | Description |
 |------|-------|-------------|
-| 💊 Drugs | Rojo oscuro | Narcotráfico, incautaciones, tráfico |
-| 🔫 Gang Violence | Rojo | Violencia de bandas (Kinahan, Hutch) |
-| 💀 Murder | Negro | Asesinatos y homicidios |
-| 👮 Garda Op | Azul | Operaciones policiales |
-| 👊 Assault | Naranja | Agresiones |
-| 💰 Robbery | Amarillo | Robos y hurtos |
-| 🕴️ Org Crime | Morado | Crimen organizado |
-| 🔪 Weapon | Granate | Delitos con armas |
-| ❓ Other | Gris | Otros tipos |
+| 💊 Drugs | Dark red | Drug trafficking, seizures, smuggling |
+| 🔫 Gang Violence | Red | Gang violence (Kinahan, Hutch) |
+| 💀 Murder | Black | Murders and homicides |
+| 👮 Garda Op | Blue | Police operations |
+| 👊 Assault | Orange | Assaults |
+| 💰 Robbery | Yellow | Robberies and thefts |
+| 🕴️ Org Crime | Purple | Organized crime |
+| 🔪 Weapon | Maroon | Weapons offenses |
+| ❓ Other | Gray | Other types |
 
-### 📈 Gráfico 3: Tendencia Mensual (Línea)
+### 📈 Chart 3: Monthly Trend (Line)
 
-| Elemento | Descripción |
+| Element | Description |
 |----------|-------------|
-| **Tipo** | Gráfico de líneas con relleno |
-| **Datos** | Evolución mes a mes |
-| **Tendencia** | Sube/baja visualmente |
-| **Utilidad** | Detectar patrones estacionales |
+| **Type** | Line chart with fill |
+| **Data** | Month by month evolution |
+| **Trend** | Goes up/down visually |
+| **Utility** | Detect seasonal patterns |
 
-**Preguntas que responde:**
-- ¿El crimen está aumentando o disminuyendo?
-- ¿Hay picos en meses específicos?
-- ¿Cómo se compara este año con el anterior?
+**Questions it answers:**
+- Is crime increasing or decreasing?
+- Are there peaks in specific months?
+- How does this year compare to the previous one?
 
-### 📊 Gráfico 4: Top Fuentes (Barras horizontales)
+### 📊 Chart 4: Top Sources (Horizontal bars)
 
-| Elemento | Descripción |
+| Element | Description |
 |----------|-------------|
-| **Tipo** | Barras horizontales |
-| **Datos** | Periódicos más activos |
-| **Orden** | De mayor a menor |
-| **Utilidad** | Identificar fuentes más informativas |
+| **Type** | Horizontal bars |
+| **Data** | Most active newspapers |
+| **Order** | From highest to lowest |
+| **Utility** | Identify most informative sources |
 
-### 📋 Lista de incidentes
+### 📋 Incident list
 
-Cada tarjeta muestra:
-- **Título completo** de la noticia
-- **Fecha** de publicación
-- **Condado** donde ocurrió
-- **Fuente** (periódico)
-- **Tipo** de crimen con color
+Each card shows:
+- **Full title** of the news
+- **Date** of publication
+- **County** where it occurred
+- **Source** (newspaper)
+- **Crime type** with color
 
-### 🎛️ Controles web
+### 🎛️ Web controls
 
-| Botón | Función |
+| Button | Function |
 |-------|---------|
-| 🔄 UPDATE DATA | Escanea fuentes y actualiza |
-| 📥 JSON | Descarga datos en JSON |
-| 📥 CSV | Descarga en CSV (Excel) |
-| 📄 HTML REPORT | Genera reporte profesional |
-| ALL | Todos los incidentes |
-| 7D | Últimos 7 días |
-| 30D | Últimos 30 días |
-| 90D | Últimos 90 días |
+| 🔄 UPDATE DATA | Scans sources and updates |
+| 📥 JSON | Downloads data in JSON |
+| 📥 CSV | Downloads in CSV (Excel) |
+| 📄 HTML REPORT | Generates professional report |
+| ALL | All incidents |
+| 7D | Last 7 days |
+| 30D | Last 30 days |
+| 90D | Last 90 days |
 
 ---
 
-## COBERTURA GEOGRÁFICA
+## GEOGRAPHIC COVERAGE
 
-### República de Irlanda (26 condados)
+### Republic of Ireland (26 counties)
 
-| Condado | Fuentes | Principales medios |
+| County | Sources | Main media |
 |---------|---------|-------------------|
 | **Dublin** | 7 | Irish Times, Irish Independent, RTÉ, Dublin Live |
 | **Cork** | 5 | Irish Examiner, Cork Beo, Cork Independent |
@@ -501,11 +500,11 @@ Cada tarjeta muestra:
 | **Waterford** | 3 | Waterford News, Waterford Live |
 | **Clare** | 4 | Clare Champion, Clare FM |
 | **Sligo** | 3 | Sligo Champion, Ocean FM |
-| **Resto** | 2-3 | Medios locales |
+| **Rest** | 2-3 | Local media |
 
-### Irlanda del Norte (6 condados)
+### Northern Ireland (6 counties)
 
-| Condado | Fuentes | Principales medios |
+| County | Sources | Main media |
 |---------|---------|-------------------|
 | **Antrim (Belfast)** | 5 | Belfast Telegraph, Irish News, Belfast Live |
 | **Derry/Londonderry** | 3 | Derry Journal, Derry Now |
@@ -514,99 +513,156 @@ Cada tarjeta muestra:
 | **Armagh** | 2 | Armagh I, Lurgan Mail |
 | **Fermanagh** | 2 | Fermanagh Herald, Impartial Reporter |
 
-### 📊 Totales
+### 📊 Totals
 
-| Región | Condados | Fuentes |
+| Region | Counties | Sources |
 |--------|----------|---------|
-| República de Irlanda | 26 | ~65 |
-| Irlanda del Norte | 6 | ~20 |
+| Republic of Ireland | 26 | ~65 |
+| Northern Ireland | 6 | ~20 |
 | **TOTAL** | **32** | **85+** |
 
 ---
 
-## ESTRUCTURA DEL PROYECTO
+## PROJECT STRUCTURE
 
 ```
 keltic-kraken/
 │
-├── 📄 keltic_kraken.py          # Script principal (2250+ líneas)
-├── 📄 requirements.txt          # Dependencias Python
-├── 📄 README.md                 # Este documento
+├── 📄 keltic_kraken.py          # Main script (2250+ lines)
+├── 📄 requirements.txt          # Python dependencies
+├── 📄 README.md                 # This document
 ├── 📄 LICENSE                   # GPL v3
 │
-├── 📊 keltic_kraken_ireland.json   # Base de datos de incidentes
-├── 💾 keltic_kraken_backup.json    # Copia de seguridad automática
-├── 🗺️ url_cache_ireland.json       # Caché de URLs descubiertas
-├── 📡 estado_fuentes_ireland.json  # Estado de cada fuente
+├── 📊 keltic_kraken_ireland.json   # Incidents database
+├── 💾 keltic_kraken_backup.json    # Automatic backup
+├── 🗺️ url_cache_ireland.json       # Discovered URLs cache
+├── 📡 estado_fuentes_ireland.json  # Source status
 │
-├── 📤 keltic_kraken_export.json    # Exportación manual (JSON)
-├── 📤 keltic_kraken_export.csv     # Exportación manual (CSV)
-├── 📤 keltic_kraken_report.html    # Exportación manual (HTML)
+├── 📤 keltic_kraken_export.json    # Manual export (JSON)
+├── 📤 keltic_kraken_export.csv     # Manual export (CSV)
+├── 📤 keltic_kraken_report.html    # Manual export (HTML)
 │
-└── 📁 docs/                         # Documentación extra
+└── 📁 docs/                         # Extra documentation
     ├── usage.md
     ├── api.md
     └── screenshots/
 ```
 
-### Archivos generados automáticamente
+### Automatically generated files
 
-| Archivo | Cuándo | Qué contiene |
+| File | When | What it contains |
 |---------|--------|--------------|
-| `keltic_kraken_ireland.json` | 1ª ejecución | Todos los incidentes |
-| `url_cache_ireland.json` | Auto-discovery | URLs alternativas |
-| `estado_fuentes_ireland.json` | Opción 8 | Estado activo/inactivo |
-| `keltic_kraken_backup.json` | Cada guardado | Copia de seguridad |
+| `keltic_kraken_ireland.json` | 1st run | All incidents |
+| `url_cache_ireland.json` | Auto-discovery | Alternative URLs |
+| `estado_fuentes_ireland.json` | Option 8 | Active/inactive status |
+| `keltic_kraken_backup.json` | Each save | Backup copy |
 
 ---
 
-### ❓ ¿Esto es legal?
+## TROUBLESHOOTING
 
-**Sí.** El sistema:
-- Solo accede a datos **públicos**
-- Respeta delays entre peticiones
-- No sobrecarga servidores
-- No vulnera medidas de seguridad
-- Solo usa secciones públicas de periódicos
+### Error: "Module not found"
 
-### ❓ ¿Puedo usar esto para otro país?
+```bash
+pip install -r requirements.txt
+```
 
-El sistema está diseñado para Irlanda, pero puede adaptarse:
-1. Cambiar `FUENTES_BASE` (lista de periódicos)
-2. Cambiar `PALABRAS_CLAVE_CRIMEN` (términos locales)
-3. Cambiar `CONDADOS_IRLANDA` (por regiones del país)
-4. Cambiar `TIPOS_CRIMEN` (categorías locales)
+### Error: "Connection timeout"
 
-### ❓ ¿Dónde se guardan los datos?
+- Check your internet connection
+- Increase timeout in code (line 180)
+- Some sources may be temporarily down
 
-En `keltic_kraken_ireland.json` (formato JSON legible)
+### Error: "No data found"
 
-### ❓ ¿Puedo exportar los datos?
+- Run **Option 8** first (verify sources)
+- Wait for the complete scan to finish
+- Verify you have active sources
 
-**Sí, tres formatos:**
-- `➤ 7` → Exporta a JSON, CSV y HTML
-- Botón 📥 JSON en web
-- Botón 📥 CSV en web
-- Botón 📄 HTML REPORT en web
+### Error: "Port 5014 already in use"
 
-### ❓ ¿Consume muchos recursos?
+```bash
+# Change port in code or kill the process
+# Linux/Mac
+lsof -ti:5014 | xargs kill -9
 
-**No.** Uso típico:
+# Windows
+netstat -ano | findstr :5014
+taskkill /PID <PID> /F
+```
+
+### Dashboard doesn't load
+
+- Make sure Flask is installed
+- Check that no firewalls are blocking
+- Try with `http://127.0.0.1:5014`
+
+---
+
+## FREQUENTLY ASKED QUESTIONS
+
+### ❓ Is this legal?
+
+**Yes.** The system:
+- Only accesses **public** data
+- Respects delays between requests
+- Does not overload servers
+- Does not violate security measures
+- Only uses public sections of newspapers
+
+### ❓ Can I use this for another country?
+
+The system is designed for Ireland, but can be adapted:
+1. Change `FUENTES_BASE` (list of newspapers)
+2. Change `PALABRAS_CLAVE_CRIMEN` (local terms)
+3. Change `CONDADOS_IRLANDA` (for country regions)
+4. Change `TIPOS_CRIMEN` (local categories)
+
+### ❓ Where is the data saved?
+
+In `keltic_kraken_ireland.json` (readable JSON format)
+
+### ❓ Can I export the data?
+
+**Yes, three formats:**
+- `➤ 7` → Exports to JSON, CSV and HTML
+- 📥 JSON button on web
+- 📥 CSV button on web
+- 📄 HTML REPORT button on web
+
+### ❓ Does it consume many resources?
+
+**No.** Typical usage:
 - RAM: ~200-500 MB
-- CPU: ~10-20% durante scraping
-- Almacenamiento: ~10-50 MB por mes de datos
+- CPU: ~10-20% during scraping
+- Storage: ~10-50 MB per month of data
 
-### ❓ ¿Hay soporte para móvil?
+### ❓ Is there mobile support?
 
-**Sí.** El dashboard web es responsive y funciona en:
+**Yes.** The web dashboard is responsive and works on:
 - iPhone (iOS)
 - Android
 - Tablet
 - iPad
 
+### ❓ How often should I run it?
+
+- **Daily:** To keep data updated
+- **Weekly:** For trend analysis
+- **Monthly:** For complete reports
+
+### ❓ Can I automate the runs?
+
+**Yes.** Use cron (Linux/Mac) or Task Scheduler (Windows):
+
+```bash
+# Cron - run daily at 9 AM
+0 9 * * * cd /path/keltic_kraken && python3 keltic_kraken.py --auto
+```
+
 ---
 
-## LICENCIA
+## LICENSE
 
 **GNU General Public License v3.0**
 
@@ -627,102 +683,29 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <https://www.gnu.org/licenses/>.
 ```
 
-### 🔒 Permisos
+### 🔒 Permissions
 
-| Acción | Permitido |
+| Action | Allowed |
 |--------|-----------|
-| ✅ Uso comercial | Sí |
-| ✅ Modificación | Sí |
-| ✅ Distribución | Sí |
-| ✅ Uso privado | Sí |
-| ❌ Responsabilidad | No |
-| ❌ Garantía | No |
+| ✅ Commercial use | Yes |
+| ✅ Modification | Yes |
+| ✅ Distribution | Yes |
+| ✅ Private use | Yes |
+| ❌ Liability | No |
+| ❌ Warranty | No |
 
 ---
 
-## AUTOR
+## AUTHOR
 
 **Condor2026** · **SpectrumSecurity**
 
-| Plataforma | Enlace |
-|------------|--------|
-| GitHub | [@Condor2026](https://github.com/Condor2026) |
-| Proyecto | [KELTIC KRAKEN](https://github.com/Condor2026/keltic-kraken) |
-| Email | spectrumsecurity@proton.me |
-
----
-
-## AGRADECIMIENTOS
-
-- A los periodistas irlandeses que cubren el crimen organizado (trabajo peligroso y valiente)
-- A la comunidad open source (requests, beautifulsoup, flask, chart.js)
-- A los desarrolladores de las librerías que hacen esto posible
-- A ti por usar esta herramienta con ética y responsabilidad
-
----
-
-┌─────────────────────────────────────────────────────────────┐
-│                    INTERFAZ DE USUARIO                      │
-│  ┌─────────────┐  ┌─────────────┐  ┌─────────────────────┐  │
-│  │  Terminal   │  │  Web Flask  │  │  Reportes HTML      │  │
-│  │  (Menú)     │  │  (Dashboard)│  │  (Exportación)      │  │
-│  └─────────────┘  └─────────────┘  └─────────────────────┘  │
-├─────────────────────────────────────────────────────────────┤
-│                    CAPA DE PROCESAMIENTO                    │
-│  ┌─────────────────────────────────────────────────────────┐│
-│  │  ExtractorNoticias   │  VerificadorFuentes              ││
-│  │  • Web Scraping      │  • Health Check                  ││
-│  │  • Parsing HTML      │  • Auto-Discovery URLs           ││
-│  │  • Paginación        │  • Caché de URLs                 ││
-│  └─────────────────────────────────────────────────────────┘│
-├─────────────────────────────────────────────────────────────┤
-│                    CAPA DE DATOS                            │
-│  ┌─────────────────────────────────────────────────────────┐│
-│  │  GestorDatos                                            ││
-│  │  • JSON Storage       • Backup automático               ││
-│  │  • Deduplicación      • Estadísticas                    ││
-│  │  • Exportación        • Limpieza de datos               ││
-│  └─────────────────────────────────────────────────────────┘│
-├─────────────────────────────────────────────────────────────┤
-│                    CAPA DE INFRAESTRUCTURA                  │
-│  ┌─────────────────────────────────────────────────────────┐│
-│  │  • 180+ User-Agents rotativos   • Session persistente   ││
-│  │  • Anti-bloqueo (retry)         • Timeout configurables ││
-│  │  • Proxy-ready                  • Multi-threading       ││
-│  └─────────────────────────────────────────────────────────┘│
-└─────────────────────────────────────────────────────────────┘
-
----
-
-## ⭐ DAME UNA ESTRELLA
-
-Si este proyecto te ha sido útil, considera darle una ⭐ en GitHub. Me ayuda a saber que voy por buen camino.
-
-```bash
-# Si te gusta el proyecto:
-# 1. Haz clic en ⭐ en GitHub
-# 2. Comparte con colegas que puedan necesitarlo
-# 3. Reporta bugs o sugiere mejoras
-```
+- GitHub: [@Condor2026](https://github.com/Condor2026)
+- Project: [KELTIC KRAKEN](https://github.com/Condor2026/keltic_kraken)
 
 ---
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=18&duration=3000&pause=500&color=F70000&center=true&vCenter=true&width=500&lines=🔪+KELTIC+KRAKEN;Vigilamos+para+proteger;Data-driven+intelligence;Public+safety+awareness">
+  <b>🇮🇪 "With great power comes great responsibility" 🇮🇪</b><br>
+  <i>KELTIC KRAKEN v3.0 - Monitoring Ireland's criminal landscape</i>
 </p>
-
-<p align="center">
-  <b>🔪 "Un gran poder conlleva una gran responsabilidad" - Spider-Man</b><br>
-  <i>Data-driven intelligence for public safety awareness</i>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Built_With-Craic_and_Potatoes-green?style=flat-square">
-  <img src="https://img.shields.io/badge/Optimized_For-Guinness-black?style=flat-square">
-  <img src="https://img.shields.io/badge/Best_Used_With-A_good_sense_of_humor-red?style=flat-square">
-</p>
-
-<p align="center">
-  <i>P.S. Si eres un traficante leyendo esto... los Gardaí ya van de camino. ☘️</i>
-</p>
-```
