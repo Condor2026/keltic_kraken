@@ -1,4 +1,4 @@
-# 📄 README.md
+![KELTIC KRAKEN Logo](kraken.jpg)
 
 <p align="center">
   <!-- Version Badges -->
