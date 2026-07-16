@@ -7,7 +7,7 @@
 """
 ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 ║  🔪 KELTIC KRAKEN v3.0 - IRELAND CRIME INTELLIGENCE PLATFORM                                                  ║
-║  ═══════════════════════════════════════════════════════════════════════════════════════════════════════════ ║
+║  ═══════════════════════════════════════════════════════════════════════════════════════════════════════════  ║
 ║  📊 Real-time monitoring: Drug trafficking · Gang violence · Organized crime                                  ║
 ║  🏴 Covers ALL 32 counties including Northern Ireland                                                         ║
 ║  🔄 180+ Rotating User-Agents · Auto-URL discovery · Anti-blocking system                                     ║
@@ -704,7 +704,6 @@ FUENTES_BASE = [
     # === NATIONAL NEWS OUTLETS - PRINCIPALES PERIÓDICOS NACIONALES ===
     # ========================================================================
     {'nombre': 'Irish Times', 'url': 'https://www.irishtimes.com/crime-law/', 'base': 'https://www.irishtimes.com', 'condado': 'Dublin', 'categoria': 'national'},
-    # {'nombre': 'Irish Independent', 'url': 'https://www.independent.ie/irish-news/crime/', 'base': 'https://www.independent.ie', 'condado': 'Dublin', 'categoria': 'national'},  # Fuente rota - pendiente revisión
     {'nombre': 'RTÉ News', 'url': 'https://www.rte.ie/news/crime/', 'base': 'https://www.rte.ie', 'condado': 'Dublin', 'categoria': 'national'},
     {'nombre': 'The Journal', 'url': 'https://www.thejournal.ie/crime/', 'base': 'https://www.thejournal.ie', 'condado': 'Dublin', 'categoria': 'national'},
     {'nombre': 'Irish Mirror', 'url': 'https://www.irishmirror.ie/news/irish-crime/', 'base': 'https://www.irishmirror.ie', 'condado': 'Dublin', 'categoria': 'national'},
@@ -716,7 +715,6 @@ FUENTES_BASE = [
     # ========================================================================
     # === DUBLIN REGION - REGIÓN DE DUBLIN ===
     # ========================================================================
-    # Dublin Live - Fuente principal de noticias de Dublín
     {'nombre': 'Dublin Live', 'url': 'https://www.dublinlive.ie/news/dublin-crime/', 'base': 'https://www.dublinlive.ie', 'condado': 'Dublin', 'categoria': 'local'},
     {'nombre': 'Dublin Gazette', 'url': 'https://dublingazette.com/crime/', 'base': 'https://dublingazette.com', 'condado': 'Dublin', 'categoria': 'local'},
     {'nombre': 'Dublin People', 'url': 'https://dublinpeople.com/news/crime/', 'base': 'https://dublinpeople.com', 'condado': 'Dublin', 'categoria': 'local'},
@@ -727,15 +725,11 @@ FUENTES_BASE = [
     # ========================================================================
     {'nombre': 'Cork Beo', 'url': 'https://www.corkbeo.ie/news/cork-crime/', 'base': 'https://www.corkbeo.ie', 'condado': 'Cork', 'categoria': 'local'},
     {'nombre': 'Cork Independent', 'url': 'https://corkindependent.com/category/crime/', 'base': 'https://corkindependent.com', 'condado': 'Cork', 'categoria': 'local'},
-    # The Corkman - Fuente local de noticias de Cork
     
     # ========================================================================
     # === GALWAY REGION - REGIÓN DE GALWAY ===
     # ========================================================================
-    #{'nombre': 'Galway Beo', 'url': 'https://www.galwaybeo.ie/news/galway-crime/', 'base': 'https://www.galwaybeo.ie', 'condado': 'Galway', 'categoria': 'local'},
-    #{'nombre': 'Galway Advertiser', 'url': 'https://www.galwayadvertiser.ie/crime/', 'base': 'https://www.galwayadvertiser.ie', 'condado': 'Galway', 'categoria': 'local'},
     {'nombre': 'Connacht Tribune', 'url': 'https://www.connachttribune.ie/category/crime/', 'base': 'https://www.connachttribune.ie', 'condado': 'Galway', 'categoria': 'local'},
-    #{'nombre': 'Galway Bay FM', 'url': 'https://galwaybayfm.ie/news/crime/', 'base': 'https://galwaybayfm.ie', 'condado': 'Galway', 'categoria': 'local'},
     
     # ========================================================================
     # === LIMERICK REGION - REGIÓN DE LIMERICK ===
@@ -753,7 +747,6 @@ FUENTES_BASE = [
     # ========================================================================
     # === KERRY REGION - REGIÓN DE KERRY ===
     # ========================================================================
-    # {'nombre': 'Kerryman', 'url': 'https://www.kerryman.ie/news/crime/', 'base': 'https://www.kerryman.ie', 'condado': 'Kerry', 'categoria': 'local'},  # Fuente rota - pendiente revisión
     {'nombre': 'Radio Kerry', 'url': 'https://www.radiokerry.ie/news/crime/', 'base': 'https://www.radiokerry.ie', 'condado': 'Kerry', 'categoria': 'local'},
     
     # ========================================================================
@@ -767,7 +760,6 @@ FUENTES_BASE = [
     # === DONEGAL REGION - REGIÓN DE DONEGAL ===
     # ========================================================================
     {'nombre': 'Donegal Daily', 'url': 'https://donegaldaily.com/category/crime/', 'base': 'https://donegaldaily.com', 'condado': 'Donegal', 'categoria': 'local'},
-    # {'nombre': 'Donegal News', 'url': 'https://donegalnews.com/category/crime/', 'base': 'https://donegalnews.com', 'condado': 'Donegal', 'categoria': 'local'},  # Fuente rota - pendiente revisión
     {'nombre': 'Highland Radio', 'url': 'https://highlandradio.com/category/crime/', 'base': 'https://highlandradio.com', 'condado': 'Donegal', 'categoria': 'local'},
     
     # ========================================================================
@@ -780,8 +772,6 @@ FUENTES_BASE = [
     # ========================================================================
     # === WEXFORD REGION - REGIÓN DE WEXFORD ===
     # ========================================================================
-    # {'nombre': 'Wexford People', 'url': 'https://www.wexfordpeople.ie/news/crime/', 'base': 'https://www.wexfordpeople.ie', 'condado': 'Wexford', 'categoria': 'local'},  # Fuente rota - pendiente revisión
-    #{'nombre': 'Wexford Echo', 'url': 'https://wexfordecho.ie/category/crime/', 'base': 'https://wexfordecho.ie', 'condado': 'Wexford', 'categoria': 'local'},
     {'nombre': 'South East Radio', 'url': 'https://southeastradio.ie/news/crime/', 'base': 'https://southeastradio.ie', 'condado': 'Wexford', 'categoria': 'local'},
     
     # ========================================================================
@@ -789,7 +779,6 @@ FUENTES_BASE = [
     # ========================================================================
     {'nombre': 'Kildare Now', 'url': 'https://kildarenow.com/crime', 'base': 'https://kildarenow.com', 'condado': 'Kildare', 'categoria': 'local'},
     {'nombre': 'Kildare Post', 'url': 'https://kildarepost.ie/category/crime/', 'base': 'https://kildarepost.ie', 'condado': 'Kildare', 'categoria': 'local'},
-    #{'nombre': 'KFM Radio', 'url': 'https://kfmradio.com/news/crime/', 'base': 'https://kfmradio.com', 'condado': 'Kildare', 'categoria': 'local'},
     
     # ========================================================================
     # === TIPPERARY REGION - REGIÓN DE TIPPERARY ===
@@ -802,13 +791,10 @@ FUENTES_BASE = [
     # === LOUTH REGION - REGIÓN DE LOUTH ===
     # ========================================================================
     {'nombre': 'Louth Live', 'url': 'https://www.louthlive.ie/news/crime/', 'base': 'https://www.louthlive.ie', 'condado': 'Louth', 'categoria': 'local'},
-    # {'nombre': 'Drogheda Independent', 'url': 'https://www.droghedaindependent.ie/news/crime/', 'base': 'https://www.droghedaindependent.ie', 'condado': 'Louth', 'categoria': 'local'},  # Fuente rota - pendiente revisión
-    #{'nombre': 'LMFM', 'url': 'https://www.lmfm.ie/news/crime/', 'base': 'https://www.lmfm.ie', 'condado': 'Louth', 'categoria': 'local'},
     
     # ========================================================================
     # === SLIGO REGION - REGIÓN DE SLIGO ===
     # ========================================================================
-    # {'nombre': 'Sligo Champion', 'url': 'https://www.sligochampion.ie/news/crime/', 'base': 'https://www.sligochampion.ie', 'condado': 'Sligo', 'categoria': 'local'},  # Fuente rota - pendiente revisión
     {'nombre': 'Sligo Today', 'url': 'https://sligotoday.ie/category/crime/', 'base': 'https://sligotoday.ie', 'condado': 'Sligo', 'categoria': 'local'},
     {'nombre': 'Ocean FM', 'url': 'https://www.oceanfm.ie/news/crime/', 'base': 'https://www.oceanfm.ie', 'condado': 'Sligo', 'categoria': 'local'},
     
@@ -834,7 +820,6 @@ FUENTES_BASE = [
     # === MONAGHAN REGION - REGIÓN DE MONAGHAN ===
     # ========================================================================
     {'nombre': 'Monaghan Live', 'url': 'https://monaghanlive.ie/category/crime/', 'base': 'https://monaghanlive.ie', 'condado': 'Monaghan', 'categoria': 'local'},
-    # {'nombre': 'Northern Standard', 'url': 'https://northernstandard.ie/category/crime/', 'base': 'https://northernstandard.ie', 'condado': 'Monaghan', 'categoria': 'local'},  # Fuente rota - pendiente revisión
     
     # ========================================================================
     # === ROSCOMMON REGION - REGIÓN DE ROSCOMMON ===
@@ -846,7 +831,6 @@ FUENTES_BASE = [
     # === WICKLOW REGION - REGIÓN DE WICKLOW ===
     # ========================================================================
     {'nombre': 'Wicklow News', 'url': 'https://wicklownews.net/category/crime/', 'base': 'https://wicklownews.net', 'condado': 'Wicklow', 'categoria': 'local'},
-    # {'nombre': 'Wicklow People', 'url': 'https://www.wicklowpeople.ie/news/crime/', 'base': 'https://www.wicklowpeople.ie', 'condado': 'Wicklow', 'categoria': 'local'},  # Fuente rota - pendiente revisión
     
     # ========================================================================
     # === CARLOW REGION - REGIÓN DE CARLOW ===
@@ -870,7 +854,6 @@ FUENTES_BASE = [
     # === LEITRIM REGION - REGIÓN DE LEITRIM ===
     # ========================================================================
     {'nombre': 'Leitrim Observer', 'url': 'https://www.leitrimobserver.ie/news/crime/', 'base': 'https://www.leitrimobserver.ie', 'condado': 'Leitrim', 'categoria': 'local'},
-    # {'nombre': 'Leitrim Live', 'url': 'https://leitrimlive.ie/category/crime/', 'base': 'https://leitrimlive.ie', 'condado': 'Leitrim', 'categoria': 'local'},  # Fuente rota - pendiente revisión
     
     # ========================================================================
     # === NORTHERN IRELAND - IRLANDA DEL NORTE ===
@@ -878,7 +861,6 @@ FUENTES_BASE = [
     # ========================================================================
     # === ANTRIM (BELFAST) - REGIÓN DE ANTRIM (BELFAST) ===
     # ========================================================================
-    # {'nombre': 'Belfast Telegraph', 'url': 'https://www.belfasttelegraph.co.uk/news/crime/', 'base': 'https://www.belfasttelegraph.co.uk', 'condado': 'Antrim', 'categoria': 'ni'},  # Fuente rota - pendiente revisión
     {'nombre': 'Irish News', 'url': 'https://www.irishnews.com/news/crime/', 'base': 'https://www.irishnews.com', 'condado': 'Antrim', 'categoria': 'ni'},
     {'nombre': 'Belfast Live', 'url': 'https://www.belfastlive.co.uk/news/belfast-crime/', 'base': 'https://www.belfastlive.co.uk', 'condado': 'Antrim', 'categoria': 'ni'},
     {'nombre': 'News Letter', 'url': 'https://www.newsletter.co.uk/news/crime', 'base': 'https://www.newsletter.co.uk', 'condado': 'Antrim', 'categoria': 'ni'},
@@ -900,7 +882,6 @@ FUENTES_BASE = [
     # === TYRONE - REGIÓN DE TYRONE ===
     # ========================================================================
     {'nombre': 'Tyrone Times', 'url': 'https://www.tyronetimes.co.uk/news/crime', 'base': 'https://www.tyronetimes.co.uk', 'condado': 'Tyrone', 'categoria': 'ni'},
-    # {'nombre': 'Ulster Herald', 'url': 'https://ulsterherald.com/category/crime/', 'base': 'https://ulsterherald.com', 'condado': 'Tyrone', 'categoria': 'ni'},  # Fuente rota - pendiente revisión
     
     # ========================================================================
     # === ARMAGH - REGIÓN DE ARMAGH ===
@@ -911,7 +892,6 @@ FUENTES_BASE = [
     # ========================================================================
     # === FERMANAGH - REGIÓN DE FERMANAGH ===
     # ========================================================================
-    #{'nombre': 'Fermanagh Herald', 'url': 'https://www.fermanaghherald.com/category/crime/', 'base': 'https://www.fermanaghherald.com', 'condado': 'Fermanagh', 'categoria': 'ni'},
     {'nombre': 'Impartial Reporter', 'url': 'https://www.impartialreporter.com/news/crime/', 'base': 'https://www.impartialreporter.com', 'condado': 'Fermanagh', 'categoria': 'ni'},
 ]
 
@@ -1323,7 +1303,7 @@ class GestorDatos:
             pct = (count / stats['total'] * 100) if stats['total'] > 0 else 0
             icono = TIPOS_CRIMEN.get(crime_type, {}).get('icono', '❓')
             nombre = TIPOS_CRIMEN.get(crime_type, {}).get('nombre', crime_type)
-            html += f"</td><td>{icono} {nombre}</td><td>{count}</td><td>{pct:.1f}%</td></tr>"
+            html += f"<tr><td>{icono} {nombre}</td><td>{count}</td><td>{pct:.1f}%</td></tr>"
         
         html += f"""</table>
     
@@ -1423,9 +1403,9 @@ class VerificadorFuentes:
     
     def verificar_todas(self, fuentes, mostrar_progreso=True):
         """Verifica todas las fuentes con barra de progreso"""
-        cprint(f"\n{'='*80}", 'red', bold=True)
-        cprint(f"🔍 {t('verificando')}", 'red', bold=True, bg=True)
-        cprint(f"{'='*80}", 'red', bold=True)
+        cprint(f"\n{'=' * 80}", 'red', bold=True)
+        cprint(f"🔍 {t('verificando')}", 'red', bold=True)
+        cprint(f"{'=' * 80}", 'red', bold=True)
         
         verificadas = []
         activas = 0
@@ -1461,11 +1441,11 @@ class VerificadorFuentes:
         
         print()  # Nueva línea después de la barra
         
-        cprint(f"\n{'='*80}", 'green', bold=True)
+        cprint(f"\n{'=' * 80}", 'green', bold=True)
         cprint(f"📊 RESULTADOS:", 'green', bold=True)
         cprint(f"   Fuentes activas: {activas} de {total}", 'white')
         cprint(f"   Auto-discovery aplicado: {auto_discovered} URLs encontradas", 'cyan')
-        cprint(f"{'='*80}", 'green', bold=True)
+        cprint(f"{'=' * 80}", 'green', bold=True)
         
         # Guardar estado para futuras ejecuciones
         self.guardar_estado()
@@ -1659,9 +1639,9 @@ class ExtractorNoticias:
     
     def extraer_todas(self, paginas=PAGINAS_BUSQUEDA):
         """Extrae incidentes de todas las fuentes activas - CON GUARDADO POR FUENTE"""
-        cprint(f"\n{'='*80}", 'red', bold=True)
-        cprint(f"🔪 KELTIC KRAKEN - ESCANEANDO IRLANDA", 'red', bold=True, bg=True)
-        cprint(f"{'='*80}", 'red', bold=True)
+        cprint(f"\n{'=' * 80}", 'red', bold=True)
+        cprint(f"🔪 KELTIC KRAKEN - ESCANEANDO IRLANDA", 'red', bold=True)
+        cprint(f"{'=' * 80}", 'red', bold=True)
         
         todas_las_noticias = []
         fuentes_activas = [f for f in self.fuentes if f.get('activo', True)]
@@ -1675,6 +1655,7 @@ class ExtractorNoticias:
         # Crear un gestor temporal para guardar después de cada fuente
         # ================================================================
         gestor_local = GestorDatos()
+        total_nuevos = 0
         
         for idx, fuente in enumerate(fuentes_activas, 1):
             # ================================================================
@@ -1698,6 +1679,7 @@ class ExtractorNoticias:
             if incidentes_fuente:
                 agregados = gestor_local.agregar_incidentes(incidentes_fuente)
                 todas_las_noticias.extend(incidentes_fuente)
+                total_nuevos += agregados
                 cprint(f"   📊 Total en esta fuente: {len(incidentes_fuente)} incidentes ({agregados} nuevos)", 'cyan')
                 cprint(f"   💾 Datos guardados automáticamente", 'green')
             else:
@@ -1706,7 +1688,7 @@ class ExtractorNoticias:
         print()  # Línea nueva después de la barra
         
         # ================================================================
-        # Eliminar duplicados por ID
+        # Eliminar duplicados por ID (segunda pasada de seguridad)
         # ================================================================
         incidentes_unicos = {}
         for noticia in todas_las_noticias:
@@ -1715,13 +1697,14 @@ class ExtractorNoticias:
         
         resultado = list(incidentes_unicos.values())
         
-        cprint(f"\n{'='*80}", 'green', bold=True)
+        cprint(f"\n{'=' * 80}", 'green', bold=True)
         cprint(f"🔪 RESULTADO FINAL:", 'green', bold=True)
         cprint(f"   Incidentes encontrados: {len(resultado)}", 'white')
+        cprint(f"   Incidentes nuevos guardados: {total_nuevos}", 'white')
         cprint(f"   Fuentes activas: {total_activas}", 'white')
         cprint(f"   Auto-discovery aplicado automáticamente", 'cyan')
         cprint(f"   💾 Datos guardados automáticamente después de CADA fuente", 'green')
-        cprint(f"{'='*80}", 'green', bold=True)
+        cprint(f"{'=' * 80}", 'green', bold=True)
         
         return resultado
 
@@ -1800,14 +1783,14 @@ HTML_TEMPLATE = '''
         /* Stats Grid */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
             margin: 30px 0;
         }
         
         .stat-card {
             background: linear-gradient(135deg, #111, #1a1a1a);
-            padding: 25px;
+            padding: 20px;
             border-radius: 15px;
             text-align: center;
             border-left: 5px solid #ff4444;
@@ -1820,7 +1803,7 @@ HTML_TEMPLATE = '''
         }
         
         .stat-number {
-            font-size: 3em;
+            font-size: 2.5em;
             color: #ff4444;
             font-weight: bold;
         }
@@ -1828,6 +1811,7 @@ HTML_TEMPLATE = '''
         .stat-label {
             color: #888;
             margin-top: 10px;
+            font-size: 0.9em;
         }
         
         /* Botones */
@@ -1842,6 +1826,8 @@ HTML_TEMPLATE = '''
             cursor: pointer;
             margin: 10px;
             transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
         }
         
         .btn:hover {
@@ -1854,8 +1840,8 @@ HTML_TEMPLATE = '''
         /* Contenedores de gráficos */
         .charts-row {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
             margin: 30px 0;
         }
         
@@ -1874,8 +1860,8 @@ HTML_TEMPLATE = '''
         
         .chart-title {
             color: #ff6666;
-            font-size: 1.3em;
-            margin-bottom: 20px;
+            font-size: 1.2em;
+            margin-bottom: 15px;
             text-align: center;
             font-weight: bold;
         }
@@ -1909,8 +1895,8 @@ HTML_TEMPLATE = '''
         /* Tarjetas de incidentes */
         .incidente-card {
             background: linear-gradient(135deg, #0a0a0a, #111);
-            margin: 15px 0;
-            padding: 20px;
+            margin: 12px 0;
+            padding: 18px;
             border-radius: 12px;
             border-left: 6px solid #ff4444;
             transition: all 0.3s ease;
@@ -1922,23 +1908,23 @@ HTML_TEMPLATE = '''
         }
         
         .incidente-titulo {
-            font-size: 1.1em;
+            font-size: 1.05em;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: #fff;
         }
         
         .incidente-meta {
             color: #888;
             display: flex;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
             font-size: 0.85em;
         }
         
         .incidente-meta span {
             background: #1a1a1a;
-            padding: 5px 10px;
+            padding: 4px 10px;
             border-radius: 20px;
         }
         
@@ -1948,7 +1934,7 @@ HTML_TEMPLATE = '''
             justify-content: center;
             align-items: center;
             gap: 10px;
-            margin: 30px 0;
+            margin: 25px 0;
             flex-wrap: wrap;
         }
         
@@ -1997,6 +1983,12 @@ HTML_TEMPLATE = '''
         ::-webkit-scrollbar-track { background: #1a1a1a; }
         ::-webkit-scrollbar-thumb { background: #ff4444; border-radius: 5px; }
         ::-webkit-scrollbar-thumb:hover { background: #ff6666; }
+        
+        .info-extra {
+            color: #aaa;
+            font-size: 0.85em;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -2020,8 +2012,24 @@ HTML_TEMPLATE = '''
                 <div class="stat-label">🔥 LAST 30 DAYS</div>
             </div>
             <div class="stat-card">
+                <div class="stat-number">{{ stats.ultimos_90dias }}</div>
+                <div class="stat-label">📊 LAST 90 DAYS</div>
+            </div>
+            <div class="stat-card">
                 <div class="stat-number">{{ periodicos_activos }}</div>
                 <div class="stat-label">📰 ACTIVE SOURCES</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ stats.condados|length }}</div>
+                <div class="stat-label">🏴 COUNTIES AFFECTED</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ stats.tipos|length }}</div>
+                <div class="stat-label">🔪 CRIME TYPES</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ stats.fuentes|length }}</div>
+                <div class="stat-label">📰 SOURCES WITH DATA</div>
             </div>
         </div>
         
@@ -2102,7 +2110,7 @@ HTML_TEMPLATE = '''
                 {% endif %}
             </div>
             <div class="page-info" style="text-align: center; margin-top: 10px;">
-                Mostrando {{ (pagina-1)*ITEMS_POR_PAGINA + 1 }} a {{ min(pagina*ITEMS_POR_PAGINA, total_incidentes) }} de {{ total_incidentes }} incidentes
+                Showing {{ (pagina-1)*ITEMS_POR_PAGINA + 1 }} to {{ min(pagina*ITEMS_POR_PAGINA, total_incidentes) }} of {{ total_incidentes }} incidents
             </div>
         </div>
         
@@ -2311,9 +2319,9 @@ def filtro_route(periodo):
 @app.route('/actualizar', methods=['POST'])
 def actualizar():
     global gestor_global, fuentes_global
-    cprint(f"\n{'='*80}", 'red', bold=True)
-    cprint(f"🔪 {t('actualizando')}", 'red', bold=True, bg=True)
-    cprint(f"{'='*80}", 'red', bold=True)
+    cprint(f"\n{'=' * 80}", 'red', bold=True)
+    cprint(f"🔪 {t('actualizando')}", 'red', bold=True)
+    cprint(f"{'=' * 80}", 'red', bold=True)
     
     # ================================================================
     # Verificar fuentes con auto-discovery
@@ -2332,9 +2340,9 @@ def actualizar():
     # Los incidentes ya se guardaron dentro de extraer_todas()
     # Solo mostramos el resumen final
     # ================================================================
-    cprint(f"\n{'='*80}", 'green', bold=True)
-    cprint(f"✅ PROCESO COMPLETADO", 'green', bold=True, bg=True)
-    cprint(f"{'='*80}", 'green', bold=True)
+    cprint(f"\n{'=' * 80}", 'green', bold=True)
+    cprint(f"✅ PROCESO COMPLETADO", 'green', bold=True)
+    cprint(f"{'=' * 80}", 'green', bold=True)
     
     return index_paginada(1, 'todo')
 
@@ -2380,7 +2388,7 @@ def mostrar_menu_principal():
 {Color.RED}╚{'═' * 70}╝{Color.RESET}
 
 {Color.YELLOW}┌{'─' * 50}┐{Color.RESET}
-{Color.YELLOW}│{Color.CYAN}  📋 {t('menu_title')}{' ' * 33}{Color.YELLOW}│{Color.RESET}
+{Color.YELLOW}│{Color.CYAN}  📋 {t('menu_title')}{' ' * 30}{Color.YELLOW}│{Color.RESET}
 {Color.YELLOW}├{'─' * 50}┤{Color.RESET}
 {Color.YELLOW}│{Color.GREEN}  [1] 🔍 {t('cmd_buscar')}{' ' * 4}{Color.YELLOW}│{Color.RESET}
 {Color.YELLOW}│{Color.GREEN}  [2] 📊 {t('cmd_analisis')}{' ' * 11}{Color.YELLOW}│{Color.RESET}
@@ -2393,7 +2401,7 @@ def mostrar_menu_principal():
 {Color.YELLOW}│{Color.GREEN}  [9] 📊 {t('cmd_tipos')}{' ' * 10}{Color.YELLOW}│{Color.RESET}
 {Color.YELLOW}│{Color.GREEN}  [10] 📈 {t('cmd_estadisticas')}{' ' * 18}{Color.YELLOW}│{Color.RESET}
 {Color.YELLOW}│{Color.GREEN}  [11] 🧹 {t('cmd_limpiar')}{' ' * 8}{Color.YELLOW}│{Color.RESET}
-{Color.YELLOW}│{Color.RED}  [12] 🗑️ {t('cmd_salir')}{' ' * 19}{Color.YELLOW}│{Color.RESET}
+{Color.YELLOW}│{Color.RED}  [12] 🗑️ {t('cmd_salir')}{' ' * 18}{Color.YELLOW}│{Color.RESET}
 {Color.YELLOW}└{'─' * 50}┘{Color.RESET}
 """)
 
@@ -2421,9 +2429,9 @@ def menu():
             input(f"\n{Color.GRAY}Presiona Enter para continuar...{Color.RESET}")
         
         elif opcion == '2':
-            cprint(f"\n{'='*70}", 'red', bold=True)
-            cprint(f"📊 {t('analisis_completo')}", 'red', bold=True, bg=True)
-            cprint(f"{'='*70}", 'red', bold=True)
+            cprint(f"\n{'=' * 70}", 'red', bold=True)
+            cprint(f"📊 {t('analisis_completo')}", 'red', bold=True)
+            cprint(f"{'=' * 70}", 'red', bold=True)
             
             stats = gestor_global.estadisticas()
             
@@ -2448,9 +2456,9 @@ def menu():
             input(f"\n{Color.GRAY}Presiona Enter para continuar...{Color.RESET}")
         
         elif opcion == '3':
-            cprint(f"\n{'='*70}", 'red', bold=True)
-            cprint(f"🔗 {t('conexiones')}", 'red', bold=True, bg=True)
-            cprint(f"{'='*70}", 'red', bold=True)
+            cprint(f"\n{'=' * 70}", 'red', bold=True)
+            cprint(f"🔗 {t('conexiones')}", 'red', bold=True)
+            cprint(f"{'=' * 70}", 'red', bold=True)
             
             incidentes = gestor_global.datos['incidentes'][-200:]
             grupos = defaultdict(list)
@@ -2472,9 +2480,9 @@ def menu():
             input(f"\n{Color.GRAY}Presiona Enter para continuar...{Color.RESET}")
         
         elif opcion == '4':
-            cprint(f"\n{'='*70}", 'red', bold=True)
-            cprint(f"📈 {t('evolucion_mensual')}", 'red', bold=True, bg=True)
-            cprint(f"{'='*70}", 'red', bold=True)
+            cprint(f"\n{'=' * 70}", 'red', bold=True)
+            cprint(f"📈 {t('evolucion_mensual')}", 'red', bold=True)
+            cprint(f"{'=' * 70}", 'red', bold=True)
             
             evolucion = gestor_global.evolucion_mensual()
             if evolucion:
@@ -2494,15 +2502,16 @@ def menu():
             app.run(host='127.0.0.1', port=PUERTO, debug=False, use_reloader=False)
         
         elif opcion == '6':
-            cprint(f"\n{'='*70}", 'red', bold=True)
-            cprint(f"📰 {t('cmd_ultimos')}", 'red', bold=True, bg=True)
-            cprint(f"{'='*70}", 'red', bold=True)
+            cprint(f"\n{'=' * 70}", 'red', bold=True)
+            cprint(f"📰 {t('cmd_ultimos')}", 'red', bold=True)
+            cprint(f"{'=' * 70}", 'red', bold=True)
             
-            for i, inc in enumerate(gestor_global.datos['incidentes'][-20:][::-1], 1):
-                cprint(f"\n{Color.RED}{i:2d}.{Color.RESET} {inc['titulo'][:100]}...", 'white')
-                cprint(f"      📅 {inc['fecha']} | 📍 {inc.get('condado', '?')} | 📰 {inc['fuente']} | 🔪 {inc.get('tipo', '?')}", 'gray')
-            
-            if gestor_global.estadisticas()['total'] == 0:
+            incidentes = gestor_global.datos['incidentes']
+            if incidentes:
+                for i, inc in enumerate(incidentes[-20:][::-1], 1):
+                    cprint(f"\n{Color.RED}{i:2d}.{Color.RESET} {inc['titulo'][:100]}...", 'white')
+                    cprint(f"      📅 {inc['fecha']} | 📍 {inc.get('condado', '?')} | 📰 {inc['fuente']} | 🔪 {inc.get('tipo', '?')}", 'gray')
+            else:
                 cprint(f"   {Color.GRAY}No hay incidentes registrados. Ejecuta búsqueda primero.{Color.RESET}")
             
             input(f"\n{Color.GRAY}Presiona Enter para continuar...{Color.RESET}")
@@ -2522,9 +2531,9 @@ def menu():
             input(f"\n{Color.GRAY}Presiona Enter para continuar...{Color.RESET}")
         
         elif opcion == '9':
-            cprint(f"\n{'='*70}", 'red', bold=True)
-            cprint(f"📊 {t('cmd_tipos')}", 'red', bold=True, bg=True)
-            cprint(f"{'='*70}", 'red', bold=True)
+            cprint(f"\n{'=' * 70}", 'red', bold=True)
+            cprint(f"📊 {t('cmd_tipos')}", 'red', bold=True)
+            cprint(f"{'=' * 70}", 'red', bold=True)
             
             stats = gestor_global.estadisticas()
             if stats['total'] > 0:
@@ -2541,9 +2550,9 @@ def menu():
             input(f"\n{Color.GRAY}Presiona Enter para continuar...{Color.RESET}")
         
         elif opcion == '10':
-            cprint(f"\n{'='*70}", 'red', bold=True)
-            cprint(f"📈 {t('estadisticas_avanzadas')}", 'red', bold=True, bg=True)
-            cprint(f"{'='*70}", 'red', bold=True)
+            cprint(f"\n{'=' * 70}", 'red', bold=True)
+            cprint(f"📈 {t('estadisticas_avanzadas')}", 'red', bold=True)
+            cprint(f"{'=' * 70}", 'red', bold=True)
             
             stats = gestor_global.estadisticas()
             
@@ -2608,7 +2617,7 @@ def mostrar_banner_inicial():
 ║                                                                                                   ║
 ║   ═══════════════════════════════════════════════════════════════════════════════════════════     ║
 ║                                                                                                   ║
-║   🛡️  \"Un gran poder conlleva una gran responsabilidad\" - Spider-Man                               ║
+║   🛡️  \"Un gran poder conlleva una gran responsabilidad\" - Spider-Man                              ║
 ║                                                                                                   ║
 ║                                         - By Condor2026                                           ║
 ║                                         •SpectrumSecurity•                                        ║
@@ -2646,10 +2655,10 @@ if __name__ == '__main__':
     # Preguntar modo de ejecución
     # ================================================================
     print(f"\n{Color.CYAN}┌{'─' * 50}┐{Color.RESET}")
-    print(f"{Color.CYAN}│{Color.WHITE}  ¿Cómo deseas ejecutar?{' ' * 25}{Color.CYAN}│{Color.RESET}")
+    print(f"{Color.CYAN}│{Color.WHITE}  ¿Cómo deseas ejecutar?{' ' * 27}{Color.CYAN}│{Color.RESET}")
     print(f"{Color.CYAN}├{'─' * 50}┤{Color.RESET}")
-    print(f"{Color.CYAN}│{Color.GREEN}  [1] Modo Terminal (recomendado){' ' * 7}{Color.CYAN}│{Color.RESET}")
-    print(f"{Color.CYAN}│{Color.GREEN}  [2] Modo Web (dashboard con gráficos){' ' * 5}{Color.CYAN}│{Color.RESET}")
+    print(f"{Color.CYAN}│{Color.GREEN}  [1] Modo Terminal (recomendado){' ' * 17}{Color.CYAN}│{Color.RESET}")
+    print(f"{Color.CYAN}│{Color.GREEN}  [2] Modo Web (dashboard con gráficos){' ' * 11}{Color.CYAN}│{Color.RESET}")
     print(f"{Color.CYAN}└{'─' * 50}┘{Color.RESET}")
     
     modo = input(f"\n{Color.CYAN}➤ {Color.YELLOW}Elige: {Color.RESET}")
