@@ -1,117 +1,149 @@
-# Código de Conducta de DIABOLIC_Kraken_v2
 
-## Nuestro compromiso
+# 📜 Código de Conducta - KELTIC KRAKEN v4.1
 
-Con el objetivo de fomentar un entorno abierto y acogedor, nosotros, como contribuyentes y mantenedores de **DIABOLIC_Kraken_v2**,
-nos comprometemos a hacer que la participación en nuestro proyecto y en nuestra comunidad sea una experiencia libre de acoso para todas las personas, 
-independientemente de su edad, dimensión corporal, discapacidad visible o invisible, etnia, características sexuales, identidad y expresión de género, 
-nivel de experiencia, educación, situación socioeconómica, nacionalidad, apariencia personal, raza, religión o identidad y orientación sexual.
+## 🦈 Nuestro compromiso
 
-Este código de conducta se suma a los principios éticos de DIABOLIC_Kraken_v2:  
-🕷️ *"Un gran poder conlleva una gran responsabilidad"*.  
-Por ello, cualquier contribución debe respetar la filosofía de **OSINT ético**, **cero datos personales** y **transparencia total**.
+Con el objetivo de fomentar un entorno abierto y acogedor, nosotros, como contribuyentes y mantenedores de **KELTIC KRAKEN**, nos comprometemos a hacer que la participación en nuestro proyecto y en nuestra comunidad sea una experiencia libre de acoso para todas las personas, independientemente de su edad, dimensión corporal, discapacidad visible o invisible, etnia, características sexuales, identidad y expresión de género, nivel de experiencia, educación, situación socioeconómica, nacionalidad, apariencia personal, raza, religión o identidad y orientación sexual.
 
----
+Este código de conducta se suma a los principios éticos de **KELTIC KRAKEN**:
 
-## Nuestros estándares
+🛡️ *"Un gran poder conlleva una gran responsabilidad"* - Spider-Man
 
-Ejemplos de comportamiento que contribuyen a crear un entorno positivo:
-
-* Demostrar empatía y amabilidad ante otras personas.
-* Respetar las opiniones, puntos de vista y experiencias diferentes.
-* Dar y aceptar críticas constructivas de forma educada.
-* Aceptar la responsabilidad por los errores propios y aprender de ellos.
-* Centrarse en lo que es mejor no solo para el individuo, sino para toda la comunidad.
-* **Respetar la privacidad y los datos públicos** – nunca sugerir ni implementar funcionalidades que almacenen información personal sin consentimiento explícito.
-
-Ejemplos de comportamiento inaceptable:
-
-* El uso de lenguaje o imágenes sexuales, y la atención o avances sexuales no deseados.
-* Comentarios insultantes o despectivos, ataques personales o políticos.
-* Acoso público o privado.
-* Publicar información privada de otras personas (dirección física o correo electrónico) sin su permiso explícito.
-* Cualquier conducta que pueda considerarse inapropiada en un entorno profesional o que vaya en contra del espíritu ético de DIABOLIC 
-(por ejemplo, modificar el código para recopilar datos personales o realizar vigilancia masiva).
+Por ello, cualquier contribución debe respetar la filosofía de:
+- **OSINT ético** - Información pública, responsable y verificable
+- **Cero datos personales** - Nunca almacenar información privada de individuos
+- **Transparencia total** - Código abierto, metodología clara
+- **Propósito legítimo** - Solo para investigación y concienciación ciudadana
+- **No vigilancia masiva** - No diseñado para seguimiento de personas
 
 ---
 
-## Responsabilidades de los mantenedores
+## 🎯 Nuestros estándares
 
-Los mantenedores del proyecto son responsables de aclarar y hacer cumplir nuestros estándares de comportamiento aceptable 
-y tomarán las medidas correctivas apropiadas y justas en respuesta a cualquier comportamiento que consideren inapropiado, amenazante, ofensivo o dañino.
+### Comportamiento que contribuye a un entorno positivo:
 
-Los mantenedores tienen el derecho y la responsabilidad de eliminar, editar o rechazar comentarios, *commits*, 
-código, ediciones de wiki, *issues* y otras contribuciones que no estén alineadas con este Código de Conducta, 
-y comunicarán las razones de la decisión de moderación cuando sea apropiado.
+* ✅ Demostrar empatía y amabilidad ante otras personas.
+* ✅ Respetar las opiniones, puntos de vista y experiencias diferentes.
+* ✅ Dar y aceptar críticas constructivas de forma educada.
+* ✅ Aceptar la responsabilidad por los errores propios y aprender de ellos.
+* ✅ Centrarse en lo que es mejor no solo para el individuo, sino para toda la comunidad.
+* ✅ **Respetar la privacidad** – nunca almacenar datos personales sin consentimiento.
+* ✅ **Usar datos públicos** – solo fuentes de noticias y reportes oficiales.
+* ✅ **Reportar vulnerabilidades** – de forma responsable y privada.
+
+### Comportamiento inaceptable:
+
+* ❌ Uso de lenguaje o imágenes sexuales, y la atención o avances sexuales no deseados.
+* ❌ Comentarios insultantes o despectivos, ataques personales o políticos.
+* ❌ Acoso público o privado.
+* ❌ Publicar información privada de otras personas sin su permiso explícito.
+* ❌ Cualquier conducta que pueda considerarse inapropiada en un entorno profesional.
+* ❌ **Modificar el código para recopilar datos personales o realizar vigilancia masiva.**
+* ❌ **Usar la herramienta para acosar, amenazar o dañar a individuos o grupos.**
+* ❌ **Realizar actividades ilegales o no éticas con los datos obtenidos.**
 
 ---
 
-## Alcance
+## ⚖️ Responsabilidades de los mantenedores
 
-Este Código de Conducta aplica dentro de todos los espacios del proyecto (incluyendo repositorios de GitHub, 
-*issues*, pull requests, debates) y también cuando una persona represente oficialmente al proyecto en espacios públicos. 
-Ejemplos de representación incluyen el uso de una dirección de correo electrónico oficial, 
-la publicación a través de una cuenta oficial en redes sociales o actuar como representante designado en un evento en línea o presencial.
+Los mantenedores del proyecto son responsables de aclarar y hacer cumplir nuestros estándares de comportamiento aceptable y tomarán las medidas correctivas apropiadas y justas en respuesta a cualquier comportamiento que consideren inapropiado, amenazante, ofensivo o dañino.
+
+Los mantenedores tienen el derecho y la responsabilidad de eliminar, editar o rechazar comentarios, *commits*, código, ediciones de wiki, *issues* y otras contribuciones que no estén alineadas con este Código de Conducta, y comunicarán las razones de la decisión de moderación cuando sea apropiado.
 
 ---
 
-## Aplicación
+## 🗺️ Alcance
 
-   Se pueden reportar instancias de comportamiento abusivo, acosador o inaceptable a los mantenedores del proyecto a través de **GitHub Issues** 
-   (con etiqueta `code-of-conduct`) o mediante correo electrónico (dirección que se indicará en el perfil del repositorio). Todas las quejas serán revisadas e investigadas de manera rápida y justa.
+Este Código de Conducta aplica dentro de todos los espacios del proyecto (incluyendo repositorios de GitHub, *issues*, pull requests, debates) y también cuando una persona represente oficialmente al proyecto en espacios públicos. Ejemplos de representación incluyen el uso de una dirección de correo electrónico oficial, la publicación a través de una cuenta oficial en redes sociales o actuar como representante designado en un evento en línea o presencial.
+
+---
+
+## 📬 Aplicación
+
+Se pueden reportar instancias de comportamiento abusivo, acosador o inaceptable a los mantenedores del proyecto a través de **GitHub Issues** (con etiqueta `code-of-conduct`) o mediante correo electrónico a la dirección indicada en el perfil del repositorio.
+
+**Todas las quejas serán revisadas e investigadas de manera rápida y justa.**
 
 Todos los mantenedores están obligados a respetar la privacidad y seguridad de quien reporte un incidente.
 
 ---
 
-## Directrices de aplicación
+## 📊 Directrices de aplicación
 
-   Los mantenedores seguirán estas pautas de impacto comunitario para determinar las consecuencias de cualquier acción que consideren una violación de este Código de Conducta:
+Los mantenedores seguirán estas pautas de impacto comunitario para determinar las consecuencias de cualquier acción que consideren una violación de este Código de Conducta:
 
-### 1. Corrección
+### 1. 🔧 Corrección
 
 **Impacto en la comunidad**: Uso de lenguaje inapropiado u otro comportamiento considerado poco profesional o no deseado en la comunidad.
 
-**Consecuencia**: Una advertencia privada y por escrito de los mantenedores, proporcionando claridad sobre la naturaleza de la infracción y una explicación de por qué el comportamiento fue inapropiado. 
-  Se puede solicitar una disculpa pública.
+**Consecuencia**: Una advertencia privada y por escrito de los mantenedores, proporcionando claridad sobre la naturaleza de la infracción y una explicación de por qué el comportamiento fue inapropiado. Se puede solicitar una disculpa pública.
 
-### 2. Advertencia
+### 2. ⚠️ Advertencia
 
 **Impacto en la comunidad**: Una infracción a través de un solo incidente o una serie de acciones.
 
-**Consecuencia**: Una advertencia con consecuencias para el comportamiento continuado. 
-  No se podrá interactuar con las personas involucradas (incluyendo interacciones no solicitadas con quienes aplican el código de conducta) durante un período de tiempo específico. 
-  Esto incluye evitar interacciones en los espacios del proyecto y en canales externos como redes sociales. Violar estos términos puede conducir a una expulsión temporal o permanente.
+**Consecuencia**: Una advertencia con consecuencias para el comportamiento continuado. No se podrá interactuar con las personas involucradas (incluyendo interacciones no solicitadas con quienes aplican el código de conducta) durante un período de tiempo específico. Esto incluye evitar interacciones en los espacios del proyecto y en canales externos como redes sociales. Violar estos términos puede conducir a una expulsión temporal o permanente.
 
-### 3. Expulsión temporal
+### 3. 🚫 Expulsión temporal
 
 **Impacto en la comunidad**: Una violación grave de los estándares comunitarios, incluyendo comportamiento inapropiado sostenido.
 
-**Consecuencia**: Una expulsión temporal de cualquier tipo de interacción o comunicación pública con la comunidad durante un período de tiempo específico. 
-  No se permite ninguna interacción pública o privada con las personas involucradas, incluyendo interacciones no solicitadas con quienes aplican el código de conducta, 
-  durante este período. Violar estos términos puede conducir a una expulsión permanente.
+**Consecuencia**: Una expulsión temporal de cualquier tipo de interacción o comunicación pública con la comunidad durante un período de tiempo específico. No se permite ninguna interacción pública o privada con las personas involucradas, incluyendo interacciones no solicitadas con quienes aplican el código de conducta, durante este período. Violar estos términos puede conducir a una expulsión permanente.
 
-### 4. Expulsión permanente
+### 4. 🗑️ Expulsión permanente
 
-**Impacto en la comunidad**: Demostrar un patrón de violación de los estándares comunitarios, 
-  incluyendo comportamiento inapropiado sostenido, acoso a un individuo o agresión o menosprecio a grupos de personas.
+**Impacto en la comunidad**: Demostrar un patrón de violación de los estándares comunitarios, incluyendo comportamiento inapropiado sostenido, acoso a un individuo o agresión o menosprecio a grupos de personas.
 
 **Consecuencia**: Una expulsión permanente de cualquier tipo de interacción pública dentro de la comunidad.
 
 ---
 
-## Atribución
+## 🔒 Uso Ético y Legal
 
-Este Código de Conducta está adaptado del [Contributor Covenant][homepage], versión 2.0, disponible en 
-[https://www.contributor-covenant.org/version/2/0/code_of_conduct.html](https://www.contributor-covenant.org/version/2/0/code_of_conduct.html).
+**KELTIC KRAKEN** es una herramienta de **OSINT (Open Source Intelligence)** diseñada para:
+
+✅ **Investigación periodística** - Analizar patrones de criminalidad
+✅ **Concienciación ciudadana** - Informar sobre seguridad pública
+✅ **Estudios académicos** - Investigación sobre crimen organizado
+✅ **Transparencia** - Datos públicos verificables
+
+**ESTA HERRAMIENTA NO DEBE USARSE PARA:**
+
+❌ Acoso o intimidación de personas
+❌ Vigilancia masiva o seguimiento de individuos
+❌ Actividades ilegales o no éticas
+❌ Discriminación o perfilamiento
+❌ Ataques DDoS o actividades maliciosas
+
+---
+
+## 📚 Atribución
+
+Este Código de Conducta está adaptado del [Contributor Covenant][homepage], versión 2.0, disponible en [https://www.contributor-covenant.org/version/2/0/code_of_conduct.html](https://www.contributor-covenant.org/version/2/0/code_of_conduct.html).
 
 Las directrices de impacto comunitario se inspiraron en la [escalera de aplicación del código de conducta de Mozilla](https://github.com/mozilla/diversity).
 
 [homepage]: https://www.contributor-covenant.org
 
-Para respuestas a preguntas frecuentes sobre este código de conducta, consulta las [preguntas frecuentes](https://www.contributor-covenant.org/faq). 
-Hay traducciones disponibles en [https://www.contributor-covenant.org/translations](https://www.contributor-covenant.org/translations).
+Para respuestas a preguntas frecuentes sobre este código de conducta, consulta las [preguntas frecuentes](https://www.contributor-covenant.org/faq). Hay traducciones disponibles en [https://www.contributor-covenant.org/translations](https://www.contributor-covenant.org/translations).
 
 ---
 
-**Proyecto DIABOLIC_Kraken_v2** – *OSINT ético al servicio de la ciudadanía* 🔥actividades de reconocimiento. No está diseñada para detectar ataques DDoS o acoso. El uso ético y legal es obligatorio.
+**🦈 KELTIC KRAKEN v4.1** – *OSINT ético al servicio de la ciudadanía*
+
+*"Un gran poder conlleva una gran responsabilidad"* 🛡️
+
+*By Condor2026 · SpectrumSecurity*
+```
+
+## 📝 CAMBIOS PRINCIPALES:
+
+| Elemento | DIABOLIC_Kraken_v2 | KELTIC KRAKEN v4.1 |
+|----------|-------------------|-------------------|
+| **Nombre** | DIABOLIC_Kraken_v2 | **KELTIC KRAKEN** |
+| **Versión** | v2 | **v4.1** |
+| **Emoji** | 🕷️ | **🦈** |
+| **Filosofía** | OSINT ético | **OSINT ético + Responsabilidad** |
+| **Propósito** | No especificado | **Claramente definido** |
+| **Uso prohibido** | Básico | **Específico y detallado** |
+| **Sección ética** | No existía | **AÑADIDA** |
