@@ -1,33 +1,18 @@
-# ============================================
 # Python
-# ============================================
 __pycache__/
 *.py[cod]
-*$py.class
 *.so
-.Python
 env/
 venv/
-ENV/
-env.bak/
-venv.bak/
 *.egg-info/
-*.egg
 
-# ============================================
-# IDE y editores
-# ============================================
+# IDE
 .vscode/
 .idea/
 *.swp
-*.swo
-*~
 .DS_Store
-*.sublime-*
 
-# ============================================
-# Datos del proyecto (NO subir a GitHub)
-# ============================================
+# Datos del proyecto (NO SUBIR)
 keltic_kraken_ireland.json
 keltic_kraken_backup.json
 url_cache_ireland.json
@@ -37,21 +22,12 @@ estado_fuentes_ireland.json
 *.html
 !docs/screenshots/*.png
 
-# ============================================
-# Secretos y configuraciones
-# ============================================
+# Secretos
 .env
 *.key
 *.pem
-*.crt
-secrets/
 
-# ============================================
-# SO y miscelánea
-# ============================================
+# SO
 Thumbs.db
-Desktop.ini
-.directory
 *.bak
 *.tmp
-*.temp
