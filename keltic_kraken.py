@@ -601,85 +601,66 @@ FUENTES_BASE = [
     {'nombre': 'Irish Times', 'url': 'https://www.irishtimes.com/news/crime-and-law/', 'base': 'https://www.irishtimes.com', 'condado': 'Dublin'},
     {'nombre': 'RTÉ News', 'url': 'https://www.rte.ie/news/crime/', 'base': 'https://www.rte.ie', 'condado': 'Dublin'},
     {'nombre': 'The Journal', 'url': 'https://www.thejournal.ie/crime/', 'base': 'https://www.thejournal.ie', 'condado': 'Dublin'},
-    {'nombre': 'Irish Mirror', 'url': 'https://www.irishmirror.ie/news/irish-news/', 'base': 'https://www.irishmirror.ie', 'condado': 'Dublin'},
-    {'nombre': 'Irish Examiner', 'url': 'https://www.irishexaminer.com/news/crime/', 'base': 'https://www.irishexaminer.com', 'condado': 'Cork'},
-    {'nombre': 'The Irish Sun', 'url': 'https://www.thesun.ie/news/', 'base': 'https://www.thesun.ie', 'condado': 'Dublin'},
     {'nombre': 'Irish Independent', 'url': 'https://www.independent.ie/irish-news/', 'base': 'https://www.independent.ie', 'condado': 'Dublin'},
     {'nombre': 'Sunday World', 'url': 'https://www.sundayworld.com/news/', 'base': 'https://www.sundayworld.com', 'condado': 'Dublin'},
-    {'nombre': 'The Irish Star', 'url': 'https://www.irishstar.com/news/', 'base': 'https://www.irishstar.com', 'condado': 'Dublin'},
     
     # Dublin
     {'nombre': 'Dublin Live', 'url': 'https://www.dublinlive.ie/news/', 'base': 'https://www.dublinlive.ie', 'condado': 'Dublin'},
-    {'nombre': 'Dublin Gazette', 'url': 'https://dublingazette.com/news/', 'base': 'https://dublingazette.com', 'condado': 'Dublin'},
-    {'nombre': 'Dublin People', 'url': 'https://dublinpeople.com/news/', 'base': 'https://dublinpeople.com', 'condado': 'Dublin'},
     {'nombre': 'Northside People', 'url': 'https://northsidepeople.ie/news/', 'base': 'https://northsidepeople.ie', 'condado': 'Dublin'},
     {'nombre': 'Southside People', 'url': 'https://southsidepeople.ie/news/', 'base': 'https://southsidepeople.ie', 'condado': 'Dublin'},
     
     # Cork
     {'nombre': 'Cork Beo', 'url': 'https://www.corkbeo.ie/news/', 'base': 'https://www.corkbeo.ie', 'condado': 'Cork'},
-    {'nombre': 'Cork Echo', 'url': 'https://www.echolive.ie/news/', 'base': 'https://www.echolive.ie', 'condado': 'Cork'},
     {'nombre': 'Cork Independent', 'url': 'https://corkindependent.com/news/', 'base': 'https://corkindependent.com', 'condado': 'Cork'},
     
     # Galway
     {'nombre': 'Connacht Tribune', 'url': 'https://www.connachttribune.ie/news/', 'base': 'https://www.connachttribune.ie', 'condado': 'Galway'},
     {'nombre': 'Galway Advertiser', 'url': 'https://www.galwayadvertiser.ie/news/', 'base': 'https://www.galwayadvertiser.ie', 'condado': 'Galway'},
-    {'nombre': 'Galway Bay FM', 'url': 'https://galwaybayfm.ie/news/', 'base': 'https://galwaybayfm.ie', 'condado': 'Galway'},
     
     # Limerick
-    {'nombre': 'Limerick Leader', 'url': 'https://www.limerickleader.ie/news/', 'base': 'https://www.limerickleader.ie', 'condado': 'Limerick'},
     {'nombre': 'Limerick Post', 'url': 'https://www.limerickpost.ie/news/', 'base': 'https://www.limerickpost.ie', 'condado': 'Limerick'},
     {'nombre': 'Limerick Live', 'url': 'https://www.limericklive.ie/news/', 'base': 'https://www.limericklive.ie', 'condado': 'Limerick'},
     
     # Waterford
     {'nombre': 'Waterford News', 'url': 'https://www.waterford-news.ie/news/', 'base': 'https://www.waterford-news.ie', 'condado': 'Waterford'},
     {'nombre': 'Waterford Live', 'url': 'https://www.waterfordlive.ie/news/', 'base': 'https://www.waterfordlive.ie', 'condado': 'Waterford'},
-    {'nombre': 'The Munster Express', 'url': 'https://www.munster-express.ie/news/', 'base': 'https://www.munster-express.ie', 'condado': 'Waterford'},
     
     # Kerry
     {'nombre': 'Kerryman', 'url': 'https://www.kerryman.ie/news/', 'base': 'https://www.kerryman.ie', 'condado': 'Kerry'},
     {'nombre': 'Kerry\'s Eye', 'url': 'https://kerryseye.com/news/', 'base': 'https://kerryseye.com', 'condado': 'Kerry'},
-    {'nombre': 'Radio Kerry', 'url': 'https://radiokerry.ie/news/', 'base': 'https://radiokerry.ie', 'condado': 'Kerry'},
     
     # Clare
     {'nombre': 'Clare Champion', 'url': 'https://www.clarechampion.ie/news/', 'base': 'https://www.clarechampion.ie', 'condado': 'Clare'},
-    {'nombre': 'Clare Echo', 'url': 'https://www.clareecho.ie/news/', 'base': 'https://www.clareecho.ie', 'condado': 'Clare'},
     {'nombre': 'Clare FM', 'url': 'https://www.clare.fm/news/', 'base': 'https://www.clare.fm', 'condado': 'Clare'},
     
     # Donegal
     {'nombre': 'Donegal Daily', 'url': 'https://donegaldaily.com/news/', 'base': 'https://donegaldaily.com', 'condado': 'Donegal'},
-    {'nombre': 'Donegal Democrat', 'url': 'https://www.donegaldemocrat.ie/news/', 'base': 'https://www.donegaldemocrat.ie', 'condado': 'Donegal'},
     {'nombre': 'Donegal News', 'url': 'https://donegalnews.com/news/', 'base': 'https://donegalnews.com', 'condado': 'Donegal'},
     {'nombre': 'Donegal Post', 'url': 'https://donegalpost.com/news/', 'base': 'https://donegalpost.com', 'condado': 'Donegal'},
-    {'nombre': 'Highland Radio', 'url': 'https://highlandradio.com/news/', 'base': 'https://highlandradio.com', 'condado': 'Donegal'},
     
     # Mayo
     {'nombre': 'Mayo News', 'url': 'https://www.mayonews.ie/news/', 'base': 'https://www.mayonews.ie', 'condado': 'Mayo'},
-    {'nombre': 'Connaught Telegraph', 'url': 'https://www.connaught-telegraph.ie/news/', 'base': 'https://www.connaught-telegraph.ie', 'condado': 'Mayo'},
     {'nombre': 'Mayo Advertiser', 'url': 'https://www.mayoadvertiser.ie/news/', 'base': 'https://www.mayoadvertiser.ie', 'condado': 'Mayo'},
     
     # Kildare
     {'nombre': 'Kildare Now', 'url': 'https://kildarenow.com/news/', 'base': 'https://kildarenow.com', 'condado': 'Kildare'},
     {'nombre': 'Leinster Leader', 'url': 'https://www.leinsterleader.ie/news/', 'base': 'https://www.leinsterleader.ie', 'condado': 'Kildare'},
-    {'nombre': 'Kildare Nationalist', 'url': 'https://www.kildarenationalist.ie/news/', 'base': 'https://www.kildarenationalist.ie', 'condado': 'Kildare'},
     
     # Tipperary
     {'nombre': 'Tipperary Live', 'url': 'https://www.tipperarylive.ie/news/', 'base': 'https://www.tipperarylive.ie', 'condado': 'Tipperary'},
     {'nombre': 'Tipperary Star', 'url': 'https://www.tipperarystar.ie/news/', 'base': 'https://www.tipperarystar.ie', 'condado': 'Tipperary'},
-    {'nombre': 'Nationalist', 'url': 'https://www.nationalist.ie/news/', 'base': 'https://www.nationalist.ie', 'condado': 'Tipperary'},
     
     # Wexford
     {'nombre': 'Wexford People', 'url': 'https://www.wexfordpeople.ie/news/', 'base': 'https://www.wexfordpeople.ie', 'condado': 'Wexford'},
-    {'nombre': 'Wexford Echo', 'url': 'https://www.wexfordecho.ie/news/', 'base': 'https://www.wexfordecho.ie', 'condado': 'Wexford'},
     {'nombre': 'South East Radio', 'url': 'https://southeastradio.ie/news/', 'base': 'https://southeastradio.ie', 'condado': 'Wexford'},
     
     # Westmeath
     {'nombre': 'Westmeath Independent', 'url': 'https://www.westmeathindependent.ie/news/', 'base': 'https://www.westmeathindependent.ie', 'condado': 'Westmeath'},
-    {'nombre': 'Westmeath Examiner', 'url': 'https://www.westmeathexaminer.ie/news/', 'base': 'https://www.westmeathexaminer.ie', 'condado': 'Westmeath'},
     {'nombre': 'Athlone Advertiser', 'url': 'https://www.athloneadvertiser.ie/news/', 'base': 'https://www.athloneadvertiser.ie', 'condado': 'Westmeath'},
     
     # Louth
     {'nombre': 'Louth Live', 'url': 'https://www.louthlive.ie/news/', 'base': 'https://www.louthlive.ie', 'condado': 'Louth'},
-    {'nombre': 'Drogheda Independent', 'url': 'https://www.drogheda-independent.ie/news/', 'base': 'https://www.drogheda-independent.ie', 'condado': 'Louth'},
+    #{'nombre': 'Drogheda Independent', 'url': 'https://www.drogheda-independent.ie/news/', 'base': 'https://www.drogheda-independent.ie', 'condado': 'Louth'},
     {'nombre': 'The Argus', 'url': 'https://www.argus.ie/news/', 'base': 'https://www.argus.ie', 'condado': 'Louth'},
     
     # Sligo
@@ -730,16 +711,7 @@ FUENTES_BASE = [
     # === IRLANDA DEL NORTE ===
     {'nombre': 'Belfast Live', 'url': 'https://www.belfastlive.co.uk/news/', 'base': 'https://www.belfastlive.co.uk', 'condado': 'Antrim'},
     {'nombre': 'Irish News', 'url': 'https://www.irishnews.com/news/', 'base': 'https://www.irishnews.com', 'condado': 'Antrim'},
-    {'nombre': 'News Letter', 'url': 'https://www.newsletter.co.uk/news/', 'base': 'https://www.newsletter.co.uk', 'condado': 'Antrim'},
-    {'nombre': 'Belfast Telegraph', 'url': 'https://www.belfasttelegraph.co.uk/news/', 'base': 'https://www.belfasttelegraph.co.uk', 'condado': 'Antrim'},
-    {'nombre': 'Derry Journal', 'url': 'https://www.derryjournal.com/news/', 'base': 'https://www.derryjournal.com', 'condado': 'Derry'},
-    {'nombre': 'Derry Now', 'url': 'https://www.derrynow.com/news/', 'base': 'https://www.derrynow.com', 'condado': 'Derry'},
-    {'nombre': 'Armagh I', 'url': 'https://armaghi.com/news/', 'base': 'https://armaghi.com', 'condado': 'Armagh'},
     {'nombre': 'Armagh Guardian', 'url': 'https://www.armaghguardian.co.uk/news/', 'base': 'https://www.armaghguardian.co.uk', 'condado': 'Armagh'},
-    {'nombre': 'The Impartial Reporter', 'url': 'https://www.impartialreporter.com/news/', 'base': 'https://www.impartialreporter.com', 'condado': 'Fermanagh'},
-    {'nombre': 'Fermanagh Herald', 'url': 'https://www.fermanaghherald.com/news/', 'base': 'https://www.fermanaghherald.com', 'condado': 'Fermanagh'},
-    {'nombre': 'Tyrone News', 'url': 'https://www.tyronenews.com/news/', 'base': 'https://www.tyronenews.com', 'condado': 'Tyrone'},
-    {'nombre': 'Tyrone Times', 'url': 'https://www.tyronetimes.co.uk/news/', 'base': 'https://www.tyronetimes.co.uk', 'condado': 'Tyrone'},
     {'nombre': 'Down News', 'url': 'https://www.downnews.co.uk/news/', 'base': 'https://www.downnews.co.uk', 'condado': 'Down'},
     {'nombre': 'Newry Times', 'url': 'https://www.newrytimes.com/news/', 'base': 'https://www.newrytimes.com', 'condado': 'Down'},
 ]
