@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&duration=3000&pause=500&color=FF0000&center=true&vCenter=true&width=750&lines=%F0%9F%94%AA+KELTIC+KRAKEN+v3.0;IRELAND+CRIMINAL+INTELLIGENCE+PLATFORM;32+Counties+%7C+Real-Time+Monitoring;Drug+Trafficking+%7C+Gang+Violence;%22With+great+power+comes;great+responsibility%22" alt="KELTIC KRAKEN" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&duration=3000&pause=500&color=FF0000&center=true&vCenter=true&width=750&lines=%F0%9F%94%AA+KELTIC+KRAKEN+v4.1;IRELAND+CRIMINAL+INTELLIGENCE+PLATFORM;32+Counties+%7C+Real-Time+Monitoring;Drug+Trafficking+%7C+Gang+Violence;%22With+great+power+comes;great+responsibility%22" alt="KELTIC KRAKEN" />
 </p>
 
-![KELTIC KRAKEN ](kraken_imagen.jpg)
+![KELTIC KRAKEN](kraken_imagen.jpg)
 
 <p align="center">
   <!-- Version Badges -->
-  <img src="https://img.shields.io/badge/version-3.0-red?style=for-the-badge&logo=github">
+  <img src="https://img.shields.io/badge/version-4.1-red?style=for-the-badge&logo=github">
   <img src="https://img.shields.io/badge/release-stable-brightgreen?style=for-the-badge&logo=github">
   <img src="https://img.shields.io/badge/build-passing-success?style=for-the-badge&logo=githubactions">
   <img src="https://img.shields.io/badge/code%20quality-A%2B-brightgreen?style=for-the-badge&logo=codefactor">
@@ -35,9 +35,9 @@
 
 <p align="center">
   <!-- Stats Badges -->
-  <img src="https://img.shields.io/badge/lines%20of%20code-2%2C250%2B-brightgreen?style=for-the-badge&logo=counter-strike">
-  <img src="https://img.shields.io/badge/user--agents-150%2B-orange?style=for-the-badge&logo=user-secret">
-  <img src="https://img.shields.io/badge/sources-85%2B-blue?style=for-the-badge&logo=newspaper">
+  <img src="https://img.shields.io/badge/lines%20of%20code-3%2C000%2B-brightgreen?style=for-the-badge&logo=counter-strike">
+  <img src="https://img.shields.io/badge/user--agents-180%2B-orange?style=for-the-badge&logo=user-secret">
+  <img src="https://img.shields.io/badge/sources-78%2B-blue?style=for-the-badge&logo=newspaper">
   <img src="https://img.shields.io/badge/counties-32-success?style=for-the-badge&logo=map">
 </p>
 
@@ -66,21 +66,21 @@
 </p>
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=KelticKraken&label=IRISH+EYES+WATCHING&color=red&style=for-the-badge">
+  <img src="https://komarev.com/ghpvc/?username=Condor2026&label=IRISH+EYES+WATCHING&color=red&style=for-the-badge">
   <img src="https://img.shields.io/badge/status-active_craic-success?style=for-the-badge">
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=800&size=34&duration=9999&pause=9999&color=FF0000&center=true&vCenter=true&width=600&lines=%F0%9F%94%AA+KELTIC+KRAKEN+v3.0;IRELAND+CRIMINAL+INTELLIGENCE" alt="KELTIC KRAKEN" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=800&size=34&duration=9999&pause=9999&color=FF0000&center=true&vCenter=true&width=600&lines=%F0%9F%94%AA+KELTIC+KRAKEN+v4.1;IRELAND+CRIMINAL+INTELLIGENCE" alt="KELTIC KRAKEN" />
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&duration=3000&pause=500&color=F70000&center=true&vCenter=true&width=600&lines=Monitoring+Irish+Crime;Tracking+the+Kinahan+Hutch+Feud;Cocaine+Seizures+%26+Gang+Violence;32+Counties+%7C+85%2B+Sources">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=24&duration=3000&pause=500&color=F70000&center=true&vCenter=true&width=600&lines=Monitoring+Irish+Crime;Tracking+the+Kinahan+Hutch+Feud;Cocaine+Seizures+%26+Gang+Violence;32+Counties+%7C+78%2B+Sources">
 </p>
 
 <p align="center">
   <b>🇮🇪 Real-time monitoring of drug trafficking, gang violence & organized crime across all 32 counties 🇮🇪</b><br>
-  <i>150+ rotating User-Agents · Auto-URL discovery · Anti-blocking system · Interactive dashboard</i>
+  <i>180+ rotating User-Agents · Auto-URL discovery · Anti-blocking system · Interactive 3D Map</i>
 </p>
 
 <br>
@@ -109,12 +109,13 @@ KELTIC KRAKEN is an **open source** criminal intelligence platform specifically 
 
 | # | Action | Description |
 |---|--------|-------------|
-| 1 | **Scans** | 85+ Irish newspapers (national, regional and local) |
+| 1 | **Scans** | 78+ Irish newspapers (national, regional and local) |
 | 2 | **Detects** | News related to organized crime, drug trafficking and violence |
 | 3 | **Classifies** | Each incident by type (drugs, murder, gang violence, etc.) |
 | 4 | **Geolocates** | By county (Dublin, Cork, Galway, Belfast, etc.) |
-| 5 | **Analyzes** | Generates statistics and interactive charts in real-time |
-| 6 | **Exports** | Data in JSON, CSV or HTML for external analysis |
+| 5 | **Visualizes** | Interactive 3D Globe Map with popups |
+| 6 | **Analyzes** | Generates statistics and interactive charts in real-time |
+| 7 | **Exports** | Data in JSON, CSV or HTML for external analysis |
 
 ### 🎯 Who is it for?
 
@@ -131,14 +132,26 @@ KELTIC KRAKEN is an **open source** criminal intelligence platform specifically 
 
 ## KEY FEATURES
 
+### 🌍 Interactive 3D Map
+
+| Feature | Description |
+|---------|-------------|
+| **Globe View** | Full 3D globe with all crime points |
+| **Fullscreen** | Expand to full screen with one click |
+| **Auto-close Popups** | Click another point to close previous popup |
+| **Clickable Titles** | Click any crime title to open original source |
+| **100% Functional Buttons** | All map controls work correctly |
+| **3000+ Points** | Show up to 3000 crime points simultaneously |
+| **Color-coded** | Each crime type has unique color |
+
 ### 🔒 Anti-blocking
 
 | Feature | Value | Description |
 |----------------|-------|-------------|
-| **User-Agents** | 150+ | Continuous rotation of browsers |
+| **User-Agents** | 180+ | Continuous rotation of browsers |
 | **Attempts** | 3 | Retries per source before marking inactive |
-| **Delays** | 0.8-2.0s | Random waits between requests |
-| **Timeout** | 25s | Limit per request |
+| **Delays** | 1.5-3.5s | Random waits between requests |
+| **Timeout** | 10s | Limit per request |
 | **Session** | Persistent | Cookies and headers between requests |
 | **Retry** | Automatic | Exponential backoff on failures |
 
@@ -149,14 +162,16 @@ KELTIC KRAKEN is an **open source** criminal intelligence platform specifically 
 | **Auto-discovery URLs** | If a URL fails, automatically searches for the correct one |
 | **URL cache** | Saves discovered URLs for future runs |
 | **Smart pagination** | Automatically detects pagination patterns |
-| **Fallback paths** | 50+ alternative paths to try |
+| **Data repair** | Fixes missing coordinates and colors automatically |
+| **Duplicate removal** | Cleans duplicate entries |
 
 ### 🖥️ Interface
 
 | Feature | Description |
 |----------------|-------------|
-| **Terminal** | Menu with 12 commands, colors and progress bars |
+| **Terminal** | Menu with 13 commands, colors and progress bars |
 | **Web dashboard** | 4 interactive charts (Chart.js) |
+| **3D Map** | MapLibre GL with full interactive controls |
 | **Bilingual** | Spanish and English fully supported |
 | **Responsive** | Works on mobile, tablet and desktop |
 
@@ -164,10 +179,11 @@ KELTIC KRAKEN is an **open source** criminal intelligence platform specifically 
 
 | Feature | Value |
 |----------------|-------|
-| **Sources** | 85+ newspapers |
+| **Sources** | 78+ newspapers |
 | **Counties** | 32 (all Ireland) |
 | **Crime types** | 9 categories |
 | **Keywords** | 100+ search terms |
+| **Map Points** | Up to 3000 simultaneous |
 
 ### 📥 Export
 
@@ -187,9 +203,10 @@ KELTIC KRAKEN is an **open source** criminal intelligence platform specifically 
 |------------|--------|-------------|
 | **OS** | Windows 10 / macOS 11 / Linux | Windows 11 / macOS 14 / Ubuntu 22.04 |
 | **Python** | 3.8 | 3.11+ |
-| **RAM** | 512 MB | 1 GB |
-| **Storage** | 100 MB | 500 MB |
-| **Internet** | 1 Mbps | 10 Mbps |
+| **RAM** | 1 GB | 2 GB |
+| **Storage** | 200 MB | 1 GB |
+| **Internet** | 5 Mbps | 20 Mbps |
+| **GPU** | Integrated | Dedicated (for 3D map) |
 
 ### Verify Python
 
@@ -211,8 +228,8 @@ python --version
 
 ```bash
 # STEP 1: Clone the repository
-git clone https://github.com/Condor2026/keltic_kraken
-cd keltic_kraken
+git clone https://github.com/Condor2026/keltic-kraken
+cd keltic-kraken
 
 # STEP 2: Create virtual environment
 python3 -m venv venv
@@ -223,7 +240,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 
 # STEP 4: Verify installation
-python3 -c "import requests, bs4, flask; print('✅ Everything correct')"
+python3 -c "import requests, bs4, flask, maplibregl; print('✅ Everything correct')"
 
 # STEP 5: Run
 python3 keltic_kraken.py
@@ -233,8 +250,8 @@ python3 keltic_kraken.py
 
 ```powershell
 # STEP 1: Clone the repository
-git clone https://github.com/Condor2026/keltic_kraken
-cd keltic_kraken
+git clone https://github.com/Condor2026/keltic-kraken
+cd keltic-kraken
 
 # STEP 2: Create virtual environment
 python -m venv venv
@@ -255,10 +272,10 @@ python keltic_kraken.py
 
 ```bash
 # Build image
-docker build -t keltic_kraken .
+docker build -t keltic-kraken:v4.1 .
 
 # Run container
-docker run -p 5014:5014 keltic_kraken
+docker run -p 5019:5019 keltic-kraken:v4.1
 
 # Or with docker-compose
 docker-compose up -d
@@ -270,37 +287,26 @@ docker-compose up -d
 
 When running for the **FIRST TIME**, follow these steps:
 
-### 1️⃣ Select language
-
-```
-🌍 SELECT LANGUAGE
-┌──────────────────────────────────────────────────┐
-│  [1] Spanish                                     │
-│  [2] English                                     │
-└──────────────────────────────────────────────────┘
-➤ Option: 2
-```
-
-### 2️⃣ Choose execution mode
+### 1️⃣ Choose execution mode
 
 ```
 ┌────────────────────────────────────────────────────┐
 │  How do you want to run?                          │
 ├────────────────────────────────────────────────────┤
 │  [1] Terminal Mode (recommended for analysis)     │
-│  [2] Web Mode (dashboard with charts)             │
+│  [2] Web Mode (dashboard with 3D map)             │
 └────────────────────────────────────────────────────┘
 ➤ Choose: 1
 ```
 
-### 3️⃣ VERIFY SOURCES (MANDATORY)
+### 2️⃣ VERIFY SOURCES (MANDATORY)
 
 ```bash
 ➤ Option: 8
 ```
 
 **What it does:**
-- ✅ Verifies all 85+ sources one by one
+- ✅ Verifies all 78+ sources one by one
 - ✅ Marks active those that work
 - ❌ Marks inactive those that fail
 - 🔍 Applies auto-discovery to dead URLs
@@ -309,12 +315,12 @@ When running for the **FIRST TIME**, follow these steps:
 **Expected result:**
 ```
 📊 RESULTS:
-   Active sources: 68 out of 85
+   Active sources: 68 out of 78
    Auto-discovery applied: 12 URLs found
    Cache saved for future runs
 ```
 
-### 4️⃣ SEARCH FOR CRIMES
+### 3️⃣ SEARCH FOR CRIMES
 
 ```bash
 ➤ Option: 1
@@ -335,11 +341,10 @@ When running for the **FIRST TIME**, follow these steps:
    📍 County: Dublin
    📄 Page 1... ✓ 24 found
    📄 Page 2... ✓ 18 found
-   📄 Page 3... ✓ 12 found
-   📊 Total in this source: 54 incidents
+   📊 Total in this source: 42 incidents
 ```
 
-### 5️⃣ VIEW RESULTS
+### 4️⃣ VIEW RESULTS
 
 ```bash
 ➤ Option: 6
@@ -349,22 +354,22 @@ When running for the **FIRST TIME**, follow these steps:
 📰 LATEST 20 INCIDENTS
 ================================================================================
  1. Man arrested after €500k cocaine seizure in Dublin
-      📅 2026-06-12 | 📍 Dublin | 📰 Irish Times | 🔪 DRUGS
+      📅 2026-06-12 | 📍 Dublin | 📰 Irish Times | 💀 Severidad: 8/10
 
  2. Two charged over Kinahan-linked shooting in Cork
-      📅 2026-06-11 | 📍 Cork | 📰 Irish Examiner | 🔪 GANG_VIOLENCE
+      📅 2026-06-11 | 📍 Cork | 📰 Irish Examiner | 💀 Severidad: 9/10
 
  3. Gardaí launch operation after body found in Galway
-      📅 2026-06-11 | 📍 Galway | 📰 RTÉ | 🔪 MURDER
+      📅 2026-06-11 | 📍 Galway | 📰 RTÉ | 💀 Severidad: 10/10
 ```
 
-### 6️⃣ (OPTIONAL) WEB DASHBOARD
+### 5️⃣ (OPTIONAL) WEB DASHBOARD WITH 3D MAP
 
 ```bash
 ➤ Option: 5
 ```
 
-Open browser: **http://localhost:5014**
+Open browser: **http://localhost:5019**
 
 ---
 
@@ -383,7 +388,8 @@ Open browser: **http://localhost:5014**
 | **9** | 📊 Distribution | Percentages by type | Post-search |
 | **10** | 📈 Advanced | Metrics like density, trend | Deep analysis |
 | **11** | 🧹 Clean | Removes duplicates | If you notice repetitions |
-| **12** | 🗑️ Exit | Closes the application | When finished |
+| **12** | 🔧 Repair Data | Fixes missing coordinates/colors | If map doesn't show points |
+| **13** | 🗑️ Exit | Closes the application | When finished |
 
 ### 📋 Daily flow example
 
@@ -393,14 +399,41 @@ Open browser: **http://localhost:5014**
 ➤ 1    # Search for new crimes
 ➤ 6    # View latest incidents
 ➤ 2    # View statistics
-➤ 5    # (optional) Open web dashboard
+➤ 5    # (optional) Open web dashboard with 3D map
 ```
 
 ---
 
 ## WEB DASHBOARD
 
-When you run **Option 5**, a web server starts at `http://localhost:5014`
+When you run **Option 5**, a web server starts at `http://localhost:5019`
+
+### 🌍 Interactive 3D Map
+
+| Feature | Description |
+|---------|-------------|
+| **Globe View** | Full 3D globe showing all crime points |
+| **Color-coded Points** | Each crime type has unique color |
+| **Clustering** | Groups nearby points for clarity |
+| **Click Popups** | Shows crime details with source link |
+| **Fullscreen** | Expand map to full screen |
+| **Auto-rotate** | Automatically rotates globe |
+| **Reset View** | Returns to default view |
+| **3D Toggle** | Switch between 2D and 3D views |
+
+### 🎨 Point Colors by Crime Type
+
+| Crime Type | Color | Icon |
+|------------|-------|------|
+| Drug Trafficking | 🔴 `#ff0000` | 💊 |
+| Gang Violence | 🟥 `#ff4444` | 🔫 |
+| Murder/Homicide | ⬛ `#000000` | 💀 |
+| Assault | 🟧 `#ff8c00` | 👊 |
+| Robbery/Theft | 🟨 `#ffd700` | 💰 |
+| Organized Crime | 🟪 `#800080` | 🕴️ |
+| Garda Operation | 🟦 `#0066cc` | 👮 |
+| Weapon Offense | 🟥 `#990000` | 🔪 |
+| Other Crime | ⬜ `#666666` | ❓ |
 
 ### 📊 Chart 1: Incidents by County (Bars)
 
@@ -410,11 +443,6 @@ When you run **Option 5**, a web server starts at `http://localhost:5014`
 | **Data** | Incidents per county |
 | **Interaction** | Hover to see exact numbers |
 | **Utility** | Identify hotspots |
-
-**What it reveals:**
-- Dublin usually leads (more population = more crimes)
-- Cork in second place
-- Geographic patterns of criminality
 
 ### 🥧 Chart 2: Crime Types (Donut)
 
@@ -439,11 +467,6 @@ When you run **Option 5**, a web server starts at `http://localhost:5014`
 | **Trend** | Goes up/down visually |
 | **Utility** | Detect seasonal patterns |
 
-**Questions it answers:**
-- Is crime increasing or decreasing?
-- Are there peaks in specific months?
-- How does this year compare to the previous one?
-
 ### 📊 Chart 4: Top Sources (Horizontal bars)
 
 | Element | Description |
@@ -461,6 +484,8 @@ Each card shows:
 - **County** where it occurred
 - **Source** (newspaper)
 - **Crime type** with color
+- **Severity** level (1-10)
+- **URL link** to original source
 
 ### 🎛️ Web controls
 
@@ -514,9 +539,9 @@ Each card shows:
 
 | Region | Counties | Sources |
 |--------|----------|---------|
-| Republic of Ireland | 26 | ~65 |
-| Northern Ireland | 6 | ~20 |
-| **TOTAL** | **32** | **85+** |
+| Republic of Ireland | 26 | ~62 |
+| Northern Ireland | 6 | ~16 |
+| **TOTAL** | **32** | **78+** |
 
 ---
 
@@ -525,10 +550,19 @@ Each card shows:
 ```
 keltic-kraken/
 │
-├── 📄 keltic_kraken.py          # Main script (2250+ lines)
+├── 📄 keltic_kraken.py          # Main script (3000+ lines)
 ├── 📄 requirements.txt          # Python dependencies
 ├── 📄 README.md                 # This document
 ├── 📄 LICENSE                   # GPL v3
+├── 📄 CHANGELOG.md              # Version history
+├── 📄 CODE_OF_CONDUCT.md        # Community guidelines
+├── 📄 LEGAL_ETHICAL_NOTICE.md   # Legal and ethical notice
+├── 📄 Dockerfile                # Docker configuration
+├── 📄 docker-compose.yml        # Docker Compose configuration
+├── 📄 .gitignore                # Git ignore file
+├── 📄 install.sh                # Linux/Mac installer
+├── 📄 install.bat               # Windows installer
+├── 📄 env.example               # Environment variables example
 │
 ├── 📊 keltic_kraken_ireland.json   # Incidents database
 ├── 💾 keltic_kraken_backup.json    # Automatic backup
@@ -539,10 +573,13 @@ keltic-kraken/
 ├── 📤 keltic_kraken_export.csv     # Manual export (CSV)
 ├── 📤 keltic_kraken_report.html    # Manual export (HTML)
 │
-└── 📁 docs/                         # Extra documentation
-    ├── usage.md
-    ├── api.md
-    └── screenshots/
+├── 📁 docs/                         # Extra documentation
+│   ├── usage.md
+│   ├── api.md
+│   └── screenshots/
+│
+└── 📁 images/                       # Images and assets
+    └── kraken_imagen.jpg
 ```
 
 ### Automatically generated files
@@ -576,15 +613,21 @@ pip install -r requirements.txt
 - Wait for the complete scan to finish
 - Verify you have active sources
 
-### Error: "Port 5014 already in use"
+### Error: "Map points not showing"
+
+- Run **Option 12** (Repair Data)
+- This fixes missing coordinates and colors
+- Then restart the web server
+
+### Error: "Port 5019 already in use"
 
 ```bash
 # Change port in code or kill the process
 # Linux/Mac
-lsof -ti:5014 | xargs kill -9
+lsof -ti:5019 | xargs kill -9
 
 # Windows
-netstat -ano | findstr :5014
+netstat -ano | findstr :5019
 taskkill /PID <PID> /F
 ```
 
@@ -592,7 +635,7 @@ taskkill /PID <PID> /F
 
 - Make sure Flask is installed
 - Check that no firewalls are blocking
-- Try with `http://127.0.0.1:5014`
+- Try with `http://127.0.0.1:5019`
 
 ---
 
@@ -612,7 +655,7 @@ taskkill /PID <PID> /F
 The system is designed for Ireland, but can be adapted:
 1. Change `FUENTES_BASE` (list of newspapers)
 2. Change `PALABRAS_CLAVE_CRIMEN` (local terms)
-3. Change `CONDADOS_IRLANDA` (for country regions)
+3. Change `COORDENADAS_CONDADOS` (for country regions)
 4. Change `TIPOS_CRIMEN` (local categories)
 
 ### ❓ Where is the data saved?
@@ -630,7 +673,7 @@ In `keltic_kraken_ireland.json` (readable JSON format)
 ### ❓ Does it consume many resources?
 
 **No.** Typical usage:
-- RAM: ~200-500 MB
+- RAM: ~300-600 MB
 - CPU: ~10-20% during scraping
 - Storage: ~10-50 MB per month of data
 
@@ -654,7 +697,7 @@ In `keltic_kraken_ireland.json` (readable JSON format)
 
 ```bash
 # Cron - run daily at 9 AM
-0 9 * * * cd /path/keltic_kraken && python3 keltic_kraken.py --auto
+0 9 * * * cd /path/keltic-kraken && python3 keltic_kraken.py --auto
 ```
 
 ---
@@ -698,11 +741,29 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 **Condor2026** · **SpectrumSecurity**
 
 - GitHub: [@Condor2026](https://github.com/Condor2026)
-- Project: [KELTIC KRAKEN](https://github.com/Condor2026/keltic_kraken)
+- Project: [KELTIC KRAKEN](https://github.com/Condor2026/keltic-kraken)
+- Email: spectrumsecurity@proton.me
 
 ---
 
 <p align="center">
   <b>🇮🇪 "With great power comes great responsibility" 🇮🇪</b><br>
-  <i>KELTIC KRAKEN v3.0 - Monitoring Ireland's criminal landscape</i>
+  <i>KELTIC KRAKEN v4.1 - Monitoring Ireland's criminal landscape</i>
 </p>
+```
+
+## 📝 CAMBIOS PRINCIPALES:
+
+| Elemento | v3.0 | v4.1 |
+|----------|------|------|
+| **Versión** | 3.0 | **4.1** |
+| **Badges** | 24 | **28** |
+| **Líneas de código** | 2,250 | **3,000+** |
+| **User-Agents** | 150+ | **180+** |
+| **Fuentes** | 85+ | **78+** |
+| **Puerto** | 5014 | **5019** |
+| **Mapa** | No | **Sí (3D Globe)** |
+| **Menú** | 12 opciones | **13 opciones** |
+| **Popups** | No | **Sí (autocerrantes)** |
+| **Fullscreen** | No | **Sí** |
+| **Reparación datos** | No | **Sí (opción 12)** |
