@@ -750,7 +750,6 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
   <b>🇮🇪 "With great power comes great responsibility" 🇮🇪</b><br>
   <i>KELTIC KRAKEN v4.1 - Monitoring Ireland's criminal landscape</i>
 </p>
-```
 
 ## 📝 CAMBIOS PRINCIPALES:
 
