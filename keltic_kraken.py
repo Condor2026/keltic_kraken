@@ -6,22 +6,22 @@
 
 """
 ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║  🦈 KELTIC KRAKEN v3.5 - IRELAND CRIME INTELLIGENCE PLATFORM - ULTRA STABLE                                ║
+║  🦈 KELTIC KRAKEN v3.5 - IRELAND CRIME INTELLIGENCE PLATFORM - ULTRA STABLE                                   ║
 ║  ═══════════════════════════════════════════════════════════════════════════════════════════════════════════  ║
-║  🌍 Mapa 3D con MapLibre GL · Puntos interactivos · Tooltips con severidad · 32 condados                     ║
-║  ⚡ ESCANEO ESTABLE · Timeouts controlados · Sin bloqueos · URLs 2026                                        ║
+║  🌍 Mapa 3D con MapLibre GL · Puntos interactivos · Tooltips con severidad · 32 condados                      ║
+║  ⚡ ESCANEO ESTABLE · Timeouts controlados · Sin bloqueos · URLs 2026                                          ║
 ║  📊 Real-time monitoring: Drug trafficking · Gang violence · Organized crime                                  ║
 ║  🏴 Covers ALL 32 counties including Northern Ireland                                                         ║
 ║  🔄 180+ Rotating User-Agents · Auto-URL discovery · Anti-blocking system                                     ║
 ║  📈 Interactive charts · Full statistics dashboard · Web interface                                            ║
 ║  🔍 Smart retry mechanism · URL cache · Session persistence                                                   ║
 ║  📄 Pagination in web panel · Save after each source · Duplicate removal                                      ║
-║  ⚡ Parallel scanning · Dynamic workers · Non-blocking · Ultra-fast                                           ║
+║  ⚡ Parallel scanning · Dynamic workers · Non-blocking · Ultra-fast                                            ║
 ║  🚀 Cache memorizado · Parsing optimizado · Regex compilados                                                  ║
-║  🧠 DETECCIÓN INTELIGENTE DE DELITOS · Sistema de pesos · Contexto                                           ║
-║  🐢 SCRAPING RESPETUOSO · Delays más largos · Anti-bloqueo mejorado                                          ║
-║  ⏹️ PARADA AUTOMÁTICA · Guardado automático · Vuelta al menú                                                 ║
-║  📰 65+ FUENTES · Cobertura nacional completa · Todos los condados                                           ║
+║  🧠 DETECCIÓN INTELIGENTE DE DELITOS · Sistema de pesos · Contexto                                            ║
+║  🐢 SCRAPING RESPETUOSO · Delays más largos · Anti-bloqueo mejorado                                           ║
+║  ⏹️ PARADA AUTOMÁTICA · Guardado automático · Vuelta al menú                                                  ║
+║  📰 65+ FUENTES · Cobertura nacional completa · Todos los condados                                            ║
 ║                                                                                                               ║
 ║  🛡️ "Un gran poder conlleva una gran responsabilidad" - Spider-Man                                            ║
 ║                                                                                                               ║
