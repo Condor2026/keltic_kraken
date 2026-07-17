@@ -21,7 +21,8 @@
 ║  🧠 DETECCIÓN INTELIGENTE DE DELITOS · Sistema de pesos · Contexto                                            ║
 ║  🐢 SCRAPING RESPETUOSO · Delays más largos · Anti-bloqueo mejorado                                           ║
 ║  ⏹️ PARADA AUTOMÁTICA · Guardado automático · Vuelta al menú                                                  ║
-║  📰 65+ FUENTES · Cobertura nacional completa · Todos los condados                                            ║
+║  📰 78+ FUENTES · Cobertura nacional completa · Todos los condados                                            ║
+║  🔍 DETECCIÓN AUTOMÁTICA DE URLs · Busca alternativas cuando falla                                            ║
 ║                                                                                                               ║
 ║  🛡️ "Un gran poder conlleva una gran responsabilidad" - Spider-Man                                            ║
 ║                                                                                                               ║
@@ -40,24 +41,15 @@ import requests
 import re
 import csv
 import io
-import asyncio
-import aiohttp
-import concurrent.futures
-import gc
-import psutil
-import signal
-import threading
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
-from flask import Flask, render_template_string, jsonify, request, Response
+from flask import Flask, render_template_string, request, Response
 from collections import defaultdict
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
-from threading import Lock, Thread
-from contextlib import contextmanager
-from typing import Dict, List, Optional, Any, Tuple
+from threading import Lock
+from typing import Dict, List, Optional, Any
 import logging
-import traceback
 from functools import lru_cache
 
 # ============================================================================
@@ -86,17 +78,17 @@ ARCHIVO_ESTADO = 'estado_fuentes_ireland.json'
 ARCHIVO_BACKUP = 'keltic_kraken_backup.json'
 PAGINAS_BUSQUEDA = 2
 
-TIMEOUT = 12
+TIMEOUT = 10
 MAX_INTENTOS = 2
 
 DELAY_MIN = 1.5
 DELAY_MAX = 3.5
-DELAY_ENTRE_FUENTES = 2.0
+DELAY_ENTRE_FUENTES = 1.5
 
 ITEMS_POR_PAGINA = 10
 MAX_WORKERS = 3
-TIMEOUT_PAGINA = 12
-TIMEOUT_FUENTE = 18
+TIMEOUT_PAGINA = 10
+TIMEOUT_FUENTE = 15
 BATCH_SAVE_SIZE = 25
 CACHE_TTL_MINUTOS = 15
 MAX_CONEXIONES = 8
@@ -591,129 +583,170 @@ PALABRAS_CLAVE_CRIMEN = [
 ]
 
 # ============================================================================
-# FUENTES DE IRLANDA - 65+ FUENTES COMPLETAS
+# FUENTES DE IRLANDA - 78+ FUENTES
 # ============================================================================
 
 FUENTES_BASE = [
-    # === REPÚBLICA DE IRLANDA ===
-    
-    # Nacionales
+    # === NACIONALES ===
     {'nombre': 'Irish Times', 'url': 'https://www.irishtimes.com/news/crime-and-law/', 'base': 'https://www.irishtimes.com', 'condado': 'Dublin'},
     {'nombre': 'RTÉ News', 'url': 'https://www.rte.ie/news/crime/', 'base': 'https://www.rte.ie', 'condado': 'Dublin'},
     {'nombre': 'The Journal', 'url': 'https://www.thejournal.ie/crime/', 'base': 'https://www.thejournal.ie', 'condado': 'Dublin'},
     {'nombre': 'Irish Independent', 'url': 'https://www.independent.ie/irish-news/', 'base': 'https://www.independent.ie', 'condado': 'Dublin'},
+    {'nombre': 'Irish Examiner', 'url': 'https://www.irishexaminer.com/news/crime/', 'base': 'https://www.irishexaminer.com', 'condado': 'Cork'},
+    {'nombre': 'Irish Mirror', 'url': 'https://www.irishmirror.ie/news/irish-news/', 'base': 'https://www.irishmirror.ie', 'condado': 'Dublin'},
     {'nombre': 'Sunday World', 'url': 'https://www.sundayworld.com/news/', 'base': 'https://www.sundayworld.com', 'condado': 'Dublin'},
+    {'nombre': 'The Irish Sun', 'url': 'https://www.thesun.ie/news/', 'base': 'https://www.thesun.ie', 'condado': 'Dublin'},
+    {'nombre': 'Irish Daily Star', 'url': 'https://www.irishdailystar.ie/news/', 'base': 'https://www.irishdailystar.ie', 'condado': 'Dublin'},
+    {'nombre': 'The Irish Post', 'url': 'https://www.irishpost.com/news/', 'base': 'https://www.irishpost.com', 'condado': 'Dublin'},
     
-    # Dublin
+    # === DUBLÍN ===
     {'nombre': 'Dublin Live', 'url': 'https://www.dublinlive.ie/news/', 'base': 'https://www.dublinlive.ie', 'condado': 'Dublin'},
+    {'nombre': 'Dublin Gazette', 'url': 'https://dublingazette.com/news/', 'base': 'https://dublingazette.com', 'condado': 'Dublin'},
+    {'nombre': 'Dublin People', 'url': 'https://dublinpeople.com/news/', 'base': 'https://dublinpeople.com', 'condado': 'Dublin'},
     {'nombre': 'Northside People', 'url': 'https://northsidepeople.ie/news/', 'base': 'https://northsidepeople.ie', 'condado': 'Dublin'},
     {'nombre': 'Southside People', 'url': 'https://southsidepeople.ie/news/', 'base': 'https://southsidepeople.ie', 'condado': 'Dublin'},
+    {'nombre': 'Dublin City News', 'url': 'https://dublincitynews.ie/news/', 'base': 'https://dublincitynews.ie', 'condado': 'Dublin'},
     
-    # Cork
+    # === CORK ===
     {'nombre': 'Cork Beo', 'url': 'https://www.corkbeo.ie/news/', 'base': 'https://www.corkbeo.ie', 'condado': 'Cork'},
     {'nombre': 'Cork Independent', 'url': 'https://corkindependent.com/news/', 'base': 'https://corkindependent.com', 'condado': 'Cork'},
+    {'nombre': 'Cork Echo', 'url': 'https://www.echolive.ie/news/', 'base': 'https://www.echolive.ie', 'condado': 'Cork'},
+    {'nombre': 'Cork News', 'url': 'https://www.corknews.ie/news/', 'base': 'https://www.corknews.ie', 'condado': 'Cork'},
     
-    # Galway
+    # === GALWAY ===
     {'nombre': 'Connacht Tribune', 'url': 'https://www.connachttribune.ie/news/', 'base': 'https://www.connachttribune.ie', 'condado': 'Galway'},
     {'nombre': 'Galway Advertiser', 'url': 'https://www.galwayadvertiser.ie/news/', 'base': 'https://www.galwayadvertiser.ie', 'condado': 'Galway'},
+    {'nombre': 'Galway Bay FM', 'url': 'https://galwaybayfm.ie/news/', 'base': 'https://galwaybayfm.ie', 'condado': 'Galway'},
+    {'nombre': 'Galway News', 'url': 'https://www.galwaynews.ie/news/', 'base': 'https://www.galwaynews.ie', 'condado': 'Galway'},
     
-    # Limerick
+    # === LIMERICK ===
     {'nombre': 'Limerick Post', 'url': 'https://www.limerickpost.ie/news/', 'base': 'https://www.limerickpost.ie', 'condado': 'Limerick'},
     {'nombre': 'Limerick Live', 'url': 'https://www.limericklive.ie/news/', 'base': 'https://www.limericklive.ie', 'condado': 'Limerick'},
+    {'nombre': 'Limerick Leader', 'url': 'https://www.limerickleader.ie/news/', 'base': 'https://www.limerickleader.ie', 'condado': 'Limerick'},
     
-    # Waterford
+    # === WATERFORD ===
     {'nombre': 'Waterford News', 'url': 'https://www.waterford-news.ie/news/', 'base': 'https://www.waterford-news.ie', 'condado': 'Waterford'},
     {'nombre': 'Waterford Live', 'url': 'https://www.waterfordlive.ie/news/', 'base': 'https://www.waterfordlive.ie', 'condado': 'Waterford'},
+    {'nombre': 'The Munster Express', 'url': 'https://www.munster-express.ie/news/', 'base': 'https://www.munster-express.ie', 'condado': 'Waterford'},
     
-    # Kerry
+    # === KERRY ===
     {'nombre': 'Kerryman', 'url': 'https://www.kerryman.ie/news/', 'base': 'https://www.kerryman.ie', 'condado': 'Kerry'},
-    {'nombre': 'Kerry\'s Eye', 'url': 'https://kerryseye.com/news/', 'base': 'https://kerryseye.com', 'condado': 'Kerry'},
+    {"nombre": "Kerry's Eye", 'url': 'https://kerryseye.com/news/', 'base': 'https://kerryseye.com', 'condado': 'Kerry'},
+    {'nombre': 'Radio Kerry', 'url': 'https://radiokerry.ie/news/', 'base': 'https://radiokerry.ie', 'condado': 'Kerry'},
     
-    # Clare
+    # === CLARE ===
     {'nombre': 'Clare Champion', 'url': 'https://www.clarechampion.ie/news/', 'base': 'https://www.clarechampion.ie', 'condado': 'Clare'},
+    {'nombre': 'Clare Echo', 'url': 'https://www.clareecho.ie/news/', 'base': 'https://www.clareecho.ie', 'condado': 'Clare'},
     {'nombre': 'Clare FM', 'url': 'https://www.clare.fm/news/', 'base': 'https://www.clare.fm', 'condado': 'Clare'},
     
-    # Donegal
+    # === DONEGAL ===
     {'nombre': 'Donegal Daily', 'url': 'https://donegaldaily.com/news/', 'base': 'https://donegaldaily.com', 'condado': 'Donegal'},
     {'nombre': 'Donegal News', 'url': 'https://donegalnews.com/news/', 'base': 'https://donegalnews.com', 'condado': 'Donegal'},
     {'nombre': 'Donegal Post', 'url': 'https://donegalpost.com/news/', 'base': 'https://donegalpost.com', 'condado': 'Donegal'},
+    {'nombre': 'Donegal Democrat', 'url': 'https://www.donegaldemocrat.ie/news/', 'base': 'https://www.donegaldemocrat.ie', 'condado': 'Donegal'},
+    {'nombre': 'Highland Radio', 'url': 'https://highlandradio.com/news/', 'base': 'https://highlandradio.com', 'condado': 'Donegal'},
     
-    # Mayo
+    # === MAYO ===
     {'nombre': 'Mayo News', 'url': 'https://www.mayonews.ie/news/', 'base': 'https://www.mayonews.ie', 'condado': 'Mayo'},
     {'nombre': 'Mayo Advertiser', 'url': 'https://www.mayoadvertiser.ie/news/', 'base': 'https://www.mayoadvertiser.ie', 'condado': 'Mayo'},
+    {'nombre': 'Connaught Telegraph', 'url': 'https://www.connaught-telegraph.ie/news/', 'base': 'https://www.connaught-telegraph.ie', 'condado': 'Mayo'},
     
-    # Kildare
+    # === KILDARE ===
     {'nombre': 'Kildare Now', 'url': 'https://kildarenow.com/news/', 'base': 'https://kildarenow.com', 'condado': 'Kildare'},
     {'nombre': 'Leinster Leader', 'url': 'https://www.leinsterleader.ie/news/', 'base': 'https://www.leinsterleader.ie', 'condado': 'Kildare'},
+    {'nombre': 'Kildare Nationalist', 'url': 'https://www.kildarenationalist.ie/news/', 'base': 'https://www.kildarenationalist.ie', 'condado': 'Kildare'},
     
-    # Tipperary
+    # === TIPPERARY ===
     {'nombre': 'Tipperary Live', 'url': 'https://www.tipperarylive.ie/news/', 'base': 'https://www.tipperarylive.ie', 'condado': 'Tipperary'},
     {'nombre': 'Tipperary Star', 'url': 'https://www.tipperarystar.ie/news/', 'base': 'https://www.tipperarystar.ie', 'condado': 'Tipperary'},
+    {'nombre': 'The Nationalist', 'url': 'https://www.nationalist.ie/news/', 'base': 'https://www.nationalist.ie', 'condado': 'Tipperary'},
     
-    # Wexford
+    # === WEXFORD ===
     {'nombre': 'Wexford People', 'url': 'https://www.wexfordpeople.ie/news/', 'base': 'https://www.wexfordpeople.ie', 'condado': 'Wexford'},
+    {'nombre': 'Wexford Echo', 'url': 'https://www.wexfordecho.ie/news/', 'base': 'https://www.wexfordecho.ie', 'condado': 'Wexford'},
     {'nombre': 'South East Radio', 'url': 'https://southeastradio.ie/news/', 'base': 'https://southeastradio.ie', 'condado': 'Wexford'},
     
-    # Westmeath
+    # === WESTMEATH ===
     {'nombre': 'Westmeath Independent', 'url': 'https://www.westmeathindependent.ie/news/', 'base': 'https://www.westmeathindependent.ie', 'condado': 'Westmeath'},
+    {'nombre': 'Westmeath Examiner', 'url': 'https://www.westmeathexaminer.ie/news/', 'base': 'https://www.westmeathexaminer.ie', 'condado': 'Westmeath'},
     {'nombre': 'Athlone Advertiser', 'url': 'https://www.athloneadvertiser.ie/news/', 'base': 'https://www.athloneadvertiser.ie', 'condado': 'Westmeath'},
     
-    # Louth
+    # === LOUTH ===
     {'nombre': 'Louth Live', 'url': 'https://www.louthlive.ie/news/', 'base': 'https://www.louthlive.ie', 'condado': 'Louth'},
-    #{'nombre': 'Drogheda Independent', 'url': 'https://www.drogheda-independent.ie/news/', 'base': 'https://www.drogheda-independent.ie', 'condado': 'Louth'},
     {'nombre': 'The Argus', 'url': 'https://www.argus.ie/news/', 'base': 'https://www.argus.ie', 'condado': 'Louth'},
+    {'nombre': 'Drogheda Independent', 'url': 'https://www.drogheda-independent.ie/news/', 'base': 'https://www.drogheda-independent.ie', 'condado': 'Louth'},
     
-    # Sligo
+    # === SLIGO ===
     {'nombre': 'Sligo Champion', 'url': 'https://www.sligochampion.ie/news/', 'base': 'https://www.sligochampion.ie', 'condado': 'Sligo'},
     {'nombre': 'Sligo Weekender', 'url': 'https://www.sligoweekender.ie/news/', 'base': 'https://www.sligoweekender.ie', 'condado': 'Sligo'},
     {'nombre': 'Ocean FM', 'url': 'https://oceanfm.ie/news/', 'base': 'https://oceanfm.ie', 'condado': 'Sligo'},
     
-    # Laois
+    # === LAOIS ===
     {'nombre': 'Laois Today', 'url': 'https://www.laoistoday.ie/news/', 'base': 'https://www.laoistoday.ie', 'condado': 'Laois'},
     {'nombre': 'Laois Nationalist', 'url': 'https://www.laois-nationalist.ie/news/', 'base': 'https://www.laois-nationalist.ie', 'condado': 'Laois'},
     
-    # Offaly
+    # === OFFALY ===
     {'nombre': 'Offaly Express', 'url': 'https://www.offalyexpress.ie/news/', 'base': 'https://www.offalyexpress.ie', 'condado': 'Offaly'},
     {'nombre': 'Offaly Independent', 'url': 'https://www.offalyindependent.ie/news/', 'base': 'https://www.offalyindependent.ie', 'condado': 'Offaly'},
     
-    # Cavan
+    # === CAVAN ===
     {'nombre': 'Cavan Echo', 'url': 'https://cavanecho.ie/news/', 'base': 'https://cavanecho.ie', 'condado': 'Cavan'},
     {'nombre': 'Cavan Herald', 'url': 'https://www.cavanherald.ie/news/', 'base': 'https://www.cavanherald.ie', 'condado': 'Cavan'},
     
-    # Monaghan
+    # === MONAGHAN ===
     {'nombre': 'Monaghan News', 'url': 'https://monaghannews.com/news/', 'base': 'https://monaghannews.com', 'condado': 'Monaghan'},
     {'nombre': 'Monaghan Democrat', 'url': 'https://www.monaghandemocrat.ie/news/', 'base': 'https://www.monaghandemocrat.ie', 'condado': 'Monaghan'},
     
-    # Roscommon
+    # === ROSCOMMON ===
     {'nombre': 'Roscommon Herald', 'url': 'https://www.roscommonherald.ie/news/', 'base': 'https://www.roscommonherald.ie', 'condado': 'Roscommon'},
     {'nombre': 'Roscommon People', 'url': 'https://www.roscommonpeople.ie/news/', 'base': 'https://www.roscommonpeople.ie', 'condado': 'Roscommon'},
     
-    # Wicklow
+    # === WICKLOW ===
     {'nombre': 'Wicklow News', 'url': 'https://wicklownews.net/news/', 'base': 'https://wicklownews.net', 'condado': 'Wicklow'},
     {'nombre': 'Wicklow People', 'url': 'https://www.wicklowpeople.ie/news/', 'base': 'https://www.wicklowpeople.ie', 'condado': 'Wicklow'},
     
-    # Carlow
+    # === CARLOW ===
     {'nombre': 'Carlow Live', 'url': 'https://www.carlowlive.ie/news/', 'base': 'https://www.carlowlive.ie', 'condado': 'Carlow'},
     {'nombre': 'Carlow Nationalist', 'url': 'https://www.carlownationalist.ie/news/', 'base': 'https://www.carlownationalist.ie', 'condado': 'Carlow'},
     
-    # Meath
+    # === MEATH ===
     {'nombre': 'Meath Chronicle', 'url': 'https://www.meathchronicle.ie/news/', 'base': 'https://www.meathchronicle.ie', 'condado': 'Meath'},
     {'nombre': 'Meath Live', 'url': 'https://www.meathlive.ie/news/', 'base': 'https://www.meathlive.ie', 'condado': 'Meath'},
     
-    # Longford
+    # === LONGFORD ===
     {'nombre': 'Longford Leader', 'url': 'https://www.longfordleader.ie/news/', 'base': 'https://www.longfordleader.ie', 'condado': 'Longford'},
     {'nombre': 'Longford News', 'url': 'https://www.longfordnews.ie/news/', 'base': 'https://www.longfordnews.ie', 'condado': 'Longford'},
     
-    # Leitrim
+    # === LEITRIM ===
     {'nombre': 'Leitrim Observer', 'url': 'https://www.leitrimobserver.ie/news/', 'base': 'https://www.leitrimobserver.ie', 'condado': 'Leitrim'},
     {'nombre': 'Leitrim Live', 'url': 'https://www.leitrimlive.ie/news/', 'base': 'https://www.leitrimlive.ie', 'condado': 'Leitrim'},
     
     # === IRLANDA DEL NORTE ===
     {'nombre': 'Belfast Live', 'url': 'https://www.belfastlive.co.uk/news/', 'base': 'https://www.belfastlive.co.uk', 'condado': 'Antrim'},
     {'nombre': 'Irish News', 'url': 'https://www.irishnews.com/news/', 'base': 'https://www.irishnews.com', 'condado': 'Antrim'},
+    {'nombre': 'News Letter', 'url': 'https://www.newsletter.co.uk/news/', 'base': 'https://www.newsletter.co.uk', 'condado': 'Antrim'},
+    {'nombre': 'Belfast Telegraph', 'url': 'https://www.belfasttelegraph.co.uk/news/', 'base': 'https://www.belfasttelegraph.co.uk', 'condado': 'Antrim'},
+    {'nombre': 'Derry Journal', 'url': 'https://www.derryjournal.com/news/', 'base': 'https://www.derryjournal.com', 'condado': 'Derry'},
+    {'nombre': 'Derry Now', 'url': 'https://www.derrynow.com/news/', 'base': 'https://www.derrynow.com', 'condado': 'Derry'},
+    {'nombre': 'Armagh I', 'url': 'https://armaghi.com/news/', 'base': 'https://armaghi.com', 'condado': 'Armagh'},
     {'nombre': 'Armagh Guardian', 'url': 'https://www.armaghguardian.co.uk/news/', 'base': 'https://www.armaghguardian.co.uk', 'condado': 'Armagh'},
     {'nombre': 'Down News', 'url': 'https://www.downnews.co.uk/news/', 'base': 'https://www.downnews.co.uk', 'condado': 'Down'},
     {'nombre': 'Newry Times', 'url': 'https://www.newrytimes.com/news/', 'base': 'https://www.newrytimes.com', 'condado': 'Down'},
+    {'nombre': 'The Impartial Reporter', 'url': 'https://www.impartialreporter.com/news/', 'base': 'https://www.impartialreporter.com', 'condado': 'Fermanagh'},
+    {'nombre': 'Fermanagh Herald', 'url': 'https://www.fermanaghherald.com/news/', 'base': 'https://www.fermanaghherald.com', 'condado': 'Fermanagh'},
+    {'nombre': 'Tyrone News', 'url': 'https://www.tyronenews.com/news/', 'base': 'https://www.tyronenews.com', 'condado': 'Tyrone'},
+    {'nombre': 'Tyrone Times', 'url': 'https://www.tyronetimes.co.uk/news/', 'base': 'https://www.tyronetimes.co.uk', 'condado': 'Tyrone'},
+]
+
+# URLs alternativas para detección automática
+URLS_ALTERNATIVAS = [
+    '/news',
+    '/crime',
+    '/latest-news',
+    '/breaking-news',
+    '/irish-news',
+    '/news/crime',
+    '/crime-news',
 ]
 
 # ============================================================================
@@ -908,7 +941,143 @@ th{{background:#333;color:#ff4444}}
         return html
 
 # ============================================================================
-# SELECCIÓN DE IDIOMA
+# DETECTOR DE URLs - CON BÚSQUEDA AUTOMÁTICA
+# ============================================================================
+
+class DetectorURLs:
+    """Detección automática de URLs alternativas"""
+    
+    def __init__(self):
+        self.cache_urls = {}
+        self.session = self._crear_sesion()
+    
+    def _crear_sesion(self):
+        session = requests.Session()
+        retry = Retry(total=0, read=0, connect=0)
+        adapter = HTTPAdapter(max_retries=retry)
+        session.mount('http://', adapter)
+        session.mount('https://', adapter)
+        return session
+    
+    def detectar_url(self, fuente):
+        """Busca URL alternativa cuando falla"""
+        nombre = fuente['nombre']
+        base = fuente['base']
+        
+        if nombre in self.cache_urls:
+            return self.cache_urls[nombre]
+        
+        for alt in URLS_ALTERNATIVAS:
+            url_test = base.rstrip('/') + alt
+            try:
+                headers = {'User-Agent': get_random_ua(), 'Connection': 'close'}
+                r = self.session.get(url_test, timeout=3, headers=headers, allow_redirects=True)
+                if r.status_code == 200:
+                    self.cache_urls[nombre] = url_test
+                    return url_test
+            except:
+                continue
+        
+        return fuente['url']
+
+# ============================================================================
+# VERIFICADOR DE FUENTES - CON BÚSQUEDA AUTOMÁTICA
+# ============================================================================
+
+class VerificadorFuentes:
+    def __init__(self):
+        self.estado_file = ARCHIVO_ESTADO
+        self.estado = self.cargar_estado()
+        self.detector = DetectorURLs()
+    
+    def cargar_estado(self):
+        if os.path.exists(self.estado_file):
+            try:
+                with open(self.estado_file, 'r', encoding='utf-8') as f:
+                    return json.load(f)
+            except:
+                return {}
+        return {}
+    
+    def guardar_estado(self):
+        with open(self.estado_file, 'w', encoding='utf-8') as f:
+            json.dump(self.estado, f, indent=2)
+    
+    def verificar_todas(self, fuentes, mostrar_progreso=True):
+        if mostrar_progreso:
+            cprint(f"\n{'=' * 80}", 'red', bold=True)
+            cprint(f"🔍 {t('verificando')}", 'red', bold=True)
+            cprint(f"{'=' * 80}", 'red', bold=True)
+        
+        verificadas = []
+        activas = 0
+        total = len(fuentes)
+        
+        for i, fuente in enumerate(fuentes, 1):
+            if mostrar_progreso:
+                pct = (i/total)*100
+                barra = '█' * int(i*40/total) + '░' * (40 - int(i*40/total))
+                sys.stdout.write(f"\r   📊 Progreso: [{barra}] {i}/{total} ({pct:.1f}%)")
+                sys.stdout.flush()
+            
+            if mostrar_progreso:
+                cprint(f"\n📰 [{i}/{total}] {fuente['nombre']}", 'yellow', bold=True, end=' ')
+            else:
+                cprint(f"\n📰 {fuente['nombre']}", 'yellow', bold=True, end=' ')
+            
+            # 1. Probar URL original
+            url_original = fuente['url']
+            try:
+                headers = {'User-Agent': get_random_ua(), 'Connection': 'close'}
+                r = requests.get(url_original, timeout=5, headers=headers, allow_redirects=True)
+                if r.status_code == 200:
+                    fuente['activo'] = True
+                    activas += 1
+                    cprint(f"✅ OK", 'green')
+                    verificadas.append(fuente)
+                    continue
+            except:
+                pass
+            
+            # 2. BUSCAR URL ALTERNATIVA
+            cprint(f"🔍 Buscando alternativa...", 'yellow', end=' ')
+            url_alternativa = self.detector.detectar_url(fuente)
+            
+            if url_alternativa and url_alternativa != fuente['url']:
+                try:
+                    headers = {'User-Agent': get_random_ua(), 'Connection': 'close'}
+                    r = requests.get(url_alternativa, timeout=5, headers=headers, allow_redirects=True)
+                    if r.status_code == 200:
+                        fuente['url'] = url_alternativa
+                        fuente['activo'] = True
+                        activas += 1
+                        cprint(f"✅ OK (alternativa encontrada)", 'green')
+                        verificadas.append(fuente)
+                        continue
+                    else:
+                        cprint(f"❌ Alternativa falló ({r.status_code})", 'red')
+                except:
+                    cprint(f"❌ Error en alternativa", 'red')
+            else:
+                cprint(f"❌ No se encontró alternativa", 'red')
+            
+            # 3. Si todo falla
+            fuente['activo'] = False
+            cprint(f"❌ INACTIVE", 'red')
+            verificadas.append(fuente)
+        
+        if mostrar_progreso:
+            print()
+            cprint(f"\n{'=' * 80}", 'green', bold=True)
+            cprint(f"📊 RESULTADOS:", 'green', bold=True)
+            cprint(f"   Fuentes activas: {activas} de {total}", 'white')
+            cprint(f"{'=' * 80}", 'green', bold=True)
+        
+        self.guardar_estado()
+        return verificadas
+
+# ============================================================================
+# SELECTOR DE IDIOMA
 # ============================================================================
 
 def seleccionar_idioma():
@@ -946,10 +1115,11 @@ def seleccionar_idioma():
     time.sleep(0.5)
 
 # ============================================================================
-# MENÚ PRINCIPAL
+# BANNER Y MENÚ
 # ============================================================================
 
 def mostrar_banner_inicial():
+    total_fuentes = len(FUENTES_BASE)
     print(f"""
 {Color.RED}
 ╔═══════════════════════════════════════════════════════════════════════════════╗
@@ -971,7 +1141,8 @@ def mostrar_banner_inicial():
 ║   ⚡ Parallel scanning · Cache optimizado · Ultra-fast                       ║
 ║   🧠 Detección inteligente de delitos · Sistema de pesos                     ║
 ║   🐢 Scraping respetuoso · Delays más largos · Anti-bloqueo mejorado         ║
-║   📰 {len(FUENTES_BASE)}+ FUENTES · Cobertura nacional completa                ║
+║   📰 {total_fuentes}+ FUENTES · Cobertura nacional completa                    ║
+║   🔍 DETECCIÓN AUTOMÁTICA DE URLs · Busca alternativas cuando falla            ║
 ║                                                                               ║
 ║   🛡️  "Un gran poder conlleva una gran responsabilidad" - Spider-Man          ║
 ║                                                                               ║
@@ -1021,7 +1192,7 @@ def menu():
             cprint(f"\n🔍 {t('procesando')}", 'cyan', bold=True)
             
             verificador = VerificadorFuentes()
-            fuentes_global = verificador.verificar_todas(fuentes_global, mostrar_progreso=False)
+            fuentes_global = verificador.verificar_todas(fuentes_global, mostrar_progreso=True)
             
             extractor = ExtractorNoticias(fuentes_global)
             nuevos = extractor.extraer_todas(paginas=PAGINAS_BUSQUEDA)
@@ -1167,78 +1338,6 @@ def menu():
             time.sleep(1)
 
 # ============================================================================
-# VERIFICADOR DE FUENTES
-# ============================================================================
-
-class VerificadorFuentes:
-    def __init__(self):
-        self.estado_file = ARCHIVO_ESTADO
-        self.estado = self.cargar_estado()
-    
-    def cargar_estado(self):
-        if os.path.exists(self.estado_file):
-            try:
-                with open(self.estado_file, 'r', encoding='utf-8') as f:
-                    return json.load(f)
-            except:
-                return {}
-        return {}
-    
-    def guardar_estado(self):
-        with open(self.estado_file, 'w', encoding='utf-8') as f:
-            json.dump(self.estado, f, indent=2)
-    
-    def verificar_todas(self, fuentes, mostrar_progreso=True):
-        if mostrar_progreso:
-            cprint(f"\n{'=' * 80}", 'red', bold=True)
-            cprint(f"🔍 {t('verificando')}", 'red', bold=True)
-            cprint(f"{'=' * 80}", 'red', bold=True)
-        
-        verificadas = []
-        activas = 0
-        total = len(fuentes)
-        
-        for i, fuente in enumerate(fuentes, 1):
-            if mostrar_progreso:
-                pct = (i/total)*100
-                barra = '█' * int(i*40/total) + '░' * (40 - int(i*40/total))
-                sys.stdout.write(f"\r   📊 Progreso: [{barra}] {i}/{total} ({pct:.1f}%)")
-                sys.stdout.flush()
-            
-            if mostrar_progreso:
-                cprint(f"\n📰 [{i}/{total}] {fuente['nombre']}", 'yellow', bold=True, end=' ')
-            else:
-                cprint(f"\n📰 {fuente['nombre']}", 'yellow', bold=True, end=' ')
-            
-            try:
-                headers = {'User-Agent': get_random_ua(), 'Accept-Language': 'en-US,en;q=0.9'}
-                r = requests.get(fuente['url'], timeout=TIMEOUT, headers=headers, allow_redirects=True)
-                if r.status_code == 200:
-                    fuente['activo'] = True
-                    activas += 1
-                    cprint(f"✅ OK", 'green')
-                else:
-                    fuente['activo'] = False
-                    cprint(f"❌ INACTIVE ({r.status_code})", 'red')
-            except Exception as e:
-                fuente['activo'] = False
-                cprint(f"❌ INACTIVE ({str(e)[:20]})", 'red')
-            
-            verificadas.append(fuente)
-            if mostrar_progreso:
-                time.sleep(0.2)
-        
-        if mostrar_progreso:
-            print()
-            cprint(f"\n{'=' * 80}", 'green', bold=True)
-            cprint(f"📊 RESULTADOS:", 'green', bold=True)
-            cprint(f"   Fuentes activas: {activas} de {total}", 'white')
-            cprint(f"{'=' * 80}", 'green', bold=True)
-        
-        self.guardar_estado()
-        return verificadas
-
-# ============================================================================
 # EXTRACTOR DE NOTICIAS
 # ============================================================================
 
@@ -1252,7 +1351,7 @@ class ExtractorNoticias:
     
     def _crear_sesion(self):
         session = requests.Session()
-        retry = Retry(total=2, read=2, connect=2, backoff_factor=0.5, status_forcelist=[429,500,502,503,504])
+        retry = Retry(total=1, read=1, connect=1, backoff_factor=0.3, status_forcelist=[429])
         adapter = HTTPAdapter(max_retries=retry)
         session.mount('http://', adapter)
         session.mount('https://', adapter)
@@ -1261,7 +1360,7 @@ class ExtractorNoticias:
     def fetch_url(self, url):
         for intento in range(MAX_INTENTOS):
             try:
-                headers = {'User-Agent': get_random_ua(), 'Accept-Language': 'en-US,en;q=0.9'}
+                headers = {'User-Agent': get_random_ua(), 'Accept-Language': 'en-US,en;q=0.9', 'Connection': 'close'}
                 response = self.session.get(url, timeout=TIMEOUT, headers=headers, allow_redirects=True)
                 if response.status_code == 200:
                     return response
@@ -1406,7 +1505,7 @@ gestor_global = None
 fuentes_global = None
 
 # ============================================================================
-# HTML_TEMPLATE - COMPLETO
+# HTML_TEMPLATE
 # ============================================================================
 
 HTML_TEMPLATE = """
@@ -1416,536 +1515,109 @@ HTML_TEMPLATE = """
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🦈 KELTIC KRAKEN - Ireland Crime Intelligence</title>
-    
     <script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
     <link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet">
-    
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
-            background: #0a0a0f;
-            color: #e8e8e8;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #14141a; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #006633, #ff4444); border-radius: 10px; }
-        .container { max-width: 1600px; margin: 0 auto; }
-        
-        @keyframes flagWave {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        @keyframes glowPulse {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.05); }
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #006633 0%, #006633 28%, #ffffff 28%, #ffffff 52%, #ff8833 52%, #ff8833 72%, #006633 72%, #006633 100%);
-            background-size: 300% 100%;
-            animation: flagWave 10s ease-in-out infinite;
-            padding: 30px;
-            border-radius: 28px;
-            text-align: center;
-            margin-bottom: 30px;
-            border: 2px solid rgba(255, 68, 68, 0.3);
-            box-shadow: 0 0 60px rgba(255, 68, 68, 0.15);
-            position: relative;
-            overflow: hidden;
-        }
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(255,255,255,0.08) 0%, transparent 70%);
-            animation: glowPulse 6s ease-in-out infinite;
-        }
-        .header-content {
-            position: relative;
-            z-index: 2;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(12px);
-            display: inline-block;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .header h1 {
-            font-family: 'Orbitron', monospace;
-            font-size: 3.5em;
-            font-weight: 900;
-            letter-spacing: 6px;
-            background: linear-gradient(135deg, #ffffff, #ff8833);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 30px rgba(255, 68, 68, 0.3));
-        }
-        .header .subtitle {
-            color: #ffffff;
-            font-size: 1em;
-            letter-spacing: 3px;
-            opacity: 0.8;
-            margin-top: 5px;
-            font-weight: 300;
-            text-transform: uppercase;
-        }
-        .header .badge-version {
-            display: inline-block;
-            background: rgba(255, 68, 68, 0.25);
-            border: 1px solid rgba(255, 68, 68, 0.4);
-            padding: 4px 18px;
-            border-radius: 30px;
-            font-size: 0.7em;
-            color: #ff6b6b;
-            margin-top: 8px;
-            font-weight: 600;
-        }
-        .clock-container {
-            text-align: center;
-            margin: 10px 0 20px;
-            font-family: 'Orbitron', monospace;
-            font-size: 0.9em;
-            color: #6a6a7a;
-            letter-spacing: 2px;
-        }
-        .clock-container span { color: #ff4444; }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-        .stat-card {
-            background: linear-gradient(145deg, #12121a, #1a1a24);
-            padding: 18px 15px;
-            border-radius: 16px;
-            text-align: center;
-            border-left: 4px solid #ff4444;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .stat-card::after {
-            content: '';
-            position: absolute;
-            top: -30px;
-            right: -30px;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 68, 68, 0.06), transparent);
-        }
-        .stat-card:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); border-left-color: #006633; }
-        .stat-card .stat-icon { font-size: 1.4em; display: block; margin-bottom: 2px; }
-        .stat-card .stat-number {
-            font-size: 2.2em;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ff4444, #ff8833);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.2;
-            font-family: 'Orbitron', monospace;
-        }
-        .stat-card .stat-label {
-            color: #9a9aaa;
-            font-size: 0.7em;
-            margin-top: 2px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .btn {
-            background: #1a1a24;
-            color: #e8e8e8;
-            border: 2px solid #2a2a3a;
-            padding: 8px 20px;
-            border-radius: 40px;
-            font-size: 0.8em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-family: 'Poppins', sans-serif;
-        }
-        .btn:hover { background: #ff4444; border-color: #ff4444; color: #fff; transform: scale(1.04); box-shadow: 0 0 25px rgba(255, 68, 68, 0.2); }
-        .btn-primary { background: #ff4444; border-color: #ff4444; color: #fff; }
-        .btn-primary:hover { background: #ff6666; border-color: #ff6666; box-shadow: 0 0 30px rgba(255, 68, 68, 0.3); }
-        .btn-green { border-color: #006633; color: #4ade80; }
-        .btn-green:hover { background: #006633; border-color: #006633; color: #fff; }
-        
-        .filtros {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .filtro-btn {
-            background: #14141c;
-            color: #aaa;
-            border: 2px solid #252535;
-            padding: 6px 16px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 0.8em;
-            font-weight: 500;
-            transition: all 0.25s ease;
-            font-family: 'Poppins', sans-serif;
-        }
-        .filtro-btn:hover { background: #2a2a3a; color: #fff; border-color: #ff4444; }
-        .filtro-btn.active { background: #ff4444; color: #fff; border-color: #ff4444; box-shadow: 0 0 20px rgba(255, 68, 68, 0.15); }
-        
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-        .map-container {
-            background: #0a0a0a;
-            border-radius: 18px;
-            overflow: hidden;
-            border: 1px solid #252535;
-            height: 600px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        .map-container:hover { border-color: #ff4444; box-shadow: 0 0 30px rgba(255, 68, 68, 0.05); }
-        #map3d { width: 100%; height: 100%; }
-        
-        .map-legend {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background: rgba(0,0,0,0.85);
-            padding: 15px 20px;
-            border-radius: 12px;
-            border: 1px solid #333;
-            z-index: 10;
-            backdrop-filter: blur(10px);
-            max-width: 200px;
-        }
-        .map-legend-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 3px 0;
-            font-size: 0.7em;
-            color: #ccc;
-        }
-        .map-legend-color {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.3);
-            flex-shrink: 0;
-        }
-        .map-controls {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .map-control-btn {
-            background: rgba(0,0,0,0.8);
-            color: #fff;
-            border: 1px solid #444;
-            border-radius: 8px;
-            padding: 8px 12px;
-            cursor: pointer;
-            font-size: 0.7em;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-            font-family: 'Poppins', sans-serif;
-        }
-        .map-control-btn:hover { background: #ff4444; border-color: #ff4444; }
-        
-        .stats-col {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .stats-col .stats-grid { margin-bottom: 0; }
-        
-        .charts-row {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-        .chart-container {
-            background: linear-gradient(145deg, #12121a, #1a1a24);
-            border-radius: 18px;
-            padding: 18px 16px 14px;
-            border: 1px solid #252535;
-            transition: all 0.3s ease;
-        }
-        .chart-container:hover { border-color: #ff4444; box-shadow: 0 0 30px rgba(255, 68, 68, 0.05); }
-        .chart-title {
-            color: #ff4444;
-            font-size: 0.95em;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        .chart-container canvas { max-height: 200px; }
-        
-        .leaderboard {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 25px;
-        }
-        .leader-card {
-            background: linear-gradient(145deg, #12121a, #1a1a24);
-            border-radius: 18px;
-            padding: 18px 20px;
-            border: 1px solid #252535;
-            transition: all 0.3s ease;
-        }
-        .leader-card:hover { border-color: #ff4444; }
-        .leader-card h4 {
-            color: #9a9aaa;
-            font-size: 0.7em;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-        .leader-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 5px 0;
-            border-bottom: 1px solid #1a1a24;
-            font-size: 0.85em;
-        }
-        .leader-item:last-child { border-bottom: none; }
-        .leader-item .rank {
-            color: #5a5a6a;
-            font-weight: 600;
-            margin-right: 10px;
-            min-width: 20px;
-        }
-        .leader-item .name { color: #e8e8e8; flex: 1; }
-        .leader-item .count { color: #ff4444; font-weight: 700; }
-        .leader-item .rank.gold { color: #fbbf24; }
-        .leader-item .rank.silver { color: #9ca3af; }
-        .leader-item .rank.bronze { color: #d97706; }
-        
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            margin: 15px 0 20px;
-        }
-        .page-link {
-            background: #1a1a24;
-            color: #ff4444;
-            padding: 6px 16px;
-            border-radius: 10px;
-            text-decoration: none;
-            border: 1px solid #2a2a3a;
-            font-weight: 600;
-            transition: all 0.2s ease;
-            font-size: 0.85em;
-        }
-        .page-link:hover { background: #ff4444; color: #fff; border-color: #ff4444; transform: scale(1.05); }
-        .page-info { color: #9a9aaa; font-size: 0.85em; }
-        
-        .crime-list {
-            background: linear-gradient(145deg, #12121a, #1a1a24);
-            border-radius: 18px;
-            padding: 18px 20px;
-            border: 1px solid #252535;
-        }
-        .crime-list-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .crime-list-title {
-            color: #ff4444;
-            font-size: 1.1em;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .crime-list-title .badge-count {
-            background: #2a2a3a;
-            color: #9a9aaa;
-            font-size: 0.6em;
-            padding: 2px 12px;
-            border-radius: 30px;
-            font-weight: 400;
-        }
-        .crime-card {
-            background: #0d0d15;
-            margin-bottom: 10px;
-            padding: 14px 18px;
-            border-radius: 12px;
-            border-left: 4px solid #ff4444;
-            transition: all 0.25s ease;
-            cursor: pointer;
-        }
-        .crime-card:hover {
-            background: #16161f;
-            transform: translateX(6px);
-            border-left-color: #006633;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-        .crime-card .crime-title {
-            font-weight: 600;
-            font-size: 0.95em;
-            color: #f0f0f0;
-            margin-bottom: 4px;
-        }
-        .crime-card .crime-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            font-size: 0.7em;
-            color: #8a8a9a;
-            align-items: center;
-        }
-        .crime-card .crime-meta .badge {
-            background: #14141c;
-            padding: 2px 10px;
-            border-radius: 20px;
-            border: 1px solid #252535;
-        }
-        .crime-card .crime-meta .badge-tipo {
-            font-weight: 600;
-            border-color: #ff4444;
-            color: #ff4444;
-        }
-        .severity-bar {
-            height: 3px;
-            background: #1a1a24;
-            border-radius: 4px;
-            margin-top: 6px;
-            overflow: hidden;
-        }
-        .severity-fill {
-            height: 100%;
-            border-radius: 4px;
-            transition: width 0.8s ease;
-            background: linear-gradient(90deg, #006633, #ff4444);
-        }
-        
-        .crime-popup .maplibregl-popup-content {
-            background: rgba(10,10,10,0.95);
-            color: #e0e0e0;
-            padding: 15px 20px;
-            border-radius: 12px;
-            border: 1px solid #ff4444;
-            max-width: 320px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 30px rgba(255,0,0,0.2);
-        }
-        .crime-popup .maplibregl-popup-tip { border-top-color: rgba(10,10,10,0.95); }
-        .popup-title {
-            color: #ff4444;
-            font-size: 1em;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-        .popup-meta {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 5px 15px;
-            font-size: 0.8em;
-            color: #aaa;
-            margin: 8px 0;
-        }
-        .popup-meta strong { color: #fff; }
-        .popup-severity {
-            margin-top: 8px;
-            padding-top: 8px;
-            border-top: 1px solid #333;
-            font-size: 0.85em;
-        }
-        .popup-severity .sev-label { color: #ff6666; font-weight: bold; }
-        
-        .footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-            color: #5a5a6a;
-            font-size: 0.75em;
-            border-top: 1px solid #1a1a24;
-            letter-spacing: 0.5px;
-        }
-        .footer a { color: #ff4444; text-decoration: none; }
-        .footer a:hover { text-decoration: underline; }
-        
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .stat-card, .chart-container, .leader-card, .crime-card {
-            animation: fadeInUp 0.5s ease forwards;
-        }
-        
-        @media (max-width: 1200px) {
-            .dashboard-grid { grid-template-columns: 1fr; }
-            .map-container { height: 450px; }
-        }
-        @media (max-width: 768px) {
-            .header h1 { font-size: 2em; letter-spacing: 3px; }
-            .header-content { padding: 15px 20px; }
-            .stats-grid { grid-template-columns: repeat(3, 1fr); }
-            .charts-row { grid-template-columns: 1fr; }
-            .map-container { height: 350px; }
-        }
-        @media (max-width: 480px) {
-            .stats-grid { grid-template-columns: 1fr 1fr; }
-        }
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Poppins',sans-serif;background:#0a0a0f;color:#e8e8e8;min-height:100vh;padding:20px}
+        ::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:#14141a;border-radius:10px}::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#006633,#ff4444);border-radius:10px}
+        .container{max-width:1600px;margin:0 auto}
+        @keyframes flagWave{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+        .header{background:linear-gradient(135deg,#006633 0%,#006633 28%,#ffffff 28%,#ffffff 52%,#ff8833 52%,#ff8833 72%,#006633 72%,#006633 100%);background-size:300% 100%;animation:flagWave 10s ease-in-out infinite;padding:30px;border-radius:28px;text-align:center;margin-bottom:30px;border:2px solid rgba(255,68,68,0.3);box-shadow:0 0 60px rgba(255,68,68,0.15);position:relative;overflow:hidden}
+        .header::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at center,rgba(255,255,255,0.08) 0%,transparent 70%);animation:glowPulse 6s ease-in-out infinite}
+        @keyframes glowPulse{0%,100%{opacity:0.3;transform:scale(1)}50%{opacity:0.8;transform:scale(1.05)}}
+        .header-content{position:relative;z-index:2;background:rgba(0,0,0,0.7);padding:20px 40px;border-radius:20px;backdrop-filter:blur(12px);display:inline-block;border:1px solid rgba(255,255,255,0.1)}
+        .header h1{font-family:'Orbitron',monospace;font-size:3.5em;font-weight:900;letter-spacing:6px;background:linear-gradient(135deg,#ffffff,#ff8833);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 30px rgba(255,68,68,0.3))}
+        .header .subtitle{color:#ffffff;font-size:1em;letter-spacing:3px;opacity:0.8;margin-top:5px;font-weight:300;text-transform:uppercase}
+        .header .badge-version{display:inline-block;background:rgba(255,68,68,0.25);border:1px solid rgba(255,68,68,0.4);padding:4px 18px;border-radius:30px;font-size:0.7em;color:#ff6b6b;margin-top:8px;font-weight:600}
+        .clock-container{text-align:center;margin:10px 0 20px;font-family:'Orbitron',monospace;font-size:0.9em;color:#6a6a7a;letter-spacing:2px}
+        .clock-container span{color:#ff4444}
+        .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:15px;margin-bottom:25px}
+        .stat-card{background:linear-gradient(145deg,#12121a,#1a1a24);padding:18px 15px;border-radius:16px;text-align:center;border-left:4px solid #ff4444;transition:all 0.3s ease;position:relative;overflow:hidden}
+        .stat-card::after{content:'';position:absolute;top:-30px;right:-30px;width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,rgba(255,68,68,0.06),transparent)}
+        .stat-card:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 10px 30px rgba(0,0,0,0.4);border-left-color:#006633}
+        .stat-card .stat-icon{font-size:1.4em;display:block;margin-bottom:2px}
+        .stat-card .stat-number{font-size:2.2em;font-weight:800;background:linear-gradient(135deg,#ff4444,#ff8833);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2;font-family:'Orbitron',monospace}
+        .stat-card .stat-label{color:#9a9aaa;font-size:0.7em;margin-top:2px;font-weight:500;text-transform:uppercase;letter-spacing:0.5px}
+        .btn-group{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:20px}
+        .btn{background:#1a1a24;color:#e8e8e8;border:2px solid #2a2a3a;padding:8px 20px;border-radius:40px;font-size:0.8em;font-weight:600;cursor:pointer;transition:all 0.25s ease;text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-family:'Poppins',sans-serif}
+        .btn:hover{background:#ff4444;border-color:#ff4444;color:#fff;transform:scale(1.04);box-shadow:0 0 25px rgba(255,68,68,0.2)}
+        .btn-primary{background:#ff4444;border-color:#ff4444;color:#fff}
+        .btn-primary:hover{background:#ff6666;border-color:#ff6666;box-shadow:0 0 30px rgba(255,68,68,0.3)}
+        .btn-green{border-color:#006633;color:#4ade80}
+        .btn-green:hover{background:#006633;border-color:#006633;color:#fff}
+        .filtros{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:20px}
+        .filtro-btn{background:#14141c;color:#aaa;border:2px solid #252535;padding:6px 16px;border-radius:30px;text-decoration:none;font-size:0.8em;font-weight:500;transition:all 0.25s ease;font-family:'Poppins',sans-serif}
+        .filtro-btn:hover{background:#2a2a3a;color:#fff;border-color:#ff4444}
+        .filtro-btn.active{background:#ff4444;color:#fff;border-color:#ff4444;box-shadow:0 0 20px rgba(255,68,68,0.15)}
+        .dashboard-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px;margin-bottom:30px}
+        .map-container{background:#0a0a0a;border-radius:18px;overflow:hidden;border:1px solid #252535;height:600px;position:relative;transition:all 0.3s ease}
+        .map-container:hover{border-color:#ff4444;box-shadow:0 0 30px rgba(255,68,68,0.05)}
+        #map3d{width:100%;height:100%}
+        .map-legend{position:absolute;bottom:20px;left:20px;background:rgba(0,0,0,0.85);padding:15px 20px;border-radius:12px;border:1px solid #333;z-index:10;backdrop-filter:blur(10px);max-width:200px}
+        .map-legend-item{display:flex;align-items:center;gap:10px;margin:3px 0;font-size:0.7em;color:#ccc}
+        .map-legend-color{width:12px;height:12px;border-radius:50%;border:1px solid rgba(255,255,255,0.3);flex-shrink:0}
+        .map-controls{position:absolute;top:20px;right:20px;z-index:10;display:flex;flex-direction:column;gap:8px}
+        .map-control-btn{background:rgba(0,0,0,0.8);color:#fff;border:1px solid #444;border-radius:8px;padding:8px 12px;cursor:pointer;font-size:0.7em;transition:all 0.3s ease;backdrop-filter:blur(5px);font-family:'Poppins',sans-serif}
+        .map-control-btn:hover{background:#ff4444;border-color:#ff4444}
+        .stats-col{display:flex;flex-direction:column;gap:15px}
+        .stats-col .stats-grid{margin-bottom:0}
+        .charts-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;margin-bottom:25px}
+        .chart-container{background:linear-gradient(145deg,#12121a,#1a1a24);border-radius:18px;padding:18px 16px 14px;border:1px solid #252535;transition:all 0.3s ease}
+        .chart-container:hover{border-color:#ff4444;box-shadow:0 0 30px rgba(255,68,68,0.05)}
+        .chart-title{color:#ff4444;font-size:0.95em;font-weight:700;text-align:center;margin-bottom:12px;letter-spacing:1px;text-transform:uppercase}
+        .chart-container canvas{max-height:200px}
+        .leaderboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-bottom:25px}
+        .leader-card{background:linear-gradient(145deg,#12121a,#1a1a24);border-radius:18px;padding:18px 20px;border:1px solid #252535;transition:all 0.3s ease}
+        .leader-card:hover{border-color:#ff4444}
+        .leader-card h4{color:#9a9aaa;font-size:0.7em;text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;font-weight:600}
+        .leader-item{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #1a1a24;font-size:0.85em}
+        .leader-item:last-child{border-bottom:none}
+        .leader-item .rank{color:#5a5a6a;font-weight:600;margin-right:10px;min-width:20px}
+        .leader-item .name{color:#e8e8e8;flex:1}
+        .leader-item .count{color:#ff4444;font-weight:700}
+        .leader-item .rank.gold{color:#fbbf24}
+        .leader-item .rank.silver{color:#9ca3af}
+        .leader-item .rank.bronze{color:#d97706}
+        .pagination{display:flex;justify-content:center;align-items:center;gap:12px;margin:15px 0 20px}
+        .page-link{background:#1a1a24;color:#ff4444;padding:6px 16px;border-radius:10px;text-decoration:none;border:1px solid #2a2a3a;font-weight:600;transition:all 0.2s ease;font-size:0.85em}
+        .page-link:hover{background:#ff4444;color:#fff;border-color:#ff4444;transform:scale(1.05)}
+        .page-info{color:#9a9aaa;font-size:0.85em}
+        .crime-list{background:linear-gradient(145deg,#12121a,#1a1a24);border-radius:18px;padding:18px 20px;border:1px solid #252535}
+        .crime-list-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;flex-wrap:wrap;gap:10px}
+        .crime-list-title{color:#ff4444;font-size:1.1em;font-weight:700;display:flex;align-items:center;gap:10px}
+        .crime-list-title .badge-count{background:#2a2a3a;color:#9a9aaa;font-size:0.6em;padding:2px 12px;border-radius:30px;font-weight:400}
+        .crime-card{background:#0d0d15;margin-bottom:10px;padding:14px 18px;border-radius:12px;border-left:4px solid #ff4444;transition:all 0.25s ease;cursor:pointer}
+        .crime-card:hover{background:#16161f;transform:translateX(6px);border-left-color:#006633;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+        .crime-card .crime-title{font-weight:600;font-size:0.95em;color:#f0f0f0;margin-bottom:4px}
+        .crime-card .crime-meta{display:flex;flex-wrap:wrap;gap:8px;font-size:0.7em;color:#8a8a9a;align-items:center}
+        .crime-card .crime-meta .badge{background:#14141c;padding:2px 10px;border-radius:20px;border:1px solid #252535}
+        .crime-card .crime-meta .badge-tipo{font-weight:600;border-color:#ff4444;color:#ff4444}
+        .severity-bar{height:3px;background:#1a1a24;border-radius:4px;margin-top:6px;overflow:hidden}
+        .severity-fill{height:100%;border-radius:4px;transition:width 0.8s ease;background:linear-gradient(90deg,#006633,#ff4444)}
+        .crime-popup .maplibregl-popup-content{background:rgba(10,10,10,0.95);color:#e0e0e0;padding:15px 20px;border-radius:12px;border:1px solid #ff4444;max-width:320px;backdrop-filter:blur(10px);box-shadow:0 0 30px rgba(255,0,0,0.2)}
+        .crime-popup .maplibregl-popup-tip{border-top-color:rgba(10,10,10,0.95)}
+        .popup-title{color:#ff4444;font-size:1em;font-weight:bold;margin-bottom:8px}
+        .popup-meta{display:grid;grid-template-columns:1fr 1fr;gap:5px 15px;font-size:0.8em;color:#aaa;margin:8px 0}
+        .popup-meta strong{color:#fff}
+        .popup-severity{margin-top:8px;padding-top:8px;border-top:1px solid #333;font-size:0.85em}
+        .popup-severity .sev-label{color:#ff6666;font-weight:bold}
+        .footer{text-align:center;padding:20px;margin-top:30px;color:#5a5a6a;font-size:0.75em;border-top:1px solid #1a1a24;letter-spacing:0.5px}
+        .footer a{color:#ff4444;text-decoration:none}
+        .footer a:hover{text-decoration:underline}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .stat-card,.chart-container,.leader-card,.crime-card{animation:fadeInUp 0.5s ease forwards}
+        @media(max-width:1200px){.dashboard-grid{grid-template-columns:1fr}.map-container{height:450px}}
+        @media(max-width:768px){.header h1{font-size:2em;letter-spacing:3px}.header-content{padding:15px 20px}.stats-grid{grid-template-columns:repeat(3,1fr)}.charts-row{grid-template-columns:1fr}.map-container{height:350px}}
+        @media(max-width:480px){.stats-grid{grid-template-columns:1fr 1fr}}
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <div class="header-content">
-                <h1>🦈 KELTIC KRAKEN</h1>
-                <div class="subtitle">Ireland Crime Intelligence · {{ version }}</div>
-                <div class="badge-version">v{{ version }} · {{ stats.total }} crímenes</div>
-            </div>
-        </div>
+        <div class="header"><div class="header-content"><h1>🦈 KELTIC KRAKEN</h1><div class="subtitle">Ireland Crime Intelligence · {{ version }}</div><div class="badge-version">v{{ version }} · {{ stats.total }} crímenes</div></div></div>
         <div class="clock-container"><i class="fas fa-clock"></i> <span id="clock">--:--:--</span> <span style="margin-left:15px;">📅 <span id="date">--/--/----</span></span></div>
-        
         <div class="stats-grid">
             <div class="stat-card"><span class="stat-icon">📊</span><div class="stat-number">{{ stats.total }}</div><div class="stat-label">Total Crímenes</div></div>
             <div class="stat-card"><span class="stat-icon">⚡</span><div class="stat-number">{{ stats.ultimos_7dias }}</div><div class="stat-label">Últimos 7 días</div></div>
@@ -1954,7 +1626,6 @@ HTML_TEMPLATE = """
             <div class="stat-card"><span class="stat-icon">🏴</span><div class="stat-number">{{ stats.condados|length }}</div><div class="stat-label">Condados</div></div>
             <div class="stat-card"><span class="stat-icon">🔪</span><div class="stat-number">{{ stats.tipos|length }}</div><div class="stat-label">Tipos Detectados</div></div>
         </div>
-        
         <div class="btn-group">
             <form action="/actualizar" method="post" style="display:inline"><button class="btn btn-primary"><i class="fas fa-sync-alt"></i> Actualizar</button></form>
             <a href="/exportar/json" class="btn btn-green"><i class="fas fa-file-code"></i> JSON</a>
@@ -1962,356 +1633,48 @@ HTML_TEMPLATE = """
             <a href="/exportar/html" class="btn btn-green"><i class="fas fa-file-alt"></i> HTML</a>
             <button class="btn" onclick="window.location.reload();"><i class="fas fa-redo-alt"></i> Recargar</button>
         </div>
-        
         <div class="filtros">
             <a href="/page/1?filtro=todo" class="filtro-btn {% if filtro == 'todo' %}active{% endif %}">📅 Todo</a>
             <a href="/page/1?filtro=7d" class="filtro-btn {% if filtro == '7d' %}active{% endif %}">⚡ 7d</a>
             <a href="/page/1?filtro=30d" class="filtro-btn {% if filtro == '30d' %}active{% endif %}">🔥 30d</a>
             <a href="/page/1?filtro=90d" class="filtro-btn {% if filtro == '90d' %}active{% endif %}">📊 90d</a>
         </div>
-        
         <div class="dashboard-grid">
-            <div class="map-container">
-                <div id="map3d"></div>
-                <div class="map-legend">
-                    <div style="color:#ff4444; font-weight:bold; font-size:0.8em; margin-bottom:6px;">🔪 TIPOS</div>
-                    {% for tipo, info in tipos_crimen.items() %}
-                    <div class="map-legend-item">
-                        <span class="map-legend-color" style="background:{{ info.color }};"></span>
-                        {{ info.icono }} {{ info.nombre }}
-                    </div>
-                    {% endfor %}
-                </div>
-                <div class="map-controls">
-                    <button class="map-control-btn" onclick="resetMapView()">🔄 Reset</button>
-                    <button class="map-control-btn" onclick="toggle3D()">🎯 3D</button>
-                </div>
+            <div class="map-container"><div id="map3d"></div>
+                <div class="map-legend"><div style="color:#ff4444;font-weight:bold;font-size:0.8em;margin-bottom:6px;">🔪 TIPOS</div>{% for tipo, info in tipos_crimen.items() %}<div class="map-legend-item"><span class="map-legend-color" style="background:{{ info.color }};"></span>{{ info.icono }} {{ info.nombre }}</div>{% endfor %}</div>
+                <div class="map-controls"><button class="map-control-btn" onclick="resetMapView()">🔄 Reset</button><button class="map-control-btn" onclick="toggle3D()">🎯 3D</button></div>
             </div>
             <div class="stats-col">
                 <div class="leaderboard" style="grid-template-columns:1fr;">
-                    <div class="leader-card">
-                        <h4><i class="fas fa-trophy" style="color:#fbbf24;"></i> Top Condados</h4>
-                        {% set dept_list = stats.condados.items()|list|sort(attribute='1', reverse=true) %}
-                        {% for condado, count in dept_list[:5] %}
-                        <div class="leader-item"><span class="rank {% if loop.index == 1 %}gold{% elif loop.index == 2 %}silver{% elif loop.index == 3 %}bronze{% endif %}">{{ loop.index }}</span><span class="name">{{ condado }}</span><span class="count">{{ count }}</span></div>
-                        {% else %}
-                        <div class="leader-item"><span class="name" style="color:#5a5a6a;">Sin datos</span></div>
-                        {% endfor %}
-                    </div>
-                    <div class="leader-card">
-                        <h4><i class="fas fa-skull" style="color:#ff4444;"></i> Top Tipos</h4>
-                        {% set tipo_list = stats.tipos.items()|list|sort(attribute='1', reverse=true) %}
-                        {% for tipo, count in tipo_list[:5] %}
-                        <div class="leader-item"><span class="rank {% if loop.index == 1 %}gold{% elif loop.index == 2 %}silver{% elif loop.index == 3 %}bronze{% endif %}">{{ loop.index }}</span><span class="name">{{ tipo|upper }}</span><span class="count">{{ count }}</span></div>
-                        {% else %}
-                        <div class="leader-item"><span class="name" style="color:#5a5a6a;">Sin datos</span></div>
-                        {% endfor %}
-                    </div>
+                    <div class="leader-card"><h4><i class="fas fa-trophy" style="color:#fbbf24;"></i> Top Condados</h4>{% set dept_list = stats.condados.items()|list|sort(attribute='1', reverse=true) %}{% for condado, count in dept_list[:5] %}<div class="leader-item"><span class="rank {% if loop.index == 1 %}gold{% elif loop.index == 2 %}silver{% elif loop.index == 3 %}bronze{% endif %}">{{ loop.index }}</span><span class="name">{{ condado }}</span><span class="count">{{ count }}</span></div>{% else %}<div class="leader-item"><span class="name" style="color:#5a5a6a;">Sin datos</span></div>{% endfor %}</div>
+                    <div class="leader-card"><h4><i class="fas fa-skull" style="color:#ff4444;"></i> Top Tipos</h4>{% set tipo_list = stats.tipos.items()|list|sort(attribute='1', reverse=true) %}{% for tipo, count in tipo_list[:5] %}<div class="leader-item"><span class="rank {% if loop.index == 1 %}gold{% elif loop.index == 2 %}silver{% elif loop.index == 3 %}bronze{% endif %}">{{ loop.index }}</span><span class="name">{{ tipo|upper }}</span><span class="count">{{ count }}</span></div>{% else %}<div class="leader-item"><span class="name" style="color:#5a5a6a;">Sin datos</span></div>{% endfor %}</div>
                 </div>
             </div>
         </div>
-        
         <div class="charts-row">
             <div class="chart-container"><div class="chart-title">📍 CONDADOS</div><canvas id="countyChart"></canvas></div>
             <div class="chart-container"><div class="chart-title">🔪 TIPOS DE CRIMEN</div><canvas id="typeChart"></canvas></div>
             <div class="chart-container"><div class="chart-title">📈 EVOLUCIÓN MENSUAL</div><canvas id="trendChart"></canvas></div>
             <div class="chart-container"><div class="chart-title">📰 FUENTES PRINCIPALES</div><canvas id="sourcesChart"></canvas></div>
         </div>
-        
-        <div class="pagination">
-            {% if page > 1 %}<a href="/page/{{ page-1 }}?filtro={{ filtro }}" class="page-link"><i class="fas fa-chevron-left"></i> Anterior</a>{% endif %}
-            <span class="page-info">Página {{ page }} / {{ total_pages }}</span>
-            {% if page < total_pages %}<a href="/page/{{ page+1 }}?filtro={{ filtro }}" class="page-link">Siguiente <i class="fas fa-chevron-right"></i></a>{% endif %}
-        </div>
-        
-        <div class="crime-list">
-            <div class="crime-list-header">
-                <div class="crime-list-title"><i class="fas fa-skull"></i> Últimos crímenes <span class="badge-count">{{ total_incidentes }} crímenes</span></div>
-            </div>
-            {% for c in crimes_paginados %}
-            <div class="crime-card">
-                <div class="crime-title">{{ c.titulo[:170] }}{% if c.titulo|length > 170 %}...{% endif %}</div>
-                <div class="crime-meta">
-                    <span class="badge"><i class="fas fa-map-marker-alt"></i> {{ c.condado or '?' }}</span>
-                    <span class="badge"><i class="fas fa-calendar-alt"></i> {{ c.fecha }}</span>
-                    <span class="badge"><i class="fas fa-newspaper"></i> {{ c.fuente|truncate(20) }}</span>
-                    <span class="badge badge-tipo"><i class="fas fa-tag"></i> {{ c.tipo|upper }}</span>
-                    <span class="badge"><i class="fas fa-fire"></i> Severidad: {{ c.severidad }}/10</span>
-                </div>
-                <div class="severity-bar"><div class="severity-fill" style="width: {{ c.severidad * 10 }}%;"></div></div>
-            </div>
-            {% else %}
-            <div style="text-align:center;padding:40px 0;color:#5a5a6a;"><i class="fas fa-search" style="font-size:2.5em;display:block;margin-bottom:12px;color:#3a3a4a;"></i>Sin datos. Ejecuta "Actualizar" para cargar crímenes</div>
-            {% endfor %}
-        </div>
-        
-        <div class="footer">
-            <p><i class="fas fa-shield-alt" style="color:#ff4444;"></i> KELTIC KRAKEN v{{ version }} · {{ periodicos_activos }} fuentes · {{ stats.total }} crímenes</p>
-            <p style="margin-top:4px;font-size:0.7em;color:#3a3a4a;">🛡️ "Un gran poder conlleva una gran responsabilidad" · By Condor2026 · SpectrumSecurity</p>
-        </div>
+        <div class="pagination">{% if page > 1 %}<a href="/page/{{ page-1 }}?filtro={{ filtro }}" class="page-link"><i class="fas fa-chevron-left"></i> Anterior</a>{% endif %}<span class="page-info">Página {{ page }} / {{ total_pages }}</span>{% if page < total_pages %}<a href="/page/{{ page+1 }}?filtro={{ filtro }}" class="page-link">Siguiente <i class="fas fa-chevron-right"></i></a>{% endif %}</div>
+        <div class="crime-list"><div class="crime-list-header"><div class="crime-list-title"><i class="fas fa-skull"></i> Últimos crímenes <span class="badge-count">{{ total_incidentes }} crímenes</span></div></div>{% for c in crimes_paginados %}<div class="crime-card"><div class="crime-title">{{ c.titulo[:170] }}{% if c.titulo|length > 170 %}...{% endif %}</div><div class="crime-meta"><span class="badge"><i class="fas fa-map-marker-alt"></i> {{ c.condado or '?' }}</span><span class="badge"><i class="fas fa-calendar-alt"></i> {{ c.fecha }}</span><span class="badge"><i class="fas fa-newspaper"></i> {{ c.fuente|truncate(20) }}</span><span class="badge badge-tipo"><i class="fas fa-tag"></i> {{ c.tipo|upper }}</span><span class="badge"><i class="fas fa-fire"></i> Severidad: {{ c.severidad }}/10</span></div><div class="severity-bar"><div class="severity-fill" style="width: {{ c.severidad * 10 }}%;"></div></div></div>{% else %}<div style="text-align:center;padding:40px 0;color:#5a5a6a;"><i class="fas fa-search" style="font-size:2.5em;display:block;margin-bottom:12px;color:#3a3a4a;"></i>Sin datos. Ejecuta "Actualizar" para cargar crímenes</div>{% endfor %}</div>
+        <div class="footer"><p><i class="fas fa-shield-alt" style="color:#ff4444;"></i> KELTIC KRAKEN v{{ version }} · {{ periodicos_activos }} fuentes · {{ stats.total }} crímenes</p><p style="margin-top:4px;font-size:0.7em;color:#3a3a4a;">🛡️ "Un gran poder conlleva una gran responsabilidad" · By Condor2026 · SpectrumSecurity</p></div>
     </div>
-    
     <script>
         const crimeData = {{ datos_mapa|tojson }};
-        let is3D = true;
-        let map;
-        
-        function initMap() {
-            map = new maplibregl.Map({
-                container: 'map3d',
-                style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
-                center: [-8.0, 53.2],
-                zoom: 6.5,
-                pitch: 50,
-                bearing: 10,
-                antialias: true,
-                renderWorldCopies: false
-            });
-            
-            map.addControl(new maplibregl.NavigationControl(), 'top-right');
-            
-            map.on('load', () => {
-                addCrimePoints();
-            });
-        }
-        
-        function addCrimePoints() {
-            const features = crimeData.map(crime => ({
-                type: 'Feature',
-                geometry: {
-                    type: 'Point',
-                    coordinates: [crime.lon || -8.0, crime.lat || 53.0]
-                },
-                properties: {
-                    titulo: crime.titulo || 'Sin título',
-                    condado: crime.condado || 'Desconocido',
-                    fecha: crime.fecha || 'N/A',
-                    tipo: crime.tipo || 'other',
-                    fuente: crime.fuente || 'Desconocida',
-                    color: crime.color || '#666666',
-                    severity: crime.severidad || 3,
-                    id: crime.id
-                }
-            }));
-            
-            map.addSource('crimes', {
-                type: 'geojson',
-                data: {
-                    type: 'FeatureCollection',
-                    features: features
-                },
-                cluster: true,
-                clusterMaxZoom: 14,
-                clusterRadius: 50
-            });
-            
-            map.addLayer({
-                id: 'clusters',
-                type: 'circle',
-                source: 'crimes',
-                filter: ['has', 'point_count'],
-                paint: {
-                    'circle-color': [
-                        'step',
-                        ['get', 'point_count'],
-                        '#ff4444',
-                        10, '#ff6b6b',
-                        50, '#ff8c42'
-                    ],
-                    'circle-radius': [
-                        'step',
-                        ['get', 'point_count'],
-                        15,
-                        10, 20,
-                        50, 30
-                    ],
-                    'circle-opacity': 0.8,
-                    'circle-stroke-width': 2,
-                    'circle-stroke-color': '#ffffff'
-                }
-            });
-            
-            map.addLayer({
-                id: 'cluster-count',
-                type: 'symbol',
-                source: 'crimes',
-                filter: ['has', 'point_count'],
-                layout: {
-                    'text-field': '{point_count_abbreviated}',
-                    'text-font': ['DIN Offc Pro Medium', 'Arial Unicode MS Bold'],
-                    'text-size': 12,
-                    'text-color': '#ffffff'
-                }
-            });
-            
-            map.addLayer({
-                id: 'crime-points',
-                type: 'circle',
-                source: 'crimes',
-                filter: ['!', ['has', 'point_count']],
-                paint: {
-                    'circle-radius': [
-                        'interpolate',
-                        ['linear'],
-                        ['zoom'],
-                        5, 6,
-                        8, 10,
-                        12, 16
-                    ],
-                    'circle-color': ['get', 'color'],
-                    'circle-opacity': 0.85,
-                    'circle-stroke-width': 2,
-                    'circle-stroke-color': '#ffffff',
-                    'circle-blur': 0.1
-                }
-            });
-            
-            map.on('click', 'crime-points', showCrimePopup);
-            map.on('mouseenter', 'crime-points', () => { map.getCanvas().style.cursor = 'pointer'; });
-            map.on('mouseleave', 'crime-points', () => { map.getCanvas().style.cursor = ''; });
-        }
-        
-        function showCrimePopup(e) {
-            const feature = e.features[0];
-            const props = feature.properties;
-            const severityColor = props.severity > 7 ? '#ff0000' : props.severity > 4 ? '#ff8c00' : '#00cc00';
-            
-            new maplibregl.Popup({
-                offset: [0, -15],
-                className: 'crime-popup',
-                closeButton: true,
-                closeOnClick: false
-            })
-            .setLngLat(feature.geometry.coordinates)
-            .setHTML(`
-                <div class="popup-title">🔪 ${props.titulo.substring(0, 80)}${props.titulo.length > 80 ? '...' : ''}</div>
-                <div class="popup-meta">
-                    <span><strong>📍</strong> ${props.condado}</span>
-                    <span><strong>📅</strong> ${props.fecha}</span>
-                    <span><strong>🔪</strong> ${props.tipo.toUpperCase()}</span>
-                    <span><strong>📰</strong> ${props.fuente}</span>
-                </div>
-                <div class="popup-severity">
-                    <span class="sev-label">⚡ Severidad:</span>
-                    <span style="color:${severityColor}; font-weight:bold;">${props.severity}/10</span>
-                    <span class="severity-bar" style="display:inline-block; width:80px; margin-left:8px;">
-                        <span class="severity-fill" style="width:${props.severity * 10}%; background:${severityColor};"></span>
-                    </span>
-                </div>
-            `)
-            .addTo(map);
-        }
-        
-        function resetMapView() {
-            map.flyTo({
-                center: [-8.0, 53.2],
-                zoom: 6.5,
-                pitch: is3D ? 50 : 0,
-                bearing: is3D ? 10 : 0,
-                duration: 1000
-            });
-        }
-        
-        function toggle3D() {
-            is3D = !is3D;
-            map.flyTo({
-                pitch: is3D ? 50 : 0,
-                bearing: is3D ? 10 : 0,
-                duration: 800
-            });
-        }
-        
-        document.addEventListener('DOMContentLoaded', () => { initMap(); });
-        
-        function updateClock() {
-            const now = new Date();
-            document.getElementById('clock').textContent = now.toLocaleTimeString('es');
-            document.getElementById('date').textContent = now.toLocaleDateString('es', { year: 'numeric', month: 'long', day: 'numeric' });
-        }
-        updateClock();
-        setInterval(updateClock, 1000);
-        
-        // GRÁFICOS
-        new Chart(document.getElementById('countyChart'), {
-            type: 'bar',
-            data: {
-                labels: {{ condados_labels|tojson }},
-                datasets: [{
-                    label: 'Crímenes',
-                    data: {{ condados_data|tojson }},
-                    backgroundColor: 'rgba(255, 68, 68, 0.7)',
-                    borderColor: '#ff4444',
-                    borderWidth: 2,
-                    borderRadius: 5
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: { legend: { labels: { color: '#ccc' } }, tooltip: { backgroundColor: '#111', titleColor: '#ff4444' } },
-                scales: { y: { ticks: { color: '#ccc' }, grid: { color: '#333' } }, x: { ticks: { color: '#ccc', rotation: 45 } } }
-            }
-        });
-        
-        new Chart(document.getElementById('typeChart'), {
-            type: 'doughnut',
-            data: {
-                labels: {{ tipos_labels|tojson }},
-                datasets: [{
-                    data: {{ tipos_data|tojson }},
-                    backgroundColor: ['#ff0000', '#ff4444', '#000000', '#ff8c00', '#ffd700', '#800080', '#0066cc', '#990000', '#666666'],
-                    borderWidth: 2,
-                    borderColor: '#1a1a1a'
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: { legend: { labels: { color: '#ccc' } }, tooltip: { backgroundColor: '#111', titleColor: '#ff4444' } }
-            }
-        });
-        
-        new Chart(document.getElementById('trendChart'), {
-            type: 'line',
-            data: {
-                labels: {{ tendencia_labels|tojson }},
-                datasets: [{
-                    label: 'Crímenes por mes',
-                    data: {{ tendencia_data|tojson }},
-                    borderColor: '#ff4444',
-                    backgroundColor: 'rgba(255, 68, 68, 0.1)',
-                    fill: true,
-                    tension: 0.4,
-                    pointBackgroundColor: '#ff4444',
-                    pointBorderColor: '#fff',
-                    pointRadius: 4
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: { legend: { labels: { color: '#ccc' } }, tooltip: { backgroundColor: '#111', titleColor: '#ff4444' } },
-                scales: { y: { ticks: { color: '#ccc' }, grid: { color: '#333' } }, x: { ticks: { color: '#ccc', rotation: 45 } } }
-            }
-        });
-        
-        new Chart(document.getElementById('sourcesChart'), {
-            type: 'bar',
-            data: {
-                labels: {{ fuentes_labels|tojson }},
-                datasets: [{
-                    label: 'Artículos',
-                    data: {{ fuentes_data|tojson }},
-                    backgroundColor: 'rgba(255, 102, 102, 0.7)',
-                    borderColor: '#ff6666',
-                    borderWidth: 2,
-                    borderRadius: 5
-                }]
-            },
-            options: {
-                responsive: true,
-                indexAxis: 'y',
-                plugins: { legend: { labels: { color: '#ccc' } }, tooltip: { backgroundColor: '#111', titleColor: '#ff6666' } },
-                scales: { x: { ticks: { color: '#ccc' }, grid: { color: '#333' } }, y: { ticks: { color: '#ccc' } } }
-            }
-        });
+        let is3D = true, map;
+        function initMap(){map=new maplibregl.Map({container:'map3d',style:'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',center:[-8.0,53.2],zoom:6.5,pitch:50,bearing:10,antialias:true,renderWorldCopies:false});map.addControl(new maplibregl.NavigationControl(),'top-right');map.on('load',()=>{addCrimePoints()})}
+        function addCrimePoints(){const features=crimeData.map(c=>({type:'Feature',geometry:{type:'Point',coordinates:[c.lon||-8.0,c.lat||53.0]},properties:{titulo:c.titulo||'Sin título',condado:c.condado||'Desconocido',fecha:c.fecha||'N/A',tipo:c.tipo||'other',fuente:c.fuente||'Desconocida',color:c.color||'#666666',severity:c.severidad||3,id:c.id}}));map.addSource('crimes',{type:'geojson',data:{type:'FeatureCollection',features:features},cluster:true,clusterMaxZoom:14,clusterRadius:50});map.addLayer({id:'clusters',type:'circle',source:'crimes',filter:['has','point_count'],paint:{'circle-color':['step',['get','point_count'],'#ff4444',10,'#ff6b6b',50,'#ff8c42'],'circle-radius':['step',['get','point_count'],15,10,20,50,30],'circle-opacity':0.8,'circle-stroke-width':2,'circle-stroke-color':'#ffffff'}});map.addLayer({id:'cluster-count',type:'symbol',source:'crimes',filter:['has','point_count'],layout:{'text-field':'{point_count_abbreviated}','text-font':['DIN Offc Pro Medium','Arial Unicode MS Bold'],'text-size':12,'text-color':'#ffffff'}});map.addLayer({id:'crime-points',type:'circle',source:'crimes',filter:['!',['has','point_count']],paint:{'circle-radius':['interpolate',['linear'],['zoom'],5,6,8,10,12,16],'circle-color':['get','color'],'circle-opacity':0.85,'circle-stroke-width':2,'circle-stroke-color':'#ffffff','circle-blur':0.1}});map.on('click','crime-points',showCrimePopup);map.on('mouseenter','crime-points',()=>{map.getCanvas().style.cursor='pointer'});map.on('mouseleave','crime-points',()=>{map.getCanvas().style.cursor=''})}
+        function showCrimePopup(e){const f=e.features[0],p=f.properties,sc=p.severity>7?'#ff0000':p.severity>4?'#ff8c00':'#00cc00';new maplibregl.Popup({offset:[0,-15],className:'crime-popup',closeButton:true,closeOnClick:false}).setLngLat(f.geometry.coordinates).setHTML(`<div class="popup-title">🔪 ${p.titulo.substring(0,80)}${p.titulo.length>80?'...':''}</div><div class="popup-meta"><span><strong>📍</strong> ${p.condado}</span><span><strong>📅</strong> ${p.fecha}</span><span><strong>🔪</strong> ${p.tipo.toUpperCase()}</span><span><strong>📰</strong> ${p.fuente}</span></div><div class="popup-severity"><span class="sev-label">⚡ Severidad:</span><span style="color:${sc};font-weight:bold;">${p.severity}/10</span><span class="severity-bar" style="display:inline-block;width:80px;margin-left:8px;"><span class="severity-fill" style="width:${p.severity*10}%;background:${sc};"></span></span></div>`).addTo(map)}
+        function resetMapView(){map.flyTo({center:[-8.0,53.2],zoom:6.5,pitch:is3D?50:0,bearing:is3D?10:0,duration:1000})}
+        function toggle3D(){is3D=!is3D;map.flyTo({pitch:is3D?50:0,bearing:is3D?10:0,duration:800})}
+        document.addEventListener('DOMContentLoaded',()=>{initMap()});
+        function updateClock(){const n=new Date();document.getElementById('clock').textContent=n.toLocaleTimeString('es');document.getElementById('date').textContent=n.toLocaleDateString('es',{year:'numeric',month:'long',day:'numeric'})}updateClock();setInterval(updateClock,1000);
+        new Chart(document.getElementById('countyChart'),{type:'bar',data:{labels:{{ condados_labels|tojson }},datasets:[{label:'Crímenes',data:{{ condados_data|tojson }},backgroundColor:'rgba(255,68,68,0.7)',borderColor:'#ff4444',borderWidth:2,borderRadius:5}]},options:{responsive:true,plugins:{legend:{labels:{color:'#ccc'}},tooltip:{backgroundColor:'#111',titleColor:'#ff4444'}},scales:{y:{ticks:{color:'#ccc'},grid:{color:'#333'}},x:{ticks:{color:'#ccc',rotation:45}}}}});
+        new Chart(document.getElementById('typeChart'),{type:'doughnut',data:{labels:{{ tipos_labels|tojson }},datasets:[{data:{{ tipos_data|tojson }},backgroundColor:['#ff0000','#ff4444','#000000','#ff8c00','#ffd700','#800080','#0066cc','#990000','#666666'],borderWidth:2,borderColor:'#1a1a1a'}]},options:{responsive:true,plugins:{legend:{labels:{color:'#ccc'}},tooltip:{backgroundColor:'#111',titleColor:'#ff4444'}}}});
+        new Chart(document.getElementById('trendChart'),{type:'line',data:{labels:{{ tendencia_labels|tojson }},datasets:[{label:'Crímenes por mes',data:{{ tendencia_data|tojson }},borderColor:'#ff4444',backgroundColor:'rgba(255,68,68,0.1)',fill:true,tension:0.4,pointBackgroundColor:'#ff4444',pointBorderColor:'#fff',pointRadius:4}]},options:{responsive:true,plugins:{legend:{labels:{color:'#ccc'}},tooltip:{backgroundColor:'#111',titleColor:'#ff4444'}},scales:{y:{ticks:{color:'#ccc'},grid:{color:'#333'}},x:{ticks:{color:'#ccc',rotation:45}}}}});
+        new Chart(document.getElementById('sourcesChart'),{type:'bar',data:{labels:{{ fuentes_labels|tojson }},datasets:[{label:'Artículos',data:{{ fuentes_data|tojson }},backgroundColor:'rgba(255,102,102,0.7)',borderColor:'#ff6666',borderWidth:2,borderRadius:5}]},options:{responsive:true,indexAxis:'y',plugins:{legend:{labels:{color:'#ccc'}},tooltip:{backgroundColor:'#111',titleColor:'#ff6666'}},scales:{x:{ticks:{color:'#ccc'},grid:{color:'#333'}},y:{ticks:{color:'#ccc'}}}}});
     </script>
 </body>
 </html>
@@ -2429,6 +1792,7 @@ if __name__ == '__main__':
     cprint(f"{Color.BLUE}🧠 Detección inteligente de delitos activada{Color.RESET}")
     cprint(f"{Color.GREEN}🐢 Modo scraping respetuoso activado (delays más largos){Color.RESET}")
     cprint(f"{Color.YELLOW}📰 {len(fuentes_global)} FUENTES · Cobertura nacional completa{Color.RESET}")
+    cprint(f"{Color.CYAN}🔍 DETECCIÓN AUTOMÁTICA DE URLs · Busca alternativas cuando falla{Color.RESET}")
     
     print(f"\n{Color.CYAN}┌{'─' * 50}┐{Color.RESET}")
     print(f"{Color.CYAN}│{Color.WHITE}  ¿Cómo deseas ejecutar?{' ' * 27}{Color.CYAN}│{Color.RESET}")
