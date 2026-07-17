@@ -4,14 +4,38 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # SPDX-FileCopyrightText: 2026 Condor2026 / SpectrumSecurity
 
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: 2026 Condor2026 / SpectrumSecurity
+
 """
 ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║  🦈 KELTIC KRAKEN v4.1 - IRELAND CRIME INTELLIGENCE PLATFORM - FULL INTERACTIVE                               ║
+║   ██╗  ██╗███████╗██╗  ████████╗██╗ ██████╗     ██╗  ██╗██████╗  █████╗ ██╗  ██╗███████╗███╗   ██║            ║
+║   ██║ ██╔╝██╔════╝██║  ╚══██╔══╝██║██╔════╝     ██║ ██╔╝██╔══██╗██╔══██╗██║ ██╔╝██╔════╝████╗  ██║            ║
+║   █████╔╝ █████╗  ██║     ██║   ██║██║          █████╔╝ ██████╔╝███████║█████╔╝ █████╗  ██╔██╗ ██║            ║
+║   ██╔═██╗ ██╔══╝  ██║     ██║   ██║██║          ██╔═██╗ ██╔══██╗██╔══██║██╔═██╗ ██╔══╝  ██║╚██╗██║            ║
+║   ██║  ██╗███████╗███████╗██║   ██║╚██████╗     ██║  ██╗██║  ██║██║  ██║██║  ██╗███████╗██║ ╚████║            ║
+║   ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝   ╚═╝ ╚═════╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝            ║
+║                                                                                                               ║
+║  🦈 KELTIC KRAKEN v3.4 - IRELAND CRIME INTELLIGENCE PLATFORM - ULTRA STABLE                                   ║
 ║  ═══════════════════════════════════════════════════════════════════════════════════════════════════════════  ║
-║  🌍 Mapa Globo 3D · Expansión a pantalla completa · Popups autocerrantes                                      ║
-║  🔗 Enlaces funcionales · Click en título abre fuente original                                                ║
-║  🎮 Botones 100% funcionales · Interfaz mejorada                                                              ║
-║  📊 Dashboard interactivo · Búsqueda en tiempo real                                                           ║
+║  🌍 Mapa 3D con MapLibre GL · Puntos interactivos · Tooltips con severidad · 32 condados                      ║
+║  ⚡ ESCANEO ESTABLE · Timeouts controlados · Sin bloqueos · URLs 2026                                          ║
+║  📊 Real-time monitoring: Drug trafficking · Gang violence · Organized crime                                  ║
+║  🏴 Covers ALL 32 counties including Northern Ireland                                                         ║
+║  🔄 100+ Rotating User-Agents · Auto-URL discovery · Anti-blocking system                                     ║
+║  📈 Interactive charts · Full statistics dashboard · Web interface                                            ║
+║  🔍 Smart retry mechanism · URL cache · Session persistence                                                   ║
+║  📄 Pagination in web panel · Save after each source · Duplicate removal                                      ║
+║  ⚡ Parallel scanning · Dynamic workers · Non-blocking · Ultra-fast                                            ║
+║  🚀 Cache memorizado · Parsing optimizado · Regex compilados                                                  ║
+║                                                                                                               ║
+║  🛡️ "Un gran poder conlleva una gran responsabilidad" - Spider-Man                                            ║
+║                                                                                                               ║
+║                                         - By Condor2026                                                       ║
+║                                         •SpectrumSecurity•                                                    ║
 ╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 """
 
@@ -56,7 +80,7 @@ logger = logging.getLogger(__name__)
 # ============================================================================
 
 VERSION = "4.1"
-PUERTO = 5019
+PUERTO = 5025
 ARCHIVO_DATOS = 'keltic_kraken_ireland.json'
 ARCHIVO_CACHE = 'url_cache_ireland.json'
 ARCHIVO_ESTADO = 'estado_fuentes_ireland.json'
@@ -597,6 +621,46 @@ th{{background:#333;color:#ff4444}}
             html += f"<tr><td>{nombre}</td><td>{icono}</td><td>{cnt}</td></tr>"
         html += "</table></body></html>"
         return html
+    
+    # ================================================================
+    # NUEVA FUNCIÓN: REPARAR DATOS EXISTENTES
+    # ================================================================
+    def reparar_datos_existentes(self):
+        """Repara los datos existentes asegurando que todos tengan coordenadas y colores"""
+        with self.lock:
+            incidentes = self.datos['incidentes']
+            reparados = 0
+            sin_coordenadas = 0
+            
+            for inc in incidentes:
+                # 1. REPARAR COORDENADAS
+                if 'lat' not in inc or 'lon' not in inc or inc.get('lat') == 0 or inc.get('lon') == 0:
+                    condado = inc.get('condado', 'Dublin')
+                    coords = COORDENADAS_CONDADOS.get(condado, {'lat': 53.3498, 'lon': -6.2603})
+                    inc['lat'] = coords['lat']
+                    inc['lon'] = coords['lon']
+                    sin_coordenadas += 1
+                    reparados += 1
+                
+                # 2. REPARAR COLOR
+                tipo = inc.get('tipo', 'other')
+                color_correcto = TIPOS_CRIMEN.get(tipo, {}).get('color', '#666666')
+                if inc.get('color') != color_correcto:
+                    inc['color'] = color_correcto
+                    reparados += 1
+                
+                # 3. REPARAR SEVERIDAD
+                if 'severidad' not in inc or inc.get('severidad') == 0:
+                    inc['severidad'] = self.calcular_severidad(
+                        inc.get('tipo', 'other'), 
+                        inc.get('titulo', '')
+                    )
+                    reparados += 1
+            
+            if reparados > 0:
+                self.guardar()
+            
+            return reparados, sin_coordenadas
 
 # ============================================================================
 # DETECTOR Y VERIFICADOR DE URLs
@@ -1500,7 +1564,7 @@ HTML_TEMPLATE = """
 """
 
 # ============================================================================
-# RUTAS DE FLASK
+# RUTAS DE FLASK - CORREGIDAS
 # ============================================================================
 
 @app.route('/')
@@ -1515,6 +1579,7 @@ def index_paginada(page=1, filtro='todo'):
     
     incidentes = gestor_global.datos['incidentes']
     
+    # APLICAR FILTROS
     if filtro == '7d':
         limite = (datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')
         incidentes = [i for i in incidentes if i.get('fecha', '') >= limite]
@@ -1526,6 +1591,19 @@ def index_paginada(page=1, filtro='todo'):
         incidentes = [i for i in incidentes if i.get('fecha', '') >= limite]
     elif filtro == 'alta':
         incidentes = [i for i in incidentes if i.get('severidad', 0) >= 7]
+    
+    # ============================================================
+    # 🔥 CORRECCIÓN 1: Asegurar colores correctos en TODOS los incidentes
+    # ============================================================
+    for inc in incidentes:
+        tipo = inc.get('tipo', 'other')
+        inc['color'] = TIPOS_CRIMEN.get(tipo, {}).get('color', '#666666')
+        # Asegurar coordenadas también
+        if 'lat' not in inc or 'lon' not in inc:
+            condado = inc.get('condado', 'Dublin')
+            coords = COORDENADAS_CONDADOS.get(condado, {'lat': 53.3498, 'lon': -6.2603})
+            inc['lat'] = coords['lat']
+            inc['lon'] = coords['lon']
     
     stats = gestor_global.estadisticas(incidentes)
     periodicos_activos = len([f for f in fuentes_global if f.get('activo', True)])
@@ -1549,7 +1627,26 @@ def index_paginada(page=1, filtro='todo'):
     start = (page - 1) * ITEMS_POR_PAGINA
     paginated = incidentes[::-1][start:start + ITEMS_POR_PAGINA]
     
-    datos_mapa = incidentes[-500:]
+    # ============================================================
+    # 🔥 CORRECCIÓN 2: AUMENTAR LÍMITE DE PUNTOS EN EL MAPA
+    # ============================================================
+    # Ahora mostramos hasta 3000 puntos en el mapa con colores correctos
+    LIMITE_MAPA = 3000
+    if len(incidentes) > LIMITE_MAPA:
+        datos_mapa = incidentes[-LIMITE_MAPA:]
+    else:
+        datos_mapa = incidentes
+    
+    # Asegurar que todos los puntos del mapa tengan color y coordenadas
+    for punto in datos_mapa:
+        if 'color' not in punto:
+            tipo = punto.get('tipo', 'other')
+            punto['color'] = TIPOS_CRIMEN.get(tipo, {}).get('color', '#666666')
+        if 'lat' not in punto or 'lon' not in punto:
+            condado = punto.get('condado', 'Dublin')
+            coords = COORDENADAS_CONDADOS.get(condado, {'lat': 53.3498, 'lon': -6.2603})
+            punto['lat'] = coords['lat']
+            punto['lon'] = coords['lon']
     
     return render_template_string(HTML_TEMPLATE, version=VERSION,
                                   stats=stats, periodicos_activos=periodicos_activos,
@@ -1646,6 +1743,26 @@ def exportar_html():
     return Response(gestor_global.exportar_html(), mimetype='text/html',
                     headers={'Content-Disposition': 'attachment; filename=keltic_kraken.html'})
 
+@app.route('/reparar')
+def reparar_datos():
+    """Ruta web para reparar datos"""
+    global gestor_global
+    reparados, sin_coords = gestor_global.reparar_datos_existentes()
+    return f"""
+    <!DOCTYPE html>
+    <html><head><meta charset="utf-8"><title>Reparación de Datos</title>
+    <style>body{{background:#0a0a0f;color:#e8e8e8;font-family:'Poppins',sans-serif;padding:40px;text-align:center}}
+    h1{{color:#ff4444}}.ok{{color:#4ade80}}.info{{color:#4da6ff}}
+    </style>
+    </head>
+    <body>
+    <h1>🔧 REPARACIÓN COMPLETADA</h1>
+    <p class="ok">✅ Reparados {reparados} incidentes</p>
+    <p class="info">📍 {sin_coords} incidentes tenían coordenadas faltantes</p>
+    <p><a href="/" style="color:#ff4444;">← Volver al mapa</a></p>
+    </body></html>
+    """
+
 # ============================================================================
 # MENÚ PRINCIPAL Y MAIN
 # ============================================================================
@@ -1654,16 +1771,32 @@ def mostrar_banner_inicial():
     total_fuentes = len(FUENTES_BASE)
     print(f"""
 {Color.RED}
-╔═══════════════════════════════════════════════════════════════════════════════╗
-║   🦈 KELTIC KRAKEN v{VERSION} - IRELAND CRIME INTELLIGENCE                     ║
-║   ══════════════════════════════════════════════════════════════════════════  ║
-║   🌍 Mapa Globo 3D · Popups autocerrantes · Pantalla completa               ║
-║   🔗 Enlaces funcionales · Click en título abre fuente original              ║
-║   🎮 Botones 100% funcionales · Interfaz mejorada                           ║
-║   📰 {total_fuentes}+ FUENTES · Cobertura nacional completa                    ║
-║   🛡️  "Un gran poder conlleva una gran responsabilidad" - Spider-Man          ║
-║                                         - By Condor2026 · SpectrumSecurity    ║
-╚═══════════════════════════════════════════════════════════════════════════════╝
+╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+║   ██╗  ██╗███████╗██╗  ████████╗██╗ ██████╗     ██╗  ██╗██████╗  █████╗ ██╗  ██╗███████╗███╗   ██║            ║
+║   ██║ ██╔╝██╔════╝██║  ╚══██╔══╝██║██╔════╝     ██║ ██╔╝██╔══██╗██╔══██╗██║ ██╔╝██╔════╝████╗  ██║            ║
+║   █████╔╝ █████╗  ██║     ██║   ██║██║          █████╔╝ ██████╔╝███████║█████╔╝ █████╗  ██╔██╗ ██║            ║
+║   ██╔═██╗ ██╔══╝  ██║     ██║   ██║██║          ██╔═██╗ ██╔══██╗██╔══██║██╔═██╗ ██╔══╝  ██║╚██╗██║            ║
+║   ██║  ██╗███████╗███████╗██║   ██║╚██████╗     ██║  ██╗██║  ██║██║  ██║██║  ██╗███████╗██║ ╚████║            ║ 
+║   ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝   ╚═╝ ╚═════╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝            ║ 
+║                                                                                                               ║
+║  🦈 KELTIC KRAKEN v3.4 - IRELAND CRIME INTELLIGENCE PLATFORM - ULTRA STABLE                                   ║
+║  ═══════════════════════════════════════════════════════════════════════════════════════════════════════════  ║
+║  🌍 Mapa 3D con MapLibre GL · Puntos interactivos · Tooltips con severidad · 32 condados                      ║
+║  ⚡ ESCANEO ESTABLE · Timeouts controlados · Sin bloqueos · URLs 2026                                          ║
+║  📊 Real-time monitoring: Drug trafficking · Gang violence · Organized crime                                  ║
+║  🏴 Covers ALL 32 counties including Northern Ireland                                                         ║
+║  🔄 100+ Rotating User-Agents · Auto-URL discovery · Anti-blocking system                                     ║
+║  📈 Interactive charts · Full statistics dashboard · Web interface                                            ║
+║  🔍 Smart retry mechanism · URL cache · Session persistence                                                   ║
+║  📄 Pagination in web panel · Save after each source · Duplicate removal                                      ║
+║  ⚡ Parallel scanning · Dynamic workers · Non-blocking · Ultra-fast                                            ║
+║  🚀 Cache memorizado · Parsing optimizado · Regex compilados                                                  ║
+║                                                                                                               ║
+║  🛡️ "Un gran poder conlleva una gran responsabilidad" - Spider-Man                                            ║
+║                                                                                                               ║
+║                                         - By Condor2026                                                       ║
+║                                         •SpectrumSecurity•                                                    ║
+╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 {Color.RESET}""")
 
 def mostrar_menu_principal():
@@ -1691,7 +1824,8 @@ def mostrar_menu_principal():
 {Color.GREEN}  9. 📊 Distribución por tipo de crimen
 {Color.GREEN} 10. 📈 Estadísticas avanzadas
 {Color.GREEN} 11. 🧹 Limpiar duplicados
-{Color.RED} 12. 🗑️ Salir{Color.RESET}
+{Color.YELLOW} 12. 🔧 REPARAR DATOS (¡NUEVO!){Color.RESET}
+{Color.RED} 13. 🗑️ Salir{Color.RESET}
 {Color.YELLOW}{'=' * 55}{Color.RESET}
 """)
 
@@ -1842,6 +1976,16 @@ def menu():
             input(f"\n{Color.GRAY}Enter para continuar...{Color.RESET}")
         
         elif opc == '12':
+            cprint(f"\n🔧 REPARANDO DATOS EXISTENTES...", 'yellow', bold=True)
+            reparados, sin_coords = gestor_global.reparar_datos_existentes()
+            cprint(f"\n✅ Reparados {reparados} incidentes", 'green', bold=True)
+            if sin_coords > 0:
+                cprint(f"   📍 {sin_coords} incidentes tenían coordenadas faltantes", 'cyan')
+            cprint(f"📊 Total en base: {len(gestor_global.datos['incidentes'])}", 'white')
+            cprint(f"🔄 Reinicia el servidor web para ver los cambios en el mapa", 'yellow')
+            input(f"\n{Color.GRAY}Enter para continuar...{Color.RESET}")
+        
+        elif opc == '13':
             cprint(f"\n👋 ¡Hasta pronto!", 'red', bold=True)
             break
         
@@ -1854,7 +1998,6 @@ def menu():
 # ============================================================================
 
 if __name__ == '__main__':
-    # Selección de idioma simplificada (español por defecto para este ejemplo)
     print(f"{Color.GREEN}🌍 Idioma: Español{Color.RESET}")
     
     mostrar_banner_inicial()
@@ -1871,6 +2014,15 @@ if __name__ == '__main__':
     cprint(f"{Color.BLUE}⛶ Botón FULL para pantalla completa{Color.RESET}")
     cprint(f"{Color.YELLOW}🎯 Popups autocerrantes al hacer click en otro punto{Color.RESET}")
     
+    # Reparar datos automáticamente al inicio
+    if stats['total'] > 0:
+        cprint(f"\n{Color.YELLOW}🔧 Verificando integridad de datos...{Color.RESET}")
+        reparados, sin_coords = gestor_global.reparar_datos_existentes()
+        if reparados > 0:
+            cprint(f"{Color.GREEN}✅ Reparados {reparados} incidentes automáticamente{Color.RESET}")
+            if sin_coords > 0:
+                cprint(f"{Color.CYAN}   📍 {sin_coords} con coordenadas faltantes fueron asignadas{Color.RESET}")
+    
     print(f"\n{Color.CYAN}┌{'─' * 50}┐{Color.RESET}")
     print(f"{Color.CYAN}│{Color.WHITE}  ¿Cómo deseas ejecutar?{' ' * 27}{Color.CYAN}│{Color.RESET}")
     print(f"{Color.CYAN}├{'─' * 50}┤{Color.RESET}")
@@ -1886,6 +2038,7 @@ if __name__ == '__main__':
         cprint(f"   🔗 Click en títulos abre la fuente original", 'cyan')
         cprint(f"   ⛶ Botón FULL para pantalla completa", 'cyan')
         cprint(f"   🎯 Popups autocerrantes al hacer click en otro punto", 'cyan')
+        cprint(f"   📊 Gráficos interactivos con Chart.js", 'cyan')
         cprint(f"   {Color.GRAY}Presiona Ctrl+C para volver al menú{Color.RESET}")
         app.run(host='127.0.0.1', port=PUERTO, debug=False, use_reloader=False)
     else:
