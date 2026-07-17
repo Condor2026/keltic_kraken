@@ -1,20 +1,50 @@
 # ============================================
-# KELTIC KRAKEN v3.0 - Docker Compose
+# 🦈 KELTIC KRAKEN v4.1 - Docker Compose
 # Ireland Crime Intelligence Platform
 # ============================================
 
 version: '3.8'
 
 services:
-  keltic_kraken:
+  keltic-kraken:
     build: .
-    container_name: keltic_kraken
+    container_name: keltic-kraken
+    restart: unless-stopped
+    
+    # Puertos
     ports:
-      - "5014:5014"
+      - "5019:5019"
+    
+    # Volúmenes para datos persistentes
     volumes:
       - ./data:/app/data
+      - ./logs:/app/logs
+      - ./keltic_kraken_ireland.json:/app/keltic_kraken_ireland.json
+      - ./estado_fuentes_ireland.json:/app/estado_fuentes_ireland.json
+    
+    # Variables de entorno
     environment:
+      - TZ=Europe/Dublin
       - PYTHONUNBUFFERED=1
-    restart: unless-stopped
+      - KELTIC_VERSION=4.1
+    
+    # Para modo interactivo (terminal)
     stdin_open: true
     tty: true
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5019/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    
+    # Redes
+    networks:
+      - keltic-network
+
+# Redes
+networks:
+  keltic-network:
+    driver: bridge
