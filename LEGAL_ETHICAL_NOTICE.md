@@ -2,8 +2,7 @@
 
 **Ruta:** `keltic-kraken/LEGAL_ETHICAL_NOTICE.md`
 
-
-# ⚖️ AVISO LEGAL Y ÉTICO - KELTIC KRAKEN v3.0
+# ⚖️ AVISO LEGAL Y ÉTICO - KELTIC KRAKEN v4.1
 
 ## 1. PROPÓSITO DE LA HERRAMIENTA
 
@@ -23,6 +22,7 @@
 - ❌ No es un sistema de perfilación de personas
 - ❌ No sustituye a las fuerzas de seguridad (Gardaí / PSNI)
 - ❌ No es un sistema de inteligencia policial operativa
+- ❌ No está diseñada para detectar ataques DDoS o acoso
 
 ---
 
@@ -59,16 +59,19 @@ Los datos provienen de **fuentes públicas** (periódicos). El usuario debe **ve
 | 🏴 Condado aproximado | Región geográfica (ej: Dublin, Cork) |
 | 🔪 Tipo de delito | Clasificación automática |
 | 📰 Fuente | Nombre del periódico |
+| 🔗 URL de referencia | Enlace a la noticia original |
+| ⚡ Severidad | Puntuación de gravedad (1-10) |
 
 ### Lo que NO se guarda:
 
 - ❌ Nombres de personas
-- ❌ Direcciones
+- ❌ Direcciones exactas
 - ❌ Números de teléfono
 - ❌ Direcciones IP
 - ❌ Cookies
-- ❌ Datos de localización precisa
+- ❌ Datos de localización precisa (GPS)
 - ❌ Información personal identificable
+- ❌ Contenido completo de las noticias
 
 ### 📜 GDPR / DPA 2018 (Irlanda):
 
@@ -78,6 +81,7 @@ Los datos provienen de **fuentes públicas** (periódicos). El usuario debe **ve
 - El usuario es quien ejecuta el software localmente
 - No hay transferencia de datos a servidores externos
 - No hay perfilación automática de individuos
+- Solo procesa información de dominio público
 
 ---
 
@@ -91,7 +95,9 @@ Las noticias escaneadas pertenecen a sus respectivos medios de comunicación:
 - RTÉ
 - The Journal
 - Irish Examiner
-- (y el resto de fuentes)
+- Irish Mirror
+- Sunday World
+- (y el resto de 78+ fuentes)
 
 **KELTIC KRAKEN** solo extrae **titulares y metadatos públicos**, sin republicar contenidos completos ni vulnerar derechos de autor.
 
@@ -115,6 +121,7 @@ Puedes reutilizar, modificar y distribuir el código SIEMPRE QUE:
 - ✅ Cites la fuente original (Condor2026 / SpectrumSecurity)
 - ✅ Mantengas el espíritu ético de la herramienta
 - ❌ No lo uses para fines ilegales o discriminatorios
+- ❌ No elimines los créditos del desarrollador
 
 ---
 
@@ -127,6 +134,7 @@ La herramienta se proporciona **"TAL CUAL"** (AS-IS), sin garantías de:
 - Funcionamiento continuo
 - Ausencia de errores o bugs
 - Precisión absoluta de los datos (dependen de fuentes externas)
+- Disponibilidad de todas las fuentes en todo momento
 
 ### Responsabilidad del usuario:
 
@@ -191,12 +199,13 @@ Para reportar usos indebidos, vulnerabilidades éticas o preguntas sobre este do
 
 | Versión | Fecha | Cambios |
 |---------|-------|---------|
-| 1.0 | Junio 2026 | Documento inicial adaptado para KELTIC KRAKEN (Irlanda) |
+| 4.1 | Julio 2026 | Actualizado para v4.1: mapa 3D, popups, más fuentes |
+| 3.0 | Junio 2026 | Documento inicial adaptado para KELTIC KRAKEN (Irlanda) |
 
 ---
 
 <p align="center">
-  <b>🔪 "Con un gran poder viene una gran responsabilidad"</b><br>
+  <b>🦈 "Un gran poder conlleva una gran responsabilidad"</b><br>
   <i>Usa esta herramienta con ética, responsabilidad y respeto por los derechos humanos.</i>
 </p>
 
@@ -205,7 +214,23 @@ Para reportar usos indebidos, vulnerabilidades éticas o preguntas sobre este do
   <img src="https://img.shields.io/badge/Data%20Protection-GDPR%20Exempt-green?style=flat-square">
   <img src="https://img.shields.io/badge/License-GPLv3-blue?style=flat-square">
   <img src="https://img.shields.io/badge/OSINT-Responsible-yellow?style=flat-square">
+  <img src="https://img.shields.io/badge/Version-4.1-brightgreen?style=flat-square">
 </p>
+
+---
+
+**🦈 KELTIC KRAKEN v4.1** – *OSINT ético al servicio de la ciudadanía*
+
+*By Condor2026 · SpectrumSecurity*
 ```
 
-**Archivo listo para copiar, pegar y subir a GitHub.** 🔪
+## 📝 CAMBIOS PRINCIPALES:
+
+| Elemento | v3.0 | v4.1 |
+|----------|------|------|
+| **Versión** | 3.0 | **4.1** |
+| **Emoji** | 🔪 | **🦈** |
+| **Fuentes** | Lista básica | **78+ fuentes** |
+| **Datos guardados** | Básicos | **+ URL + Severidad** |
+| **Actualizaciones** | Solo 1.0 | **v3.0 + v4.1** |
+| **Badges** | 4 | **5 badges** |
