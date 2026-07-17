@@ -6,12 +6,12 @@
 
 """
 ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-║  🦈 KELTIC KRAKEN v4.1 - IRELAND CRIME INTELLIGENCE PLATFORM - FULL INTERACTIVE                          ║
+║  🦈 KELTIC KRAKEN v4.1 - IRELAND CRIME INTELLIGENCE PLATFORM - FULL INTERACTIVE                               ║
 ║  ═══════════════════════════════════════════════════════════════════════════════════════════════════════════  ║
-║  🌍 Mapa Globo 3D · Expansión a pantalla completa · Popups autocerrantes                                   ║
-║  🔗 Enlaces funcionales · Click en título abre fuente original                                              ║
-║  🎮 Botones 100% funcionales · Interfaz mejorada                                                           ║
-║  📊 Dashboard interactivo · Búsqueda en tiempo real                                                        ║
+║  🌍 Mapa Globo 3D · Expansión a pantalla completa · Popups autocerrantes                                      ║
+║  🔗 Enlaces funcionales · Click en título abre fuente original                                                ║
+║  🎮 Botones 100% funcionales · Interfaz mejorada                                                              ║
+║  📊 Dashboard interactivo · Búsqueda en tiempo real                                                           ║
 ╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 """
 
