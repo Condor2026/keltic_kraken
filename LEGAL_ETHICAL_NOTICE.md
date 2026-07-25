@@ -221,7 +221,7 @@ Para reportar usos indebidos, vulnerabilidades éticas o preguntas sobre este do
 
 **🦈 KELTIC KRAKEN v4.1** – *OSINT ético al servicio de la ciudadanía*
 
-*By Condor2026 · SpectrumSecurity*
+*By Condor2026 ·  🦅 - Threat Security - 🦅*
 ```
 
 ## 📝 CAMBIOS PRINCIPALES:
