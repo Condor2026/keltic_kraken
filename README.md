@@ -766,3 +766,5 @@ along with this program. If not, see <https://www.gnu.org/licenses/>.
 | **Popups** | No | **Sí (autocerrantes)** |
 | **Fullscreen** | No | **Sí** |
 | **Reparación datos** | No | **Sí (opción 12)** |
+
+ 🦅 - Condor2026 Threat Security - 🦅
