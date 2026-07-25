@@ -133,7 +133,7 @@ Para respuestas a preguntas frecuentes sobre este código de conducta, consulta 
 
 *"Un gran poder conlleva una gran responsabilidad"* 🛡️
 
-*By Condor2026 · SpectrumSecurity*
+*By Condor2026 ·  🦅 - Threat Security - 🦅*
 ```
 
 ## 📝 CAMBIOS PRINCIPALES:
